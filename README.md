@@ -30,12 +30,11 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [Avoid fake ES6 syntax](#avoid-fake-es6-syntax)
 * [Avoid `component.parent`](#avoid-componentparent)
 * [Use `each ... in` syntax](#use-each--in-syntax)
-* [Put styles in external files](#put-styles-in-external-files)
 * [Use component name as style scope](#use-component-name-as-style-scope)
 * [Document your component API](#document-your-component-api)
 * [Add a component demo](#add-a-component-demo)
 * [Lint your component files](#lint-your-component-files)
-* [Add badge to your project](#add-badge-to-your-project)
+<!-- * [Add badge to your project](#add-badge-to-your-project) -->
 
 
 ## Module based development
@@ -329,30 +328,42 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 ### Why?
 
 * Alphabetizing the properties and methods makes them easy to find.
-* By moving the full functions behind the component methods down, you initially hide implementation details.
 
 ### How?
 
 Component structure:
 
-```javascript
+```html
+<template lang="html">
+	<div class="Ranger__Wrapper">
+		<!-- ... -->
+	</div>
+</template>
+
+<script type="text/babel">
 export default {
-  // compose new components
-  extends: {},
+	name: 'Ranger',
+	// compose new components
+	extends: {},
 	// component properties
 	props: {},
-  // variables
-  data() {},
-  computed: {},
+	// variables
+	data() {},
+	computed: {},
 	// when component uses other components
 	components: {},
 	// methods
-  watch: {},
-  methods: {},
+	watch: {},
+	methods: {},
 	// component Lifecycle hooks
 	beforeCreate() {},
-  mounted() {},
+	mounted() {},
 };
+</script>
+
+<style scoped>
+	.Ranger__Wrapper { /* ... */ }
+</style>
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
