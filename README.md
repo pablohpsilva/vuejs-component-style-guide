@@ -524,7 +524,7 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Add badge to your project
+<!-- ## Add badge to your project
 
 You can use the *Vue.js Style Guide badge* to link to this guide:
 
@@ -562,3 +562,4 @@ Or html:
 [De Voorhoede](https://twitter.com/devoorhoede) waives all rights to this work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
 
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
+ -->
