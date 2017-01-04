@@ -9,7 +9,7 @@ This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) 
 * easier to (re)use build tools you already use.
 * easier to cache and serve bundles of code separately.
 
-This guide is inspired by the [AngularJS Style Guide](https://github.com/voorhoede/vuejs-style-guide) by De Voorhoede.
+This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) by De Voorhoede.
 
 <!-- ## Demos
 
