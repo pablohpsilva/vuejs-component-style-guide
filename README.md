@@ -112,7 +112,7 @@ You should **always use `<script type="text/javascript">`** around scripting.
 	<h1>The year is {{ this.year }}</h1>
 </template>
 <script type="text/javascript">
-	export default {
+  export default {
     data() {
       return {
         year: 2017,
@@ -126,7 +126,7 @@ You should **always use `<script type="text/javascript">`** around scripting.
 	<h1>The year is {{ this.year }}</h1>
 </template>
 <script>
-	export default {
+  export default {
     data() { // <-- IDE might not interpret this
       return {
         year: 2017,
@@ -189,8 +189,6 @@ If it gets too complex or hard to read **move it to methods or computed properti
 
 While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component options as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
 
-Exceptions to this rule are situations which can only be solved using objects (eg. collections) or well-known objects inside your app (eg. a product in a web shop).
-
 ### Why?
 
 * By using an attribute for each option separately the component has a clear and expressive API.
@@ -205,30 +203,16 @@ Use a component attribute per option, with a primitive or function as value:
 ```html
 <!-- recommended -->
 <range-slider
-	:values="[10, 20]"
-	min="0"
-	max="100"
-	step="5"
-	:on-slide="updateInputs"
-	:on-end="updateResults"
-	/>
+  :values="[10, 20]"
+  min="0"
+  max="100"
+  step="5"
+  :on-slide="updateInputs"
+  :on-end="updateResults">
+</range-slider>
 	
 <!-- avoid -->
-<range-slider :config="complexConfigObject">
-```
-```html
-<!-- exception: recursive component, like menu item -->
-<menu-item>
-	<a :href="opts.url">{{ opts.text }}</a>
-	<ul slot v-if="opts.items">
-		<li v-for="item in opts.items">
-			<menu-item 
-				:text="item.text" 
-				:url="item.url" 
-				:items="item.items" />
-		</li>
-	</ul>
-</menu-item>
+<range-slider :config="complexConfigObject"></range-slider>
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
@@ -341,28 +325,28 @@ Component structure:
 </template>
 
 <script type="text/javascript">
-export default {
-	name: 'Ranger',
-	// compose new components
-	extends: {},
-	// component properties
-	props: {},
-	// variables
-	data() {},
-	computed: {},
-	// when component uses other components
-	components: {},
-	// methods
-	watch: {},
-	methods: {},
-	// component Lifecycle hooks
-	beforeCreate() {},
-	mounted() {},
+  export default {
+    name: 'Ranger',
+    // compose new components
+    extends: {},
+    // component properties
+    props: {},
+    // variables
+    data() {},
+    computed: {},
+    // when component uses other components
+    components: {},
+    // methods
+    watch: {},
+    methods: {},
+    // component Lifecycle hooks
+    beforeCreate() {},
+    mounted() {},
 };
 </script>
 
 <style scoped>
-	.Ranger__Wrapper { /* ... */ }
+  .Ranger__Wrapper { /* ... */ }
 </style>
 ```
 
@@ -497,15 +481,15 @@ To allow linters to extract the scripts from your `*.vue` files, [put script ins
 Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
 ```json
 {
-	"extends": "eslint:recommended",
-	"plugins": ["html"],
-	"env": {
-		"browser": true
-	},
-	"globals": {
-		"opts": true,
-		"vue": true
-	}
+  "extends": "eslint:recommended",
+  "plugins": ["html"],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "opts": true,
+    "vue": true
+  }
 }
 ```
 
@@ -521,8 +505,8 @@ eslint modules/**/*.vue
 Configure JSHint in `modules/.jshintrc` (so IDEs can interpret it as well):
 ```json
 {
-	"browser": true,
-	"predef": ["opts", "vue"]
+  "browser": true,
+  "predef": ["opts", "vue"]
 }
 ```
 
