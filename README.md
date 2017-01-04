@@ -339,201 +339,37 @@ Component structure:
 export default {
   // compose new components
   extends: {},
+	// component properties
+	props: {},
   // variables
   data() {},
   computed: {},
+	// when component uses other components
+	components: {},
+	// methods
   watch: {},
   methods: {},
+	// component Lifecycle hooks
+	beforeCreate() {},
   mounted() {},
 };
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
 
+## Avoid `this.$parent`
 
-## Avoid fake ES6 syntax
-
-Vue.js supports a [shorthand *ES6 like* method syntax](http://vuejs.org/guide/#component-syntax). Vue.js compiles the shorthand syntax `methodName() { }` into `this.methodName = function() {}.bind(this)`. Since this is non-standard you should **avoid fake ES6 method shorthand syntax**.
-
-### Why?
-
-* The fake ES6 shorthand syntax is non-standard and can therefore confuse developers.
-* The component scripts are not actual ES6 classes, so IDEs won't be able to interpret the fake ES6 class method syntax.
-* It should always be clear which methods are bound to the component and thus available in the markup. The shorthand syntax obscures the principle of writing code which is transparent and easy to understand.
-
-### How? 
-
-Use `component.methodName =` instead of magic `methodName() { }` syntax:
-
-```javascript
-/* recommended */
-var component = this;
-component.todos = [];
-component.add = add;
-
-function add() {
-    if (component.text) {
-        component.todos.push({ title: component.text });
-        component.text = component.input.value = '';
-    }
-}
-
-/* avoid */
-todos = [];
-
-add() {
-    if (this.text) {
-        this.todos.push({ title: this.text });
-        this.text = this.input.value = '';
-    }
-}
-```
-
-**Tip**: [Disable transformation of the fake ES6 syntax](http://vuejs.org/guide/compiler/#no-transformation) during pre-compilation by setting `type` to `none`:
-
-```bash
-vue --type none
-```
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Avoid `component.parent`
-
-Vue.js supports [nested components](http://vuejs.org/guide/#nested-components) which have access to their parent context through `component.parent`. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [module based development](#module-based-development). Therefore you should **avoid using `component.parent`**.
-
-The exception to this rule are anonymous child components in a [for each loop](http://vuejs.org/guide/#loops) as they are defined directly inside the vue component.
+Vue.js supports nested components which have access to their parent context. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [module based development](#module-based-development). Therefore you should **avoid using `this.$parent`**.
 
 ### Why?
 
 * A vue component, like any module, must work in isolation. If a component needs to access its parent, this rule is broken.
 * If a component needs access to its parent, it can no longer be reused in a different context. 
-* By accessing its parent a child component can modify properties on its parent. This can lead to unexpected behaviour.
 
 ### How?
 
-* Pass values from the parent to the child component using attribute expressions.
+* Pass values from the parent to the child component using attribute/properties.
 * Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
-
-```html
-<!-- recommended -->
-<parent-component>
-	<child-component value="{ value }" /> <!-- pass parent value to child -->
-</parent-component>
-
-<child-component>
-	<span>{ opts.value }</span> <!-- use value passed by parent -->
-</child-component>
-
-<!-- avoid -->
-<parent-component>
-	<child-component />
-</parent-component>
-
-<child-component>
-	<span>value: { parent.value }</span> <!-- don't do this -->
-</child-component>
-```
-```html
-<!-- recommended -->
-<parent-component>
-	<child-component on-event="{ methodToCallOnEvent }" /> <!-- use method as callback -->
-	<script>this.methodToCallOnEvent = () => { /*...*/ };</script>
-<parent-component>
-
-<child-component>
-	<button onclick="{ opts.onEvent }"></button> <!-- call method passed by parent -->
-</child-component>
-
-<!-- avoid -->
-<parent-component>
-	<child-component />
-	<script>this.methodToCallOnEvent = () => { /*...*/ };</script>
-<parent-component>
-
-<child-component>
-	<button onclick="{ parent.methodToCallOnEvent }"></button> <!-- don't do this -->
-</child-component>
-```
-```html
-<!-- allowed exception -->
-<parent-component>
-	<button each="{ item in items }"
-		onclick="{ parent.onEvent }"> <!-- okay, because button is not a vue component -->
-		{ item.text }
-	</button>
-	<script>this.onEvent = (e) => { alert(e.item.text); }</script>
-</parent-component>
-```
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Use `each ... in` syntax
-
-Vue.js supports multiple notations for [loops](http://vuejs.org/guide/#loops): item in array (`each="{ item in items }"`); key, value in object (`each="{ key, value in items }"`) and a shorthand (`each="{ items }"`) notation. This shorthand can lead to confusion. Therefore you should **use the `each ... in` syntax**.
-
-### Why?
-
-Vue.js creates a new component instance for each item the `each` directive loops through. When using the shorthand notation, the methods and properties of the current item are bound to the current component instance (local `this`). This is not obvious when looking at the markup and may thus confuse other developers. Therefore you should **use the `each ... in` syntax**.
-
-### How?
-
-Use `each="{ item in items }"` or `each="{ key, value in items }"` instead of `each="{ items }"` syntax:
-
-```html
-<!-- recommended: -->
-<ul>
-    <li each="{ item in items }">
-      	<label class="{ completed: item.done }">
-			<input type="checkbox" checked="{ item.done }"> { item.title }
-      	</label>
-    </li>
-</ul>
-
-<!-- recommended: -->
-<ul>
-    <li each="{ key, item in items }">
-      	<label class="{ completed: item.done }">
-			<input type="checkbox" checked="{ item.done }"> { key }. { item.title }
-      	</label>
-    </li>
-</ul>
-
-<!-- avoid: -->
-<ul>
-    <li each="{ items }">
-      	<label class="{ completed: done }">
-			<input type="checkbox" checked="{ done }"> { title }
-      	</label>
-    </li>
-</ul>
-```
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Put styles in external files
-
-For developer convenience, Vue.js allows you to define a component element's style in a [nested `<style>` component](http://vuejs.org/guide/#component-styling). While you can [scope](http://vuejs.org/guide/#scoped-css) these styles to the component element, Vue.js does not provide true encapsulation. Instead Vue.js extracts these styles from the components (JavaScript) and injects them into the document on runtime. Since Vue.js compiles nested styles to JavaScript and doesn't have true encapsulation, you should instead **put styles in external files**.
-
-### Why?
-
-* External stylesheets can be handled by the browser independently of Vue.js and component files. This means styles can be applied to initial markup even if JavaScript errors occur or isn't loaded (yet).
-* External stylesheets can be used in combination with pre-processors (Less, Sass, PostCSS, etc) and your own (existing) build tools.
-* External stylesheets can be minified, served and cached separately. This improves performance.
-* Vue.js expressions are not supported in nested `<style>`s so there's no added benefit in using them.
-
-### How?
-
-Styles related to the component and its markup, should be placed in a separate stylesheet file next to the component file, inside its module directory:
-
-```
-my-example/
-├── my-example.vue
-├── my-example.(css|less|scss)    <-- external stylesheet next to component file
-└── ...
-```
 
 [↑ back to Table of Contents](#table-of-contents)
 
@@ -550,21 +386,17 @@ Alternatively the module name can be used as CSS class namespace.
 
 ### How?
 
-Use the component name as selector, as parent selector or as namespace prefix (depending on your CSS naming strategy).
+Use the component name as a namespace prefix based on BEM and OOCSS.
 
 ```css
 /* recommended */
-my-example { }
-my-example li { }
-.my-example__item { }
+.MyExample { }
+.MyExample li { }
+.MyExample__item { }
 
 /* avoid */
-.my-alternative { } /* not scoped to component or module name */
-.my-parent .my-example { } /* .my-parent is outside scope, so should not be used in this file */
+.My-Example { } /* not scoped to component or module name, not BEM compliant */
 ```
-
-note: If you're using [`data-is=`](http://vuejs.org/guide/#html-elements-as-components) (introduced in [v2.3.17](http://vuejs.org/release-notes/#march-9-2016)) to initiate Vue.js components, you can use `[data-is="my-example"]` as CSS selector instead of `.my-example`.
-
 
 [↑ back to Table of Contents](#table-of-contents)
 
@@ -623,7 +455,7 @@ For customising the slider appearance see the [Styling section in the noUiSlider
 
 ## Add a component demo
 
-Add a `*.demo.html` file with demos of the component with different configurations, showing how the component can be used.
+Add a `index.html` file with demos of the component with different configurations, showing how the component can be used.
 
 ### Why?
 
@@ -631,71 +463,12 @@ Add a `*.demo.html` file with demos of the component with different configuratio
 * A component demo gives developers a preview before having to dig into the documentation or code.
 * Demos can illustrate all the possible configurations and variations a component can be used in. 
 
-### How?
-
-Add a `*.demo.html` file to your module directory:
-
-```
-city-map/
-├── city-map.vue
-├── city-map.demo.html
-├── city-map.css
-└── ...
-```
-
-Inside the demo file:
-
-* Include `vue+compiler.min.js` to also compile during runtime.
-* Include the component file (e.g. `./city-map.vue`).
-* Create a `demo` component (`<yield/>`) to embed your demos in (otherwise option attributes are not supported).
-* Write demos inside the `<demo>` components.
-* As a bonus add `aria-label`s to the `<demo>` components and style those as title bars.
-* Initialise using `vue.mount('demo', {})`.
-
-Example demo file in `city-component` module:
-
-```html
-<!-- modules/city-map/city-map.demo.html: -->
-<body>
-    <h1>city-map demos</h1>
-    
-    <demo aria-label="City map of London">
-        <city-map location="London" />    
-    </demo>
-    
-    <demo aria-label="City map of Paris">
-        <city-map location="Paris" />    
-    </demo>
-    
-    <link rel="stylesheet" href="./city-map.css">
-    
-    <script src="path/to/vue+compiler.min.js"></script>
-    <script type="vue/component" src="./city-map.vue"></script> 
-    <script>
-        vue.component('demo','<yield/>');
-        vue.mount('demo', {});
-    </script>
-    
-    <style>
-    	/* add a grey bar with the `aria-label` as demo title */
-    	demo:before {
-        	content: "Demo: " attr(aria-label);
-	        display: block;
-        	background: #F3F5F5;
-        	padding: .5em;
-        	clear: both;
-        }
-    </style>
-</body>
-```
-Note: this is a working concept, but could be much cleaner using build scripts.
-
 [↑ back to Table of Contents](#table-of-contents)
 
 
 ## Lint your component files
 
-Linters improve code consistency and help trace syntax errors. With some extra configuration Vue.js component files can also be linted.
+Linters improve code consistency and help trace syntax errors. .vue files can be linted adding the `eslint-plugin-html` in your project. If you choose, you can start a project with ESLint enabled by default using `vue-cli`;
 
 ### Why?
 
