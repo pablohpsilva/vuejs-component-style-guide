@@ -340,7 +340,7 @@ Component structure:
 	</div>
 </template>
 
-<script type="text/babel">
+<script type="text/javascript">
 export default {
 	name: 'Ranger',
 	// compose new components
