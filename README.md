@@ -1,1 +1,791 @@
-# vuejs-style-guide
+# Vue.js Style Guide
+
+## Purpose
+
+This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) code. Making it
+
+* easier for developers / team members to understand and find things.
+* easier for IDEs to interpret the code and provide assistance.
+* easier to (re)use build tools you already use.
+* easier to cache and serve bundles of code separately.
+
+This guide is inspired by the [AngularJS Style Guide](https://github.com/voorhoede/vuejs-style-guide) by De Voorhoede.
+
+<!-- ## Demos
+
+Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are a companion to this guide, illustrating the guidelines with practical examples. -->
+
+## Table of Contents
+
+* [Module based development](#module-based-development)
+* [vue component names](#component-module-names)
+* [1 module = 1 directory](#1-module--1-directory)
+* [Use `*.vue` extension](#use-vue-extension)
+* [Use `<script>` inside component](#use-script-inside-component)
+* [Keep component expressions simple](#keep-component-expressions-simple)
+* [Keep component options primitive](#keep-component-options-primitive)
+* [Harness your component options](#harness-your-component-options)
+* [Assign `this` to `component`](#assign-this-to-component)
+* [Component structure](#put-component-properties-and-methods-on-top)
+* [Avoid fake ES6 syntax](#avoid-fake-es6-syntax)
+* [Avoid `component.parent`](#avoid-componentparent)
+* [Use `each ... in` syntax](#use-each--in-syntax)
+* [Put styles in external files](#put-styles-in-external-files)
+* [Use component name as style scope](#use-component-name-as-style-scope)
+* [Document your component API](#document-your-component-api)
+* [Add a component demo](#add-a-component-demo)
+* [Lint your component files](#lint-your-component-files)
+* [Add badge to your project](#add-badge-to-your-project)
+
+
+## Module based development
+
+Always construct your app out of small modules which do one thing and do it well. 
+
+A module is a small self-contained part of an application. The Vue.js library is specifically designed to help you create *view-logic modules*.
+
+### Why?
+
+Small modules are easier to learn, understand, maintain, reuse and debug. Both by you and other developers.
+
+### How?
+
+Each vue component (like any module) must be [FIRST](https://addyosmani.com/first/): *Focused* ([single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle)), *Independent*, *Reusable*, *Small* and *Testable*.
+
+If your module does too much or gets too big, split it up into smaller modules which each do just on thing.
+As a rule of thumb, try to keep each component file less than 100 lines of code.
+Also ensure your vue component works in isolation. For instance by adding a stand-alone demo.
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## vue component names
+
+A vue component is a specific type of module. 
+
+Each component name must be:
+
+* **Meaningful**: not overspecific, not overly abstract.
+* **Short**: 2 or 3 words.
+* **Pronouncable**: we want to be able talk about them.
+
+Vue component names must also be:
+
+* **Custom element spec compliant**: [include a hyphen](https://www.w3.org/TR/custom-elements/#concepts), don't use reserved names.
+* **`app-` namespaced**: if very generic and otherwise 1 word, so that it can easily be reused in other projects.
+
+### Why?
+
+* The name is used to communicate about the module. So it must be short, meaningful and pronounceable.
+* The `component` element is inserted into the DOM. As such, they need to adhere to the spec.
+
+### How?
+
+```html
+<!-- recommended -->
+<app-header></app-header>
+<user-list></user-list>
+<range-slider></range-slider>
+
+<!-- avoid -->
+<btn-group></btn-group> <!-- short, but unpronouncable. use `button-group` instead -->
+<ui-slider></ui-slider> <!-- all components are ui elements, so is meaningless -->
+<slider></slider> <!-- not custom element spec compliant -->
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Use `<script type="text/babel">` inside component
+
+You should **always use `<script type="text/babel">`** around scripting.
+
+### Why?
+
+* Improves IDE support (signals how to interpret).
+* Tells developers what the script is. Don't go for coffee scripting.
+
+### How?
+
+```html
+<!-- recommended -->
+<template>
+	<h1>The year is {{ this.year }}</h1>
+</template>
+<script type="text/babel">
+	export default {
+    data() {
+      return {
+        year: 2017,
+      };
+    },
+  };
+</script>
+
+<!-- avoid -->
+<template>
+	<h1>The year is {{ this.year }}</h1>
+</template>
+<script>
+	export default {
+    data() { // <-- IDE might not interpret this
+      return {
+        year: 2017,
+      };
+    },
+  };
+</script>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Keep expressions simple
+
+Vue.js's inline expressions are 100% Javascript. This makes them extremely powerful, but potentially also very complex. Therefore you should **keep expressions simple**.
+
+### Why?
+
+* Complex inline expressions are hard to read.
+* Inline expressions can't be reused elsewehere. This can lead to code duplication and code rot.
+* IDEs typically don't have support for expression syntax, so your IDE can't autocomplete or validate.
+
+### How?
+
+If it gets too complex or hard to read **move it to methods or computed properties**!
+
+```html
+<!-- recommended -->
+<template>
+	{{ `${year}-${month}` }}
+</template>
+<script>
+  export default {
+    computed: {
+      month() {
+        return twoDigits((new Date()).getUTCMonth() + 1);
+      },
+      year() {
+        return (new Date()).getUTCFullYear();
+      }
+    },
+    methods: {
+      twoDigits(num) {
+        return ('0' + num).slice(-2);
+      }
+    },
+  };
+</script>
+
+<!-- avoid -->
+<template>
+	{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+</template>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Keep component options primitive
+
+While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component options as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
+
+Exceptions to this rule are situations which can only be solved using objects (eg. collections) or well-known objects inside your app (eg. a product in a web shop).
+
+### Why?
+
+* By using an attribute for each option separately the component has a clear and expressive API.
+* By using only primitives and functions as option values our component APIs are similar to the APIs of native HTML(5) elements. Which makes our custom elements directly familiar.
+* By using an attribute for each option, other developers can easily understand what is passed to the component instance.
+* When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
+
+### How?
+
+Use a component attribute per option, with a primitive or function as value:
+
+```html
+<!-- recommended -->
+<range-slider
+	:values="[10, 20]"
+	min="0"
+	max="100"
+	step="5"
+	:on-slide="updateInputs"
+	:on-end="updateResults"
+	/>
+	
+<!-- avoid -->
+<range-slider :config="complexConfigObject">
+```
+```html
+<!-- exception: recursive component, like menu item -->
+<menu-item>
+	<a :href="opts.url">{{ opts.text }}</a>
+	<ul slot v-if="opts.items">
+		<li v-for="item in opts.items">
+			<menu-item 
+				:text="item.text" 
+				:url="item.url" 
+				:items="item.items" />
+		</li>
+	</ul>
+</menu-item>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Harness your component options
+
+In Vue.js your component options are your API. A robust and predictable API makes your components easy to use by other developers.
+
+Component options are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component options** to allow for these different cases.
+
+## Why?
+
+Harnessing your component options ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
+
+## How?
+
+* Use defaults for option values.
+* Use type conversion to cast option values to expected type.
+* Check if option exists before using it.
+
+```html
+<template>
+  <input type="range" :value="value" :max="max" :min="min">
+</template>
+<script type="text/babel">
+  export default {
+    props: {
+      max: {
+        type: Number,
+        default: 10,
+      },
+      min: {
+        type: Number,
+        default: 0,
+      },
+      value: {
+        type: Number,
+        default: 4,
+      },
+    },
+  };
+</script>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Assign `this` to `component`
+
+Within the context of a Vue.js component element, `this` is bound to the component instance.
+Therefore when you need to reference it in a different context, ensure `this` is available as `component`.
+
+### Why?
+
+* By assigning `this` to a variable named `component` the variable tells developers it's bound to the component instance wherever it's used.
+
+### How?
+
+```html
+<script type="text/babel">
+export default {
+  methods: {
+    hello() {
+      return 'hello';
+    },
+    printHello() {
+      console.log(this.hello());
+    },
+  },
+};
+</script>
+
+<!-- avoid -->
+<script type="text/babel">
+export default {
+  methods: {
+    hello() {
+      return 'hello';
+    },
+    printHello() {
+      const self = this; // unnecessary
+      console.log(self.hello());
+    },
+  },
+};
+</script>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Component structure
+
+Make it easy to reason and follow a sequence of thoughts. See the How.
+
+### Why?
+
+* Alphabetizing the properties and methods makes them easy to find.
+* By moving the full functions behind the component methods down, you initially hide implementation details.
+
+### How?
+
+Component structure:
+
+```javascript
+export default {
+  // compose new components
+  extends: {},
+  // variables
+  data() {},
+  computed: {},
+  watch: {},
+  methods: {},
+  mounted() {},
+};
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Avoid fake ES6 syntax
+
+Vue.js supports a [shorthand *ES6 like* method syntax](http://vuejs.org/guide/#component-syntax). Vue.js compiles the shorthand syntax `methodName() { }` into `this.methodName = function() {}.bind(this)`. Since this is non-standard you should **avoid fake ES6 method shorthand syntax**.
+
+### Why?
+
+* The fake ES6 shorthand syntax is non-standard and can therefore confuse developers.
+* The component scripts are not actual ES6 classes, so IDEs won't be able to interpret the fake ES6 class method syntax.
+* It should always be clear which methods are bound to the component and thus available in the markup. The shorthand syntax obscures the principle of writing code which is transparent and easy to understand.
+
+### How? 
+
+Use `component.methodName =` instead of magic `methodName() { }` syntax:
+
+```javascript
+/* recommended */
+var component = this;
+component.todos = [];
+component.add = add;
+
+function add() {
+    if (component.text) {
+        component.todos.push({ title: component.text });
+        component.text = component.input.value = '';
+    }
+}
+
+/* avoid */
+todos = [];
+
+add() {
+    if (this.text) {
+        this.todos.push({ title: this.text });
+        this.text = this.input.value = '';
+    }
+}
+```
+
+**Tip**: [Disable transformation of the fake ES6 syntax](http://vuejs.org/guide/compiler/#no-transformation) during pre-compilation by setting `type` to `none`:
+
+```bash
+vue --type none
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Avoid `component.parent`
+
+Vue.js supports [nested components](http://vuejs.org/guide/#nested-components) which have access to their parent context through `component.parent`. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [module based development](#module-based-development). Therefore you should **avoid using `component.parent`**.
+
+The exception to this rule are anonymous child components in a [for each loop](http://vuejs.org/guide/#loops) as they are defined directly inside the vue component.
+
+### Why?
+
+* A vue component, like any module, must work in isolation. If a component needs to access its parent, this rule is broken.
+* If a component needs access to its parent, it can no longer be reused in a different context. 
+* By accessing its parent a child component can modify properties on its parent. This can lead to unexpected behaviour.
+
+### How?
+
+* Pass values from the parent to the child component using attribute expressions.
+* Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
+
+```html
+<!-- recommended -->
+<parent-component>
+	<child-component value="{ value }" /> <!-- pass parent value to child -->
+</parent-component>
+
+<child-component>
+	<span>{ opts.value }</span> <!-- use value passed by parent -->
+</child-component>
+
+<!-- avoid -->
+<parent-component>
+	<child-component />
+</parent-component>
+
+<child-component>
+	<span>value: { parent.value }</span> <!-- don't do this -->
+</child-component>
+```
+```html
+<!-- recommended -->
+<parent-component>
+	<child-component on-event="{ methodToCallOnEvent }" /> <!-- use method as callback -->
+	<script>this.methodToCallOnEvent = () => { /*...*/ };</script>
+<parent-component>
+
+<child-component>
+	<button onclick="{ opts.onEvent }"></button> <!-- call method passed by parent -->
+</child-component>
+
+<!-- avoid -->
+<parent-component>
+	<child-component />
+	<script>this.methodToCallOnEvent = () => { /*...*/ };</script>
+<parent-component>
+
+<child-component>
+	<button onclick="{ parent.methodToCallOnEvent }"></button> <!-- don't do this -->
+</child-component>
+```
+```html
+<!-- allowed exception -->
+<parent-component>
+	<button each="{ item in items }"
+		onclick="{ parent.onEvent }"> <!-- okay, because button is not a vue component -->
+		{ item.text }
+	</button>
+	<script>this.onEvent = (e) => { alert(e.item.text); }</script>
+</parent-component>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Use `each ... in` syntax
+
+Vue.js supports multiple notations for [loops](http://vuejs.org/guide/#loops): item in array (`each="{ item in items }"`); key, value in object (`each="{ key, value in items }"`) and a shorthand (`each="{ items }"`) notation. This shorthand can lead to confusion. Therefore you should **use the `each ... in` syntax**.
+
+### Why?
+
+Vue.js creates a new component instance for each item the `each` directive loops through. When using the shorthand notation, the methods and properties of the current item are bound to the current component instance (local `this`). This is not obvious when looking at the markup and may thus confuse other developers. Therefore you should **use the `each ... in` syntax**.
+
+### How?
+
+Use `each="{ item in items }"` or `each="{ key, value in items }"` instead of `each="{ items }"` syntax:
+
+```html
+<!-- recommended: -->
+<ul>
+    <li each="{ item in items }">
+      	<label class="{ completed: item.done }">
+			<input type="checkbox" checked="{ item.done }"> { item.title }
+      	</label>
+    </li>
+</ul>
+
+<!-- recommended: -->
+<ul>
+    <li each="{ key, item in items }">
+      	<label class="{ completed: item.done }">
+			<input type="checkbox" checked="{ item.done }"> { key }. { item.title }
+      	</label>
+    </li>
+</ul>
+
+<!-- avoid: -->
+<ul>
+    <li each="{ items }">
+      	<label class="{ completed: done }">
+			<input type="checkbox" checked="{ done }"> { title }
+      	</label>
+    </li>
+</ul>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Put styles in external files
+
+For developer convenience, Vue.js allows you to define a component element's style in a [nested `<style>` component](http://vuejs.org/guide/#component-styling). While you can [scope](http://vuejs.org/guide/#scoped-css) these styles to the component element, Vue.js does not provide true encapsulation. Instead Vue.js extracts these styles from the components (JavaScript) and injects them into the document on runtime. Since Vue.js compiles nested styles to JavaScript and doesn't have true encapsulation, you should instead **put styles in external files**.
+
+### Why?
+
+* External stylesheets can be handled by the browser independently of Vue.js and component files. This means styles can be applied to initial markup even if JavaScript errors occur or isn't loaded (yet).
+* External stylesheets can be used in combination with pre-processors (Less, Sass, PostCSS, etc) and your own (existing) build tools.
+* External stylesheets can be minified, served and cached separately. This improves performance.
+* Vue.js expressions are not supported in nested `<style>`s so there's no added benefit in using them.
+
+### How?
+
+Styles related to the component and its markup, should be placed in a separate stylesheet file next to the component file, inside its module directory:
+
+```
+my-example/
+├── my-example.vue
+├── my-example.(css|less|scss)    <-- external stylesheet next to component file
+└── ...
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Use component name as style scope
+
+Vue.js component elements are custom elements which can very well be used as style scope root.
+Alternatively the module name can be used as CSS class namespace.
+
+### Why?
+
+* Scoping styles to a component element improves predictability as its prevents styles leaking outside the component element.
+* Using the same name for the module directory, the Vue.js component and the style root makes it easy for developers to understand they belong together.
+
+### How?
+
+Use the component name as selector, as parent selector or as namespace prefix (depending on your CSS naming strategy).
+
+```css
+/* recommended */
+my-example { }
+my-example li { }
+.my-example__item { }
+
+/* avoid */
+.my-alternative { } /* not scoped to component or module name */
+.my-parent .my-example { } /* .my-parent is outside scope, so should not be used in this file */
+```
+
+note: If you're using [`data-is=`](http://vuejs.org/guide/#html-elements-as-components) (introduced in [v2.3.17](http://vuejs.org/release-notes/#march-9-2016)) to initiate Vue.js components, you can use `[data-is="my-example"]` as CSS selector instead of `.my-example`.
+
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Document your component API
+
+A Vue.js component instance is created by using the component element inside your application. The instance is configured through its custom attributes. For the component to be used by other developers, these custom attributes - the component's API - should be documented in a `README.md` file.
+
+### Why?
+
+* Documentation provides developers with a high level overview to a module, without the need to go through all its code. This makes a module more accessible and easier to use.
+* A component's API is the set of custom attributes through which its configured. Therefore these are especially of interest to other developers which only want to consume (and not develop) the component.
+* Documentation formalises the API and tells developers which functionality to keep backwards compatible when modifying the component's code.
+* `README.md` is the de facto standard filename for documentation to be read first. Code repository hosting services (Github, Bitbucket, Gitlab etc) display the contents of the the README's, directly when browsing through source directories. This applies to our module directories as well.
+  
+### How?
+
+Add a `README.md` file to the component's module directory:
+
+```
+range-slider/
+├── range-slider.vue
+├── range-slider.less
+└── README.md
+```
+	
+Within the README file, describe the functionality and the usage of the module. For a vue component its most useful to describe the custom attributes it supports as those are its API:
+
+```markdown
+# Range slider
+
+## Functionality
+
+The range slider lets the user to set a numeric range by dragging a handle on a slider rail for both the start and end value.
+
+This module uses the [noUiSlider](http://refreshless.com/nouislider/) for cross browser and touch support.
+
+## Usage
+
+`<range-slider>` supports the following custom component attributes:
+
+| attribute | type | description
+| --- | --- | ---
+| `min` | Number | number where range starts (lower limit).
+| `max` | Number | Number where range ends (upper limit).
+| `values` | Number[] *optional* | Array containing start and end value.  E.g. `values="[10, 20]"`. Defaults to `[opts.min, opts.max]`.
+| `step` | Number *optional* | Number to increment / decrement values by. Defaults to 1.
+| `on-slide` | Function *optional* | Function called with `(values, HANDLE)` while a user drags the start (`HANDLE == 0`) or end (`HANDLE == 1`) handle. E.g. `on-slide={ updateInputs }`, with `component.updateInputs = (values, HANDLE) => { const value = values[HANDLE]; }`.
+| `on-end` | Function *optional* | Function called with `(values, HANDLE)` when user stops dragging a handle.
+
+For customising the slider appearance see the [Styling section in the noUiSlider docs](http://refreshless.com/nouislider/more/#section-styling).
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Add a component demo
+
+Add a `*.demo.html` file with demos of the component with different configurations, showing how the component can be used.
+
+### Why?
+
+* A component demo proves the module works in isolation.
+* A component demo gives developers a preview before having to dig into the documentation or code.
+* Demos can illustrate all the possible configurations and variations a component can be used in. 
+
+### How?
+
+Add a `*.demo.html` file to your module directory:
+
+```
+city-map/
+├── city-map.vue
+├── city-map.demo.html
+├── city-map.css
+└── ...
+```
+
+Inside the demo file:
+
+* Include `vue+compiler.min.js` to also compile during runtime.
+* Include the component file (e.g. `./city-map.vue`).
+* Create a `demo` component (`<yield/>`) to embed your demos in (otherwise option attributes are not supported).
+* Write demos inside the `<demo>` components.
+* As a bonus add `aria-label`s to the `<demo>` components and style those as title bars.
+* Initialise using `vue.mount('demo', {})`.
+
+Example demo file in `city-component` module:
+
+```html
+<!-- modules/city-map/city-map.demo.html: -->
+<body>
+    <h1>city-map demos</h1>
+    
+    <demo aria-label="City map of London">
+        <city-map location="London" />    
+    </demo>
+    
+    <demo aria-label="City map of Paris">
+        <city-map location="Paris" />    
+    </demo>
+    
+    <link rel="stylesheet" href="./city-map.css">
+    
+    <script src="path/to/vue+compiler.min.js"></script>
+    <script type="vue/component" src="./city-map.vue"></script> 
+    <script>
+        vue.component('demo','<yield/>');
+        vue.mount('demo', {});
+    </script>
+    
+    <style>
+    	/* add a grey bar with the `aria-label` as demo title */
+    	demo:before {
+        	content: "Demo: " attr(aria-label);
+	        display: block;
+        	background: #F3F5F5;
+        	padding: .5em;
+        	clear: both;
+        }
+    </style>
+</body>
+```
+Note: this is a working concept, but could be much cleaner using build scripts.
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Lint your component files
+
+Linters improve code consistency and help trace syntax errors. With some extra configuration Vue.js component files can also be linted.
+
+### Why?
+
+* Linting component files ensures all developers use the same code style.
+* Linting component files helps you trace syntax errors before it's too late.
+
+### How?
+
+To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `opts`.
+
+#### ESLint
+
+[ESLint](http://eslint.org/) requires an extra [ESLint HTML plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) to extract the script from the component files.
+
+Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
+```json
+{
+	"extends": "eslint:recommended",
+	"plugins": ["html"],
+	"env": {
+		"browser": true
+	},
+	"globals": {
+		"opts": true,
+		"vue": true
+	}
+}
+```
+
+Run ESLint
+```bash
+eslint modules/**/*.vue
+```
+
+#### JSHint
+
+[JSHint](http://jshint.com/) can parse HTML (using `--extra-ext`) and extract script (using `--extract=auto`). 
+
+Configure JSHint in `modules/.jshintrc` (so IDEs can interpret it as well):
+```json
+{
+	"browser": true,
+	"predef": ["opts", "vue"]
+}
+```
+
+Run JSHint
+```bash
+jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
+```
+Note: JSHint does not accept `vue` as extension, but only `html`.
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Add badge to your project
+
+You can use the *Vue.js Style Guide badge* to link to this guide:
+
+[![Vue.js Style Guide badge](https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg)](https://github.com/voorhoede/Vue.js-style-guide)
+
+### Why?
+
+Inform other developers your project is following the Vue.js Style Guide. And let them know where they can find this guide.
+
+### How?
+
+Include the badge in your project. In markdown:
+
+```markdown
+[![Vue.js Style Guide badge](https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg)](https://github.com/voorhoede/Vue.js-style-guide)
+```
+
+Or html:
+
+```html
+<a href="https://github.com/voorhoede/Vue.js-style-guide">
+    <img alt="Vue.js Style Guide badge"
+    	 src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
+</a>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+---
+
+## License
+
+[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+[De Voorhoede](https://twitter.com/devoorhoede) waives all rights to this work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
+
+You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
