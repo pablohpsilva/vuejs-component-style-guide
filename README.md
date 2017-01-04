@@ -1,4 +1,4 @@
-# Vue.js Style Guide
+# Vue.js Component Style Guide
 
 ## Purpose
 
