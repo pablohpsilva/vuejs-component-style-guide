@@ -95,9 +95,9 @@ Vue component names must also be:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Use `<script type="text/babel">` inside component
+## Use `<script type="text/javascript">` inside component
 
-You should **always use `<script type="text/babel">`** around scripting.
+You should **always use `<script type="text/javascript">`** around scripting.
 
 ### Why?
 
@@ -111,7 +111,7 @@ You should **always use `<script type="text/babel">`** around scripting.
 <template>
 	<h1>The year is {{ this.year }}</h1>
 </template>
-<script type="text/babel">
+<script type="text/javascript">
 	export default {
     data() {
       return {
@@ -254,7 +254,7 @@ Harnessing your component options ensures your component will always function (d
 <template>
   <input type="range" :value="value" :max="max" :min="min">
 </template>
-<script type="text/babel">
+<script type="text/javascript">
   export default {
     props: {
       max: {
@@ -289,7 +289,7 @@ Therefore when you need to reference it in a different context, ensure `this` is
 ### How?
 
 ```html
-<script type="text/babel">
+<script type="text/javascript">
 export default {
   methods: {
     hello() {
@@ -303,7 +303,7 @@ export default {
 </script>
 
 <!-- avoid -->
-<script type="text/babel">
+<script type="text/javascript">
 export default {
   methods: {
     hello() {
