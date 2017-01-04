@@ -26,7 +26,7 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [Keep component options primitive](#keep-component-options-primitive)
 * [Harness your component options](#harness-your-component-options)
 * [Assign `this` to `component`](#assign-this-to-component)
-* [Component structure](#put-component-properties-and-methods-on-top)
+* [Component structure](#component-structure)
 * [Avoid fake ES6 syntax](#avoid-fake-es6-syntax)
 * [Avoid `component.parent`](#avoid-componentparent)
 * [Use `each ... in` syntax](#use-each--in-syntax)
