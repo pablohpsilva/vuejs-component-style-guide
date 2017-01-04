@@ -236,7 +236,7 @@ Harnessing your component options ensures your component will always function (d
 
 ```html
 <template>
-  <input type="range" :value="value" :max="max" :min="min">
+  <input type="range" v-model="value" :max="max" :min="min">
 </template>
 <script type="text/javascript">
   export default {
