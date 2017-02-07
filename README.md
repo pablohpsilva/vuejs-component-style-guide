@@ -18,19 +18,16 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 ## Table of Contents
 
 * [Module based development](#module-based-development)
-* [vue component names](#component-module-names)
-* [1 module = 1 directory](#1-module--1-directory)
-* [Use `*.vue` extension](#use-vue-extension)
-* [Use `<script>` inside component](#use-script-inside-component)
-* [Keep component expressions simple](#keep-component-expressions-simple)
+* [vue component names](#vue-component-names)
+<!-- * [Use `*.vue` extension](#use-vue-extension) -->
+* [Use `<script>` inside component](#use-script-typetextjavascript-inside-component)
+* [Keep component expressions simple](#keep-expressions-simple)
 * [Keep component options primitive](#keep-component-options-primitive)
 * [Harness your component options](#harness-your-component-options)
 * [Assign `this` to `component`](#assign-this-to-component)
 * [Component structure](#component-structure)
-* [Avoid fake ES6 syntax](#avoid-fake-es6-syntax)
 * [Avoid `this.$parent`](#avoid-thisparent)
 * [Avoid `this.$refs`](#avoid-thisrefs)
-* [Use `each ... in` syntax](#use-each--in-syntax)
 * [Use component name as style scope](#use-component-name-as-style-scope)
 * [Document your component API](#document-your-component-api)
 * [Add a component demo](#add-a-component-demo)
@@ -367,7 +364,7 @@ Component structure:
 
 ## Avoid `this.$parent`
 
-Vue.js supports nested components which have access to their parent context. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [module based development](#module-based-development). Therefore you should **avoid using `this.$parent`**.
+Vue.js supports nested components which have access to their parent context. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [component based development](#module-based-development). Therefore you should **avoid using `this.$parent`**.
 
 ### Why?
 
