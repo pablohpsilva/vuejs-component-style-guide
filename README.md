@@ -229,7 +229,7 @@ Harnessing your component options ensures your component will always function (d
 ## How?
 
 * Use defaults for option values.
-* Use type conversion to cast option values to expected type.
+* Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[2\*]**
 * Check if option exists before using it.
 
 ```html
@@ -240,7 +240,7 @@ Harnessing your component options ensures your component will always function (d
   export default {
     props: {
       max: {
-        type: Number,
+        type: Number, // [2*] This will validate the 'max' prop to be a Number.
         default() { return 10; },
       },
       min: {
@@ -551,6 +551,9 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 # Wanna help?
 
 Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
+
+# Thank you for your help!
+@miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
 
 
 <!-- ## Add badge to your project
