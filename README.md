@@ -154,7 +154,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
 		{{ `${year}-${month}` }}
 	</h1>
 </template>
-<script>
+<script type="text/javascript">
   export default {
     computed: {
       month() {
