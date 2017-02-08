@@ -20,7 +20,6 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [Module based development](#module-based-development)
 * [vue component names](#vue-component-names)
 <!-- * [Use `*.vue` extension](#use-vue-extension) -->
-* [Use `<script>` inside component](#use-script-typetextjavascript-inside-component)
 * [Keep component expressions simple](#keep-expressions-simple)
 * [Keep component options primitive](#keep-component-options-primitive)
 * [Harness your component options](#harness-your-component-options)
@@ -84,50 +83,6 @@ Vue component names must also be:
 <btn-group></btn-group> <!-- short, but unpronounceable. use `button-group` instead -->
 <ui-slider></ui-slider> <!-- all components are ui elements, so is meaningless -->
 <slider></slider> <!-- not custom element spec compliant -->
-```
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Use `<script type="text/javascript">` inside component
-
-You should **always use `<script type="text/javascript">`** around scripting.
-
-### Why?
-
-* Improves IDE support (signals how to interpret).
-* Tells developers what the script is.
-
-### How?
-
-```html
-<!-- recommended -->
-<template>
-	<h1>The year is {{ this.year }}</h1>
-</template>
-<script type="text/javascript">
-  export default {
-    data() {
-      return {
-        year: 2017,
-      };
-    },
-  };
-</script>
-
-<!-- avoid -->
-<template>
-	<h1>The year is {{ this.year }}</h1>
-</template>
-<script>
-  export default {
-    data() { // <-- IDE might not interpret this
-      return {
-        year: 2017,
-      };
-    },
-  };
-</script>
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
