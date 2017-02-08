@@ -229,7 +229,7 @@ Harnessing your component options ensures your component will always function (d
 ## How?
 
 * Use defaults for option values.
-* Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[2\*]**
+* Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
 * Check if option exists before using it.
 
 ```html
@@ -240,7 +240,7 @@ Harnessing your component options ensures your component will always function (d
   export default {
     props: {
       max: {
-        type: Number, // [2*] This will validate the 'max' prop to be a Number.
+        type: Number, // [1*] This will validate the 'max' prop to be a Number.
         default() { return 10; },
       },
       min: {
