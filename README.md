@@ -59,9 +59,9 @@ Also ensure your Vue component works in isolation. For instance by adding a stan
 
 Each component name must be:
 
-* **Meaningful**: not overspecific, not overly abstract.
+* **Meaningful**: not over specific, not overly abstract.
 * **Short**: 2 or 3 words.
-* **Pronouncable**: we want to be able to talk about them.
+* **Pronounceable**: we want to be able talk about them.
 
 Vue component names must also be:
 
@@ -81,7 +81,7 @@ Vue component names must also be:
 <range-slider></range-slider>
 
 <!-- avoid -->
-<btn-group></btn-group> <!-- short, but unpronouncable. use `button-group` instead -->
+<btn-group></btn-group> <!-- short, but unpronounceable. use `button-group` instead -->
 <ui-slider></ui-slider> <!-- all components are ui elements, so is meaningless -->
 <slider></slider> <!-- not custom element spec compliant -->
 ```
@@ -140,7 +140,7 @@ Vue.js's inline expressions are 100% Javascript. This makes them extremely power
 ### Why?
 
 * Complex inline expressions are hard to read.
-* Inline expressions can't be reused elsewehere. This can lead to code duplication and code rot.
+* Inline expressions can't be reused elsewhere. This can lead to code duplication and code rot.
 * IDEs typically don't have support for expression syntax, so your IDE can't autocomplete or validate.
 
 ### How?
@@ -154,7 +154,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
 		{{ `${year}-${month}` }}
 	</h1>
 </template>
-<script>
+<script type="text/javascript">
   export default {
     computed: {
       month() {
@@ -448,7 +448,7 @@ range-slider/
 
 Within the README file, describe the functionality and the usage of the module. For a vue component its most useful to describe the custom attributes it supports as those are its API:
 
-```markdown
+
 # Range slider
 
 ## Functionality
@@ -471,7 +471,7 @@ This module uses the [noUiSlider](http://refreshless.com/nouislider/) for cross 
 | `on-end` | Function *optional* | Function called with `(values, HANDLE)` when user stops dragging a handle.
 
 For customising the slider appearance see the [Styling section in the noUiSlider docs](http://refreshless.com/nouislider/more/#section-styling).
-```
+
 
 [↑ back to Table of Contents](#table-of-contents)
 
