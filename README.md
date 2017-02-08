@@ -154,7 +154,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
 		{{ `${year}-${month}` }}
 	</h1>
 </template>
-<script>
+<script type="text/javascript">
   export default {
     computed: {
       month() {
@@ -448,7 +448,7 @@ range-slider/
 
 Within the README file, describe the functionality and the usage of the module. For a vue component its most useful to describe the custom attributes it supports as those are its API:
 
-```markdown
+
 # Range slider
 
 ## Functionality
@@ -471,7 +471,7 @@ This module uses the [noUiSlider](http://refreshless.com/nouislider/) for cross 
 | `on-end` | Function *optional* | Function called with `(values, HANDLE)` when user stops dragging a handle.
 
 For customising the slider appearance see the [Styling section in the noUiSlider docs](http://refreshless.com/nouislider/more/#section-styling).
-```
+
 
 [↑ back to Table of Contents](#table-of-contents)
 
