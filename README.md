@@ -96,7 +96,7 @@ You should **always use `<script type="text/javascript">`** around scripting.
 ### Why?
 
 * Improves IDE support (signals how to interpret).
-* Tells developers what the script is. **Don't** go for coffee scripting (ECMAScript6+ is awesome! Use it!).
+* Tells developers what the script is.
 
 ### How?
 
