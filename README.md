@@ -25,6 +25,7 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [Harness your component options](#harness-your-component-options)
 * [Assign `this` to `component`](#assign-this-to-component)
 * [Component structure](#component-structure)
+* [Component event names](#component-event-names)
 * [Avoid `this.$parent`](#avoid-thisparent)
 * [Avoid `this.$refs`](#avoid-thisrefs)
 * [Use component name as style scope](#use-component-name-as-style-scope)
@@ -314,6 +315,25 @@ Component structure:
   .Ranger__Wrapper { /* ... */ }
 </style>
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Component event names
+
+Vue.js provides events scoped to the component it emits and they are named as the developers desires. `~Make this paragraph better`
+
+### Why?
+
+* Developers are free to use native likes event names and it can cause confusion down the line;
+* The freedom of naming events can lead to a DOM templates incompatibility;
+* `~Make this paragraph better`
+
+### How?
+
+* Event names should be kebab-cased;
+* Event names should have a prefix strongly related to the name of the component in use (prefer `drive-upload-success` over `upload-succeeded` event name). This allows you to drop in multiple component in the page without event namespacing clashing ([source](https://github.com/GoogleWebComponents/style-guide#events));
+* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like dropzone-upload-success, dropzone-upload-error, todo-item-remove, todo-item-select, etc. ([source](https://github.com/GoogleWebComponents/style-guide#events));
+* Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ back to Table of Contents](#table-of-contents)
 
