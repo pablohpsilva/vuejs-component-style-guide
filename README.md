@@ -352,6 +352,8 @@ Vue.js supports nested components which have access to their parent context. Acc
 * Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
 * Emit events from child components and catch it on parent component.
 
+[↑ back to Table of Contents](#table-of-contents)
+
 ## Use `this.$refs` with caution
 
 Vue.js supports components to have access to other components and basic HTML elements context via `ref` attribute. That attribute will provide an accessible way through `this.$refs` to a component or DOM element context. In most cases, the need to access **other components** context via `this.$refs` could be avoided. This is why you should be careful when using it to avoid wrong component APIs.
