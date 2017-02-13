@@ -326,7 +326,6 @@ Vue.js provides all Vue handler functions and expressions are strictly bound to 
 
 * Developers are free to use native likes event names and it can cause confusion down the line;
 * The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
-* `~Make this paragraph better`
 
 ### How?
 
