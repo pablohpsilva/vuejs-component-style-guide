@@ -320,9 +320,7 @@ Component structure:
 
 ## Component event names
 
-Vue.js provides events scoped to the component it emits and they are named as the developers desires. `~Make this paragraph better`
-
-Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. The event names are flexible enough to be called whatever the developer likes. That can lead to some of the problems presented below.
+Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. Each component events should follow a good naming style that will avoid issues during the development. See the **Why** below.
 
 ### Why?
 
