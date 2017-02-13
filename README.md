@@ -322,17 +322,18 @@ Component structure:
 
 Vue.js provides events scoped to the component it emits and they are named as the developers desires. `~Make this paragraph better`
 
+Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. The event names are flexible enough to be called whatever the developer likes. That can lead to some of the problems presented below.
+
 ### Why?
 
 * Developers are free to use native likes event names and it can cause confusion down the line;
-* The freedom of naming events can lead to a DOM templates incompatibility;
+* The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
 * `~Make this paragraph better`
 
 ### How?
 
 * Event names should be kebab-cased;
-* Event names should have a prefix strongly related to the name of the component in use (prefer `drive-upload-success` over `upload-succeeded` event name). This allows you to drop in multiple component in the page without event namespacing clashing ([source](https://github.com/GoogleWebComponents/style-guide#events));
-* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like dropzone-upload-success, dropzone-upload-error, todo-item-remove, todo-item-select, etc. ([source](https://github.com/GoogleWebComponents/style-guide#events));
+* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like dropzone-upload-success, dropzone-upload-error or even upload-success, upload-error;
 * Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ back to Table of Contents](#table-of-contents)
