@@ -113,7 +113,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
   export default {
     computed: {
       month() {
-        return twoDigits((new Date()).getUTCMonth() + 1);
+        return this.twoDigits((new Date()).getUTCMonth() + 1);
       },
       year() {
         return (new Date()).getUTCFullYear();
