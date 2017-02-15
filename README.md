@@ -330,7 +330,7 @@ Vue.js provides all Vue handler functions and expressions are strictly bound to 
 ### How?
 
 * Event names should be kebab-cased;
-* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error, etc.;
+* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error or even dropzone-upload-success, dropzone-upload-error (if you see the need for having a scoped prefix);
 * Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ back to Table of Contents](#table-of-contents)
