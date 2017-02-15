@@ -25,8 +25,9 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [Harness your component options](#harness-your-component-options)
 * [Assign `this` to `component`](#assign-this-to-component)
 * [Component structure](#component-structure)
+* [Component event names](#component-event-names)
 * [Avoid `this.$parent`](#avoid-thisparent)
-* [Avoid `this.$refs`](#avoid-thisrefs)
+* [Use `this.$refs` with caution](#use-thisrefs-with-caution)
 * [Use component name as style scope](#use-component-name-as-style-scope)
 * [Document your component API](#document-your-component-api)
 * [Add a component demo](#add-a-component-demo)
@@ -287,7 +288,7 @@ Component structure:
 <script type="text/javascript">
   export default {
 		// Do not forget this little guy
-    name: 'Ranger',
+    name: 'RangeSlider',
     // compose new components
     extends: {},
     // component properties/variables
@@ -317,6 +318,23 @@ Component structure:
 
 [↑ back to Table of Contents](#table-of-contents)
 
+## Component event names
+
+Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. Each component events should follow a good naming style that will avoid issues during the development. See the **Why** below.
+
+### Why?
+
+* Developers are free to use native likes event names and it can cause confusion down the line;
+* The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
+
+### How?
+
+* Event names should be kebab-cased;
+* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error, etc.;
+* Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
+
+[↑ back to Table of Contents](#table-of-contents)
+
 ## Avoid `this.$parent`
 
 Vue.js supports nested components which have access to their parent context. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [component based development](#module-based-development). Therefore you should **avoid using `this.$parent`**.
@@ -332,18 +350,94 @@ Vue.js supports nested components which have access to their parent context. Acc
 * Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
 * Emit events from child components and catch it on parent component.
 
-## Avoid `this.$refs`
+[↑ back to Table of Contents](#table-of-contents)
 
-Vue.js supports components to have access to other components and elements context. Accessing other components context is a hack. In most cases `this.$refs` just means a component lacks a clear API.
+## Use `this.$refs` with caution
+
+Vue.js supports components to have access to other components and basic HTML elements context via `ref` attribute. That attribute will provide an accessible way through `this.$refs` to a component or DOM element context. In most cases, the need to access **other components** context via `this.$refs` could be avoided. This is why you should be careful when using it to avoid wrong component APIs.
 
 ### Why?
 
-* A vue component, like any component, must work in isolation. If a component does not support all the access needed, it was bad designed/implemented.
+* A vue component, like any component, **must work in isolation**. If a component does not support all the access needed, it was badly designed/implemented.
+* Properties and events should be sufficient to most of your components.
 
 ### How?
 
+* Create a good component API.
+* Always focus on the component purpose out of the box.
+* Never write specific code. If you need to write specific code inside a generic component, it means its API isn't generic enough or maybe you need a new component to manage other cases.
 * Check all the props to see if something is missing. If it is, create an issue or enhance the component yourself.
-* Check all the events. In most cases developers forget that Child-Parent communication is needed, that's why they only remember the Parent-Child communication (using props).
+* Check all the events. In most cases developers forget that Child-Parent communication (events) is needed, that's why they only remember the Parent-Child communication (using props).
+* **Props down, events up!** Upgrade your component when requested with a good API and isolation as goals.
+* Using `this.$refs` on components should be used when props and events are exhausted and having it makes sense (see the example below).
+* Using `this.$refs` to access DOM elements (instead of doing `jQuery`, `document.getElement*`, `document.queryElement`) is just fine, when the element can't be manipulated with data bindings or for a directive.
+
+```html
+<!-- good, no need for ref -->
+<range :max="max"
+  :min="min"
+  @current-value="currentValue"
+  :step="1"></range>
+```
+
+```html
+<!-- good example of when to use this.$refs -->
+<modal ref="basicModal">
+  <h4>Basic Modal</h4>
+  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+</modal>
+<button @click="$refs.basicModal.open()">Open modal</button>
+
+<!-- Modal component -->
+<template>
+  <div v-show="active">
+    <!-- ... -->
+  </div>
+</template>
+
+<script>
+  export default {
+    // ...
+    data() {
+        return {
+            active: false,
+        };
+    },
+    methods: {
+      open() {
+      	this.active = true;
+      },
+      hide() {
+      	this.active = false;
+      },
+    },
+    // ...
+  };
+</script>
+
+```
+
+```html
+<!-- avoid accessing something that could be emitted -->
+<template>
+  <range :max="max"
+    :min="min"
+    ref="range"
+    :step="1"></range>
+</template>
+
+<script>
+  export default {
+    // ...
+    methods: {
+      getRangeCurrentValue() {
+      	return this.$refs.range.currentValue;
+      },
+    },
+    // ...
+  };
+</script>
+```
 
 [↑ back to Table of Contents](#table-of-contents)
 
