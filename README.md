@@ -21,8 +21,8 @@ Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are 
 * [vue component names](#vue-component-names)
 <!-- * [Use `*.vue` extension](#use-vue-extension) -->
 * [Keep component expressions simple](#keep-expressions-simple)
-* [Keep component options primitive](#keep-component-options-primitive)
-* [Harness your component options](#harness-your-component-options)
+* [Keep component props primitive](#keep-component-props-primitive)
+* [Harness your component props](#harness-your-component-props)
 * [Assign `this` to `component`](#assign-this-to-component)
 * [Component structure](#component-structure)
 * [Component event names](#component-event-names)
@@ -139,9 +139,9 @@ If it gets too complex or hard to read **move it to methods or computed properti
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Keep component options primitive
+## Keep component props primitive
 
-While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component options as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
+While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component props as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
 
 ### Why?
 
@@ -172,15 +172,15 @@ Use a component attribute per option, with a primitive or function as value:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Harness your component options
+## Harness your component props
 
-In Vue.js your component options are your API. A robust and predictable API makes your components easy to use by other developers.
+In Vue.js your component props are your API. A robust and predictable API makes your components easy to use by other developers.
 
-Component options are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component options** to allow for these different cases.
+Component props are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component props** to allow for these different cases.
 
 ## Why?
 
-Harnessing your component options ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
+Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
 
 ## How?
 
