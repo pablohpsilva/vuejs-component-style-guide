@@ -1,5 +1,9 @@
 # Vue.js Component Style Guide
 
+### Translations
+* [English](README.md)
+* [Russo](README-RU.md)
+
 ## Purpose
 
 This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) code. Making it:

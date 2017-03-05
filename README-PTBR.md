@@ -1,5 +1,9 @@
 # Style Guide para Componentes Vue.js
 
+### Translations
+* [Brazilian Portuguese](README-PTBR.md)
+* [Russian](README-RU.md)
+
 ## Propósito
 
 Este guia provê uma estrutura uniforme para o seu código [Vue.js](http://vuejs.org/), tornando-o mais:
