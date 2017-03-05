@@ -111,7 +111,7 @@ Se elas tornam-se muito complexas ou difíceis de ler, **mova-as para um método
 		{{ `${year}-${month}` }}
 	</h1>
 </template>
-<script type="text/javascript">
+<script>
   export default {
     computed: {
       month() {
@@ -142,18 +142,18 @@ Se elas tornam-se muito complexas ou difíceis de ler, **mova-as para um método
 
 ## Mantenha `props` primitivas
 
-While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component props as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
+Enquanto Vue.js suporta passar objetos complexos em JavaScript via esses atributos, você deveria tentar **manter as `props` mais primitivas possíveis**. Tente usar somente [primitivas JavaScript](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) e functions. Evite objetos complexos.
 
 ### Porque?
 
-* By using an attribute for each option separately the component has a clear and expressive API.
-* By using only primitives and functions as option values our component APIs are similar to the APIs of native HTML(5) elements. Which makes our custom elements directly familiar.
-* By using an attribute for each option, other developers can easily understand what is passed to the component instance.
-* When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
+* Usando um atributo para cada props separadamente, torna o componente com uma API mais expressiva;
+* Usando somente primitivas e funções como props, a API do seu componente torna-se similar com a API nativa de elementos HTML(5);
+* Usando um atributo para cada prop, outros desenvolvedores podem facilmente entender o que é passado para a instância do componente;
+* Quando objetos complexos forem passados, não é aparente quais propriedades e métodos do objetos são realmente usados pelo componente. Isso torna a refatoração mais difícil e pode levar a má práticas.
 
 ### Como?
 
-Use a component attribute per option, with a primitive or function as value:
+Use um atributo por prop usando primitivas ou funções como valor:
 
 ```html
 <!-- recomendado -->
@@ -175,25 +175,25 @@ Use a component attribute per option, with a primitive or function as value:
 
 ## Pense bem nas `props` do seu componente
 
-In Vue.js your component props are your API. A robust and predictable API makes your components easy to use by other developers.
+Em Vue.js, props são a API dos componentes. Uma API robusta e previsível torna o componente fácil de usar por outros desenvolvedores.
 
-Component props are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **Pense bem nas `props` do seu componente** to allow for these different cases.
+As props dos componentes são passados via atributos HTML. Os valores desses atributos em Vue.js podem ser `:attr="value"` ou `v-bind:attr="value"` ou nunca ser usado. Você deveria **pensar bem nas `props` do seu componente** para permitir casos variados.
 
 ### Porque?
 
-Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
+Gastar um tempo pensando sobre as props que o seu componente terá, garantirá que o seu componente sempre funcione (defensive programming). Pense neles, especialmente quando considerando o uso por outros desenvolvedores mais tarde que podem ter expectativas diferentes, props que vocês ainda nem pensou que a props do seu componente teria.
 
 ### Como?
 
-* Use defaults for option values.
-* Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
-* Check if option exists before using it.
+* Use valores defaults para suas props;
+* Use a opção `type` para [validar](http://vuejs.org/v2/guide/components.html#Prop-Validation) valores para um tipo esperado.**[1\*]**;
+* Cheque se a prop existe antes de usá-la.
 
 ```html
 <template>
   <input type="range" v-model="value" :max="max" :min="min">
 </template>
-<script type="text/javascript">
+<script>
   export default {
     props: {
       max: {
@@ -218,19 +218,19 @@ Harnessing your component props ensures your component will always function (def
 
 ## `this` já é o seu componente
 
-Within the context of a Vue.js component element, `this` is bound to the component instance.
-Therefore when you need to reference it in a different context, ensure `this` is available as `component`.
+Dentro do contexto de Vue.js, o `this` está ligado diretamente a instância do componente. Sendo assim, quando for preciso referenciá-lo em contexto diferente,
+garanta que o `this` está disponível como o próprio componente.
 
-In other words: Do **NOT** code things like `const self = this;` anymore. You're safe using Vue components.
+Em outras palavras mais resumidas: **NÃO** codifique usando códigos como `const self = this;` mais. Você está salvo para usar o `this` diretamente dentro do componente Vue.
 
 ### Porque?
 
-* By assigning `this` to a variable named `component` the variable tells developers it's bound to the component instance wherever it's used.
+* Usando `this` diretamente, significa para todos os desenvolvedores que ele é o próprio componente, podendo ser usado em todo o seu componente, facilitando o desenvolvimento.
 
 ### Como?
 
 ```html
-<script type="text/javascript">
+<script>
 export default {
   methods: {
     hello() {
@@ -244,14 +244,14 @@ export default {
 </script>
 
 <!-- evite -->
-<script type="text/javascript">
+<script>
 export default {
   methods: {
     hello() {
       return 'hello';
     },
     printHello() {
-      const self = this; // unnecessary
+      const self = this; // Desnecessário
       console.log(self.hello());
     },
   },
@@ -264,16 +264,16 @@ export default {
 
 ## Estrutura do componente
 
-Make it easy to reason and follow a sequence of thoughts. See the How.
+Faz com que seja fácil de entender e de seguir uma sequência de pensamentos. Veja o porque logo abaixo.
 
 ### Porque?
 
-* Having the component export a clear and grouped object, makes the code easy to read and easier for developers to have a code standard.
-* Alphabetizing the properties, data, computed, watches, and methods makes them easy to find.
-* Again, grouping makes the component easier to read (props, data and computed; watch and methods; lifecycle methods, etc.);
-* Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
-* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) - [details?](#use-o-nome-do-componente-como-escopo-para-o-style);
-* Use the template-script-style .vue file organization. The odds are you'll spend more time developing/fixing/testing on HTML than JavaScript in most cases.
+* Fazendo com que o componente exporte um objeto limpo e bem programado, torna o código mais fácil para desenvolvedores entender e ter um padrão a seguir;
+* Ordenando alfabeticamente as props, data, computed, watches e methods faz com que o conteúdo do mesmo seja mais fácil de ser encontrado;
+* Agrupando o objeto exportado do componente com visão do que os atributos fazem, torna a leitura mais fácil de ler e mais fácil de ler e mais organizada (name; extends; props, data and computed; components; watch and methods; lifecycle methods, etc.);
+* Use o atributo `name`. Usando o [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) e este atributo, tornará seu componente mais fácil de desenvolver, debugar e testar;
+* Use metodologias de nomenclatura CSS, como [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), ou [rscss](https://github.com/rstacruz/rscss) - [details?](#use-o-nome-do-componente-como-escopo-para-o-style);
+* Use a ordem **template-script-style** na organização dos seus arquivos .vue, como é recomendado pelo Evan You, criador do Vue.js.
 
 ### Como?
 
@@ -286,27 +286,27 @@ Estrutura do componente:
 	</div>
 </template>
 
-<script type="text/javascript">
+<script>
   export default {
-		// Do not forget this little guy
+		// Não se esqueça desse atributo
     name: 'RangeSlider',
-    // compose new components
+    // componha novos componentes
     extends: {},
-    // component properties/variables
+    // propriedades/variáveis do componente
     props: {
-			bar: {}, // Alphabetized
+			bar: {}, // Ordenado Alfabeticamente
 			foo: {},
 			fooBar: {},
 		},
-    // variables
+    // variáveis
     data() {},
     computed: {},
-    // when component uses other components
+    // quando um componente usa outros componentes
     components: {},
-    // methods
+    // métodos
     watch: {},
     methods: {},
-    // component Lifecycle hooks
+    // Lifecycle do componente
     beforeCreate() {},
     mounted() {},
 };
@@ -321,60 +321,60 @@ Estrutura do componente:
 
 ## Nome de eventos do componente
 
-Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. Each component events should follow a good naming style that will avoid issues during the development. See the **Why** below.
+Vue.js liga todas as funções e expressões estritamente ligadas ao ViewModel do componente. Cada um dos componentes deve seguir uma boa nomenclatura que evitará problemas durante o desenvolvimento. Continue lendo.
 
 ### Porque?
 
-* Developers are free to use native likes event names and it can cause confusion down the line;
-* The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
+* Desenvolvedores estão livres para usar nome de eventos nativos, e isso pode causar problemas com o tempo;
+* A liberdade para nomear eventos podem levar a [incompatibilidade de templates do DOM](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
 
 ### Como?
 
-* Event names should be kebab-cased;
-* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error or even dropzone-upload-success, dropzone-upload-error (if you see the need for having a scoped prefix);
-* Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
+* Eventos devem ser nomeados usando kebab-cased;
+* Um único evento deve ser emitido para cada ação no seu componente que pode ser interessante como uma API, por eemplo: upload-success, upload-error ou até mesmo dropzone-upload-success, dropzone-upload-error (se você acha que ter um escopo como prefixo seja necessário);
+* Eventos devem terminar em verbos e usar a nomes no infinitivo (exemplo, client-api-load) ou usar substantivos (exemplo, drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ voltar para o Índice](#indice)
 
 ## Evite `this.$parent`
 
-Vue.js supports nested components which have access to their parent context. Accessing context outside your vue component violates the [FIRST](https://addyosmani.com/first/) rule of [component based development](#desenvolvimento-baseado-em-modulo). Therefore you should **avoid using `this.$parent`**.
+Vue.js suporta componentes aninhados, assim como acesso ao contexto do pai deste componente. Acessar escopo fora do componente em desenvolvimento viola a regra de [FIRST](https://addyosmani.com/first/) de [desenvolvimento baseado em componentes](#desenvolvimento-baseado-em-modulo). Sendo assim, você deveria **evitar `this.$parent`**.
 
 ### Porque?
 
-* A vue component, like any component, must work in isolation. If a component needs to access its parent, this rule is broken.
-* If a component needs access to its parent, it can no longer be reused in a different context.
+* Um componente Vue, como qualquer outro componente, deve funcionar isoladamente. Se um componente precisa acessar seu pai, essa regra é quebrada;
+* Se um componente precisa acessar o seu pai, ele não mais pode ser usado em outro contexto/aplicação.
 
 ### Como?
 
-* Pass values from the parent to the child component using attribute/properties.
-* Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
-* Emit events from child components and catch it on parent component.
+* Passe os valores do pai para o componente via props;
+* Passe os métodos definidos no componente pao para o componente filho usando callbacks em expressões;
+* Emita eventos do componente filho e escute-os no componente pai.
 
 [↑ voltar para o Índice](#indice)
 
 ## Use `this.$refs` com cuidado
 
-Vue.js supports components to have access to other components and basic HTML elements context via `ref` attribute. That attribute will provide an accessible way through `this.$refs` to a component or DOM element context. In most cases, the need to access **other components** context via `this.$refs` could be avoided. This is why you should be careful when using it to avoid wrong component APIs.
+Componente em Vue.js permite o acesso do contexto de outros componentes e elementos básicos HTML via o atributo `ref`. Este atributo proverá uma forma de acesso via `this.$refs` do contexto de um componente ou elemento DOM. Na maioria dos casos, a necessidade de acessar **o contexto de outros componentes** via `this.$refs` poderia ser evitado. O uso constante dessa tática levará a uma má API, visto que ele poderia ser usado.
 
 ### Porque?
 
-* A vue component, like any component, **must work in isolation**. If a component does not support all the access needed, it was badly designed/implemented.
-* Properties and events should be sufficient to most of your components.
+* Um componente deve **funcionar isoladamente**. Se um componente não dá suporte a todos os acessos necessários, provavelmente o componente foi mau implementado/desenvolvido;
+* Props e eventos devem ser o suficiente para a grande maioria dos componentes.
 
 ### Como?
 
-* Create a good component API.
-* Always focus on the component purpose out of the box.
-* Never write specific code. If you need to write specific code inside a generic component, it means its API isn't generic enough or maybe you need a new component to manage other cases.
-* Check all the props to see if something is missing. If it is, create an issue or enhance the component yourself.
-* Check all the events. In most cases developers forget that Child-Parent communication (events) is needed, that's why they only remember the Parent-Child communication (using props).
-* **Props down, events up!** Upgrade your component when requested with a good API and isolation as goals.
-* Using `this.$refs` on components should be used when props and events are exhausted and having it makes sense (see the example below).
-* Using `this.$refs` to access DOM elements (instead of doing `jQuery`, `document.getElement*`, `document.queryElement`) is just fine, when the element can't be manipulated with data bindings or for a directive.
+* Cria uma boa API para o componente;
+* Sempre foque na proposta que o componente está oferecendo;
+* Nunca escreva código muito específico. Se voce precisa escrever um código específico dentro de um componente genérico, significa que a API ainda não está genérica o suficiente ou talvez você precise de um outro componente;
+* Cheque todas as props para ver se falta alguma coisa. Se esse for o caso, melhore-o ou crie uma issue com a proposta de melhoria;
+* Cheque todos os eventos. Na maioria dos casos, desenvolvedores esquecem a comunicação entre Pai-Filho (eventos);
+* **Props down, events up!** Melhore o seu compoennte quando for necessário com uma boa API e tenha isolamento como um objetivo;
+* Usando `this.$refs` em componentes, deveria ser usado somente quando props e eventos não podem mais ser usados ou quando faz mais sentido (veja o exemplo abaixo);
+* Usando `this.$refs` para acessar elementos DOM (ao invés de usar `jQuery`, `document.getElement*`, `document.queryElement`) é tranquilo, quando o elemento não pode ser manipulado com data binding ou com uma diretiva.
 
 ```html
-<!-- good, no need for ref -->
+<!-- ótimo, não precisa de ref -->
 <range :max="max"
   :min="min"
   @current-value="currentValue"
@@ -382,7 +382,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 ```
 
 ```html
-<!-- good example of when to use this.$refs -->
+<!-- ótimo exemplo para se usar this.$refs -->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
   <button class="primary" @click="$refs.basicModal.close()">Close</button>
@@ -419,7 +419,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 ```
 
 ```html
-<!-- avoid accessing something that could be emitted -->
+<!-- evite acessar alguma coisa que poderia ser emitida via um evento -->
 <template>
   <range :max="max"
     :min="min"

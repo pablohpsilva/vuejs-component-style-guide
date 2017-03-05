@@ -145,14 +145,14 @@ While Vue.js supports passing complex JavaScript objects via these attributes, y
 
 ### Why?
 
-* By using an attribute for each option separately the component has a clear and expressive API.
-* By using only primitives and functions as option values our component APIs are similar to the APIs of native HTML(5) elements. Which makes our custom elements directly familiar.
-* By using an attribute for each option, other developers can easily understand what is passed to the component instance.
+* By using an attribute for each prop separately the component has a clear and expressive API;
+* By using only primitives and functions as props values our component APIs are similar to the APIs of native HTML(5) elements;
+* By using an attribute for each prop, other developers can easily understand what is passed to the component instance;
 * When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
 
 ### How?
 
-Use a component attribute per option, with a primitive or function as value:
+Use a component attribute per props, with a primitive or function as value:
 
 ```html
 <!-- recommended -->
@@ -184,9 +184,9 @@ Harnessing your component props ensures your component will always function (def
 
 ### How?
 
-* Use defaults for option values.
+* Use defaults for props values.
 * Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
-* Check if option exists before using it.
+* Check if props exists before using it.
 
 ```html
 <template>
@@ -269,10 +269,10 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 
 * Having the component export a clear and grouped object, makes the code easy to read and easier for developers to have a code standard.
 * Alphabetizing the properties, data, computed, watches, and methods makes them easy to find.
-* Again, grouping makes the component easier to read (props, data and computed; watch and methods; lifecycle methods, etc.);
+* Again, grouping makes the component easier to read (name; extends; props, data and computed; components; watch and methods; lifecycle methods, etc.);
 * Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
-* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) - [details?](#use-component-name-as-style-scope);
-* Use the template-script-style .vue file organization. The odds are you'll spend more time developing/fixing/testing on HTML than JavaScript in most cases.
+* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
+* Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
 
 ### How?
 
