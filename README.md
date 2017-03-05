@@ -599,12 +599,9 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 
 ---
 
-# Wanna help?
+## Wanna help?
 
 Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
-
-# Thank you for your help!
-@miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
 
 
 <!-- ## Add badge to your project
@@ -650,4 +647,5 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
 
  ## Translation authors
 
-- [Russian](https://github.com/shershen08/vuejs-component-style-guide): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+- [Brazilian Portuguese](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+- [Russian](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)

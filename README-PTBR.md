@@ -598,12 +598,18 @@ Nota: JSHint não aceita as expressões `vue`, porém aceita as de `html`.
 
 ---
 
-# Quer ajudar?
+## Quer ajudar?
 
 Faça um Fork do projeto e depois um Pull Request do que você acha que deve ser interessante ter nesse guia ou crie uma [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
 
-# Thank you for your help!
-@miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
+## Sobre o tradutor
+
+Pablo Henrique Penha Silva
+
+- Github [pablohpsilva](https://github.com/pablohpsilva)
+- Twitter [@PabloHPSilva](https://twitter.com/PabloHPSilva)
+- Medium [@pablohpsilva](https://medium.com/@pablohpsilva)
+
 
 
 <!-- ## Add badge to your project
