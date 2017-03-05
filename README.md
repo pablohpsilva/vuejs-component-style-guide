@@ -1,5 +1,9 @@
 # Vue.js Component Style Guide
 
+### Translations
+* [English](README.md)
+* [Russo](README-RU.md)
+
 ## Purpose
 
 This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) code. Making it:
@@ -12,10 +16,6 @@ This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) 
 This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) by [De Voorhoede](https://github.com/voorhoede).
 
 ### Translations: [Russian](README-RU.md)
-
-<!-- ## Demos
-
-Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are a companion to this guide, illustrating the guidelines with practical examples. -->
 
 ## Table of Contents
 
@@ -91,7 +91,7 @@ Vue component names must also be:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Keep expressions simple
+## Keep component expressions simple
 
 Vue.js's inline expressions are 100% Javascript. This makes them extremely powerful, but potentially also very complex. Therefore you should **keep expressions simple**.
 
@@ -147,14 +147,14 @@ While Vue.js supports passing complex JavaScript objects via these attributes, y
 
 ### Why?
 
-* By using an attribute for each option separately the component has a clear and expressive API.
-* By using only primitives and functions as option values our component APIs are similar to the APIs of native HTML(5) elements. Which makes our custom elements directly familiar.
-* By using an attribute for each option, other developers can easily understand what is passed to the component instance.
+* By using an attribute for each prop separately the component has a clear and expressive API;
+* By using only primitives and functions as props values our component APIs are similar to the APIs of native HTML(5) elements;
+* By using an attribute for each prop, other developers can easily understand what is passed to the component instance;
 * When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
 
 ### How?
 
-Use a component attribute per option, with a primitive or function as value:
+Use a component attribute per props, with a primitive or function as value:
 
 ```html
 <!-- recommended -->
@@ -180,15 +180,15 @@ In Vue.js your component props are your API. A robust and predictable API makes 
 
 Component props are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component props** to allow for these different cases.
 
-## Why?
+### Why?
 
 Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
 
-## How?
+### How?
 
-* Use defaults for option values.
+* Use defaults for props values.
 * Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
-* Check if option exists before using it.
+* Check if props exists before using it.
 
 ```html
 <template>
@@ -271,10 +271,10 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 
 * Having the component export a clear and grouped object, makes the code easy to read and easier for developers to have a code standard.
 * Alphabetizing the properties, data, computed, watches, and methods makes them easy to find.
-* Again, grouping makes the component easier to read (props, data and computed; watch and methods; lifecycle methods, etc.);
+* Again, grouping makes the component easier to read (name; extends; props, data and computed; components; watch and methods; lifecycle methods, etc.);
 * Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
-* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) - [details?](#use-component-name-as-style-scope);
-* Use the template-script-style .vue file organization. The odds are you'll spend more time developing/fixing/testing on HTML than JavaScript in most cases.
+* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
+* Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
 
 ### How?
 
@@ -533,7 +533,7 @@ Add a `index.html` file with demos of the component with different configuration
 
 ### Why?
 
-* A component demo proves the module works in isolation.
+* A component demo proves the component works in isolation.
 * A component demo gives developers a preview before having to dig into the documentation or code.
 * Demos can illustrate all the possible configurations and variations a component can be used in.
 
@@ -551,13 +551,13 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 
 ### How?
 
-To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `opts`.
+To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
 
 #### ESLint
 
 [ESLint](http://eslint.org/) requires an extra [ESLint HTML plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) to extract the script from the component files.
 
-Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
+Configure ESLint in a `.eslintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "extends": "eslint:recommended",
@@ -574,14 +574,14 @@ Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
 
 Run ESLint
 ```bash
-eslint modules/**/*.vue
+eslint src/**/*.vue
 ```
 
 #### JSHint
 
 [JSHint](http://jshint.com/) can parse HTML (using `--extra-ext`) and extract script (using `--extract=auto`).
 
-Configure JSHint in `modules/.jshintrc` (so IDEs can interpret it as well):
+Configure JSHint in `.jshintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "browser": true,
@@ -599,12 +599,9 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 
 ---
 
-# Wanna help?
+## Wanna help?
 
 Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
-
-# Thank you for your help!
-@miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
 
 
 <!-- ## Add badge to your project
@@ -646,8 +643,9 @@ Or html:
 
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
  -->
- 
- 
+
+
  ## Translation authors
- 
-- [Russian](https://github.com/shershen08/vuejs-component-style-guide): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+
+- [Brazilian Portuguese](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+- [Russian](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
