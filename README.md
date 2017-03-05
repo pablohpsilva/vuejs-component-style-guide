@@ -11,6 +11,8 @@ This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) 
 
 This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) by [De Voorhoede](https://github.com/voorhoede).
 
+### Translations: [Russian](README-RU.md)
+
 <!-- ## Demos
 
 Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are a companion to this guide, illustrating the guidelines with practical examples. -->
@@ -644,3 +646,8 @@ Or html:
 
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
  -->
+ 
+ 
+ ## Translation authors
+ 
+- [Russian](https://github.com/shershen08/vuejs-component-style-guide): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
