@@ -570,7 +570,7 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 
 ## Хотите поучаствовать?
 
-Сделайте форк этого репозитория и далее предлагайте PR. Или просто создайте [тикет](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
+Сделайте форк этого репозитория и далее предлагайте PR. Или просто создайте [тикет](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
 
 ## Автор перевода
 

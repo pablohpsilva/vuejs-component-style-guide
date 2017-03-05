@@ -599,7 +599,7 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 
 ## Wanna help?
 
-Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
+Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
 
 
 <!-- ## Add badge to your project

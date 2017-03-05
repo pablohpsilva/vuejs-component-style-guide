@@ -600,7 +600,7 @@ Nota: JSHint não aceita as expressões `vue`, porém aceita as de `html`.
 
 ## Quer ajudar?
 
-Faça um Fork do projeto e depois um Pull Request do que você acha que deve ser interessante ter nesse guia ou crie uma [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
+Faça um Fork do projeto e depois um Pull Request do que você acha que deve ser interessante ter nesse guia ou crie uma [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
 
 ## Sobre o tradutor
 
