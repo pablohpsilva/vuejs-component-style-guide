@@ -15,8 +15,6 @@ This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) 
 
 This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) by [De Voorhoede](https://github.com/voorhoede).
 
-### Translations: [Russian](README-RU.md)
-
 ## Table of Contents
 
 * [Module based development](#module-based-development)
