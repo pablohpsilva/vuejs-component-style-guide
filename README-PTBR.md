@@ -1,7 +1,7 @@
 # Style Guide para Componentes Vue.js
 
-### Translations
-* [Brazilian Portuguese](README-PTBR.md)
+### Traduções
+* [Inglês](README.md)
 * [Russian](README-RU.md)
 
 ## Propósito
