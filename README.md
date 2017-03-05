@@ -646,3 +646,8 @@ Or html:
 
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
  -->
+ 
+ 
+ ## Translation authors
+ 
+- [Russian](https://github.com/shershen08/vuejs-component-style-guide): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
