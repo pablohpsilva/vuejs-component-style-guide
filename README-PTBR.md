@@ -2,7 +2,7 @@
 
 ### Traduções
 * [Inglês](README.md)
-* [Russian](README-RU.md)
+* [Russo](README-RU.md)
 
 ## Propósito
 

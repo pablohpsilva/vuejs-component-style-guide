@@ -2,7 +2,7 @@
 
 ### Translations
 * [Brazilian Portuguese](README-PTBR.md)
-* [Russo](README-RU.md)
+* [Russian](README-RU.md)
 
 ## Purpose
 
