@@ -1,7 +1,7 @@
 # Vue.js Component Style Guide
 
 ### Translations
-* [English](README.md)
+* [Brazilian Portuguese](README-PTBR.md)
 * [Russo](README-RU.md)
 
 ## Purpose
@@ -647,5 +647,5 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
 
  ## Translation authors
 
-- [Brazilian Portuguese](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-- [Russian](https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+- [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+- [Russian](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
