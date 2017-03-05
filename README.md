@@ -643,7 +643,7 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
  -->
 
 
- ## Translation authors
+## Translation authors
 
-- [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-- [Russian](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+* [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+* [Russian](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
