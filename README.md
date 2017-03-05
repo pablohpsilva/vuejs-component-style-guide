@@ -531,7 +531,7 @@ Add a `index.html` file with demos of the component with different configuration
 
 ### Why?
 
-* A component demo proves the module works in isolation.
+* A component demo proves the component works in isolation.
 * A component demo gives developers a preview before having to dig into the documentation or code.
 * Demos can illustrate all the possible configurations and variations a component can be used in.
 
@@ -549,13 +549,13 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 
 ### How?
 
-To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `opts`.
+To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
 
 #### ESLint
 
 [ESLint](http://eslint.org/) requires an extra [ESLint HTML plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) to extract the script from the component files.
 
-Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
+Configure ESLint in a `.eslintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "extends": "eslint:recommended",
@@ -572,14 +572,14 @@ Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
 
 Run ESLint
 ```bash
-eslint modules/**/*.vue
+eslint src/**/*.vue
 ```
 
 #### JSHint
 
 [JSHint](http://jshint.com/) can parse HTML (using `--extra-ext`) and extract script (using `--extract=auto`).
 
-Configure JSHint in `modules/.jshintrc` (so IDEs can interpret it as well):
+Configure JSHint in `.jshintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "browser": true,

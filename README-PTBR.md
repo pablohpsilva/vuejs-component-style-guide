@@ -445,29 +445,29 @@ Componente em Vue.js permite o acesso do contexto de outros componentes e elemen
 
 ## Use o nome do componente como escopo para o `<style>`
 
-Vue.js component elements are custom elements which can very well be used as style scope root.
-Alternatively the component name can be used as CSS class namespace.
+Elementos dos componentes Vue.js são elementos customizados que podem ser usados como style scope root. Alternativamente, o nome do componente pode ser usado como o namespace de uma classe CSS.
 
 ### Porque?
 
-* Scoping styles to a component element improves predictability as its prevents styles leaking outside the component element.
-* Using the same name for the module directory, the Vue.js component and the style root makes it easy for developers to understand they belong together.
+* Scoping styles to a component element improves predictability as its prevents styles leaking outside the component element;
+* Usar `<style scope>` num componente, melhora a previsibilidade e previne os estilos de vazar fora do componente;
+* Usando o mesmo nome para o diretório do módulo, o componente Vue.js e o estilo ficam mais fáceis de serem vistos e entendidos de onde eles surgiram.
 
 ### Como?
 
-Use the component name as a namespace prefix based on BEM and OOCSS **and** use the `scoped` attribute on your style class.
-The use of `scoped` will tell your Vue compiler to add a signature on every class that your `<style>` have. That signature will force your browser (if it supports) to apply your components
-CSS on all tags that compose your component, leading to a no leaking css styling.
+Use o nome do componente como um prefixo para gerar um namespace. Basei-se em BEM e OOCSS **e** use o atribute `scoped` no `<style>` do seu componente. O uso de `scope` dirá ao
+compilador Vue para adicionar uma assinatura a todas as classes que estão no seu `<style>`. Essa assinatura forçará o browser (se houver suporte) será aplicada a todos os estilos
+que compõem o seu componente, levanto a um CSS que não sai do contexto do seu componente.
 
 ```html
 <style scoped>
-	/* recommended */
+	/* recomendado */
 	.MyExample { }
 	.MyExample li { }
 	.MyExample__item { }
 
-	/* avoid */
-	.My-Example { } /* not scoped to component or module name, not BEM compliant */
+	/* evite */
+	.My-Example { } /* não tem escopo a um componente nem a um nome de um módulo; não segue nenhuma metodologia */
 </style>
 ```
 
@@ -476,18 +476,18 @@ CSS on all tags that compose your component, leading to a no leaking css styling
 
 ## Documente a API do seu componente
 
-A Vue.js component instance is created by using the component element inside your application. The instance is configured through its custom attributes. For the component to be used by other developers, these custom attributes - the component's API - should be documented in a `README.md` file.
+A instância de um componente Vue.js é criada usando um elemento do componente que está dentro da sua aplicação. A instância é configurada através da configuração dos seus atributos. Para que o componente possa ser usado por outros desenvolvedores, esses atributos - a API do seu componente - devem ser documentados em um arquivo `README.md`.
 
 ### Porque?
 
-* Documentation provides developers with a high level overview to a component, without the need to go through all its code. This makes a component more accessible and easier to use.
-* A component's API is the set of custom attributes through which its configured. Therefore these are especially of interest to other developers which only want to consume (and not develop) the component.
-* Documentation formalises the API and tells developers which functionality to keep backwards compatible when modifying the component's code.
-* `README.md` is the de facto standard filename for documentation to be read first. Code repository hosting services (Github, Bitbucket, Gitlab etc) display the contents of the the README's, directly when browsing through source directories. This applies to our module directories as well.
+* Documentação provê aos desenvolvedores uma overview de alto nível, sem ter a necessidade de ler todo o código. Isso torna o componente mais acessível e fácil de usar;
+* Uma API de um componente é o conjunto de atributos. O interesse dessa API vem para desenvolvedores que querem usar (e não desenvolver) o componente;
+* Documentação formaliza a API e diz aos desenvolvedores quais as funcionalidades esperadas;
+* `README.md` é o nome de arquivo padrão para a primeira leitura de uma documentação. O serviço de repositório de código (Github, Bitbucket, Gitlab etc) mostram o conteúdo desses componentes, diretamente quando o usuário navega pelos diretórios.
 
 ### Como?
 
-Add a `README.md` file to the component's module directory:
+Adicione um arquivo `README.md` ao diretório que contém o componente:
 
 ```
 range-slider/
@@ -496,7 +496,7 @@ range-slider/
 └── README.md
 ```
 
-Within the README file, describe the functionality and the usage of the module. For a vue component its most useful to describe the custom attributes it supports as those are its API:
+Dentro do arquivo README, descreva a funcionaldiade e o uso desse módulo. Para um componente Vue.js é muito útil a descrição das props que ele suporta, pois essas compõem a API do componente. Exemplo:
 
 
 # Range slider
@@ -528,35 +528,35 @@ For customising the slider appearance see the [Styling section in the noUiSlider
 
 ## Crie uma demonstração
 
-Add a `index.html` file with demos of the component with different configurations, showing how the component can be used.
+Adicione um `index.html` que tenha demonstrações do componente com configurações diferentes, mostrando como o componente deve ser usado.
 
 ### Porque?
 
-* A component demo proves the module works in isolation.
-* A component demo gives developers a preview before having to dig into the documentation or code.
-* Demos can illustrate all the possible configurations and variations a component can be used in.
+* Uma demontração do componente prova que o component funciona isoladamente;
+* Uma demontração do componente dá aos desenvolvedores uma prévia antes de entrar na documentação ou no código;
+* Demonstrações ilustram todas as possíveis configurações e variações que um componente pode ser usado.
 
 [↑ voltar para o Índice](#indice)
 
 
 ## Lint os arquivos do seu componente
 
-Linters improve code consistency and help trace syntax errors. .vue files can be linted adding the `eslint-plugin-html` in your project. If you choose, you can start a project with ESLint enabled by default using `vue-cli`;
+Linters melhoram a consistência de código e ajudam a rastrear erros de sintaxe. Arquivos .vue podem usar Linters quando o plugin `eslint-plugin-html` for adicionado ao projeto. Se você quiser, você pode iniciar um projeto com o ESLInt ativado por padrão usando a ferramenta `vue-cli`;
 
 ### Porque?
 
-* Linting component files ensures all developers use the same code style.
-* Linting component files helps you trace syntax errors before it's too late.
+* Arquivos que usam Lint garantem que todos os desenvolvedores usem o mesmo estilo de código;
+* Arquivos que usam Lint ajudam no rastreio de erros antes que seja tarde demais.
 
 ### Como?
 
-To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [Mantenha simples as expressões dos componentes](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `opts`.
+Para fazer com que linters estraiam o script dos seus arquivos `*.vue`, configure o seu linter para acessar variáveis globais `vue` e props de componentes.
 
 #### ESLint
 
-[ESLint](http://eslint.org/) requires an extra [ESLint HTML plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) to extract the script from the component files.
+[ESLint](http://eslint.org/) requer um [plugin ESLint HTML](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) para extrair o script de um componente.
 
-Configure ESLint in `módulos/.eslintrc` (so IDEs can interpret it as well):
+Configure o ESLint em um arquivo `.eslintrc` (para que IDEs possam interpretá-lo bem):
 ```json
 {
   "extends": "eslint:recommended",
@@ -571,16 +571,16 @@ Configure ESLint in `módulos/.eslintrc` (so IDEs can interpret it as well):
 }
 ```
 
-Run ESLint
+Rode o ESLint
 ```bash
-eslint módulos/**/*.vue
+eslint src/**/*.vue
 ```
 
 #### JSHint
 
-[JSHint](http://jshint.com/) can parse HTML (using `--extra-ext`) and extract script (using `--extract=auto`).
+[JSHint](http://jshint.com/) parsea o HTML (usando `--extra-ext`) e extrai o script (usando `--extract=auto`).
 
-Configure JSHint in `módulos/.jshintrc` (so IDEs can interpret it as well):
+Configure o JSHint em um arquivo `.jshintrc` (para que IDEs possam interpretá-lo bem):
 ```json
 {
   "browser": true,
@@ -588,19 +588,19 @@ Configure JSHint in `módulos/.jshintrc` (so IDEs can interpret it as well):
 }
 ```
 
-Run JSHint
+Rode os JSHint
 ```bash
 jshint --config módulos/.jshintrc --extra-ext=html --extract=auto módulos/
 ```
-Note: JSHint does not accept `vue` as extension, but only `html`.
+Nota: JSHint não aceita as expressões `vue`, porém aceita as de `html`.
 
 [↑ voltar para o Índice](#indice)
 
 ---
 
-# Wanna help?
+# Quer ajudar?
 
-Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
+Faça um Fork do projeto e depois um Pull Request do que você acha que deve ser interessante ter nesse guia ou crie uma [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
 
 # Thank you for your help!
 @miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
