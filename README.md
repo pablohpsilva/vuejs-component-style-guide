@@ -3,6 +3,7 @@
 ### Translations
 * [Brazilian Portuguese](README-PTBR.md)
 * [Russian](README-RU.md)
+* [中文](README-CN.md)
 
 ## Purpose
 
