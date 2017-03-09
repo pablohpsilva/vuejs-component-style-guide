@@ -1,6 +1,11 @@
 # Style Guide para Componentes Vue.js
 
+<center>
+  ![oi](img/logo.png)
+</center>
+
 ### Traduções
+* [Chinês](README-CN.md)
 * [Inglês](README.md)
 * [Russo](README-RU.md)
 
