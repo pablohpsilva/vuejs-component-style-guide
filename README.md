@@ -1,9 +1,13 @@
 # Vue.js Component Style Guide
 
+<p align="center">
+  <img src="img/logo.png"/>
+</p>
+
 ### Translations
 * [Brazilian Portuguese](README-PTBR.md)
+* [Chinese](README-CN.md)
 * [Russian](README-RU.md)
-* [中文](README-CN.md)
 
 ## Purpose
 

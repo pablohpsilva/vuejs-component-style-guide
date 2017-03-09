@@ -1,5 +1,9 @@
 # Vue.js 组件编码规范
 
+<p align="center">
+  <img src="img/logo.png"/>
+</p>
+
 ### 其它语言
 * [英文](README.md)
 * [葡萄牙语](README-PTBR.md)
@@ -20,7 +24,7 @@
 
 * [基于模块开发](#基于模块开发)
 * [vue 组件命名](#vue-组件命名)
-<!-- * [使用 `*.vue` 扩展名](#使用-vue-后缀作为扩展名) --> 
+<!-- * [使用 `*.vue` 扩展名](#使用-vue-后缀作为扩展名) -->
 * [组件表达式简单化](#组件表达式简单化)
 * [组件 props 原子化](#组件-props-原子化)
 * [验证组件的 props](#验证组件的-props)
@@ -443,7 +447,7 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
 
 ### 怎么做？
 
-使用组件名作为样式命名的前缀，可基于 BEM 或 OOCSS 范式。同时给style标签加上 scoped 属性。加上 scoped 属性编译后会给组件的 class 自动加上唯一的前缀从而避免样式的冲突。 
+使用组件名作为样式命名的前缀，可基于 BEM 或 OOCSS 范式。同时给style标签加上 scoped 属性。加上 scoped 属性编译后会给组件的 class 自动加上唯一的前缀从而避免样式的冲突。
 
 ```html
 <style scoped>
@@ -536,7 +540,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 为了校验工具能够校验 `*.vue`文件，你需要将代码编写在 `<script>`标签中，并使[组件表达式简单化](#保持组件表达式简单化)，因为校验工具无法理解行内表达式，配置校验工具可以访问全局变量 `vue` 和组件的 `props`。
 
-#### ESLint 
+#### ESLint
 
 [ESLint](http://eslint.org/) 需要通过 [ESLint HTML 插件](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html)来抽取组件中的代码。
 
@@ -556,7 +560,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 }
 ```
 
-运行 ESLint 
+运行 ESLint
 
 ```bash
 eslint src/**/*.vue
@@ -593,4 +597,3 @@ Fork 和 提 PR 以帮助我们改进或者可以给我们提 [Issue](https://gi
 ## 译者
 
 * [杨小福](https://github.com/xiaofuzi)
-
