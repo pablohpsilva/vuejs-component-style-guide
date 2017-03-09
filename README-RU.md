@@ -1,6 +1,6 @@
-<center>
-  ![oi](img/logo.png)
-</center>
+<p align="center">
+  <img src="img/logo.png"/>
+</p>
 
 ### Переводы
  * [бразильский португальский](README-PTBR.md)

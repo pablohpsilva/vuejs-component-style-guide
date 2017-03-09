@@ -1,8 +1,8 @@
 # Vue.js Component Style Guide
 
-<center>
-![oi](img/logo.png)
-</center>
+<p align="center">
+  <img src="img/logo.png"/>
+</p>
 
 ### Translations
 * [Brazilian Portuguese](README-PTBR.md)

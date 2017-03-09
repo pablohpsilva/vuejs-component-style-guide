@@ -1,8 +1,8 @@
 # Vue.js 组件编码规范
 
-<center>
-  ![oi](img/logo.png)
-</center>
+<p align="center">
+  <img src="img/logo.png"/>
+</p>
 
 ### 其它语言
 * [英文](README.md)
