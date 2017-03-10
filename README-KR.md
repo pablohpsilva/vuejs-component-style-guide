@@ -7,6 +7,7 @@
 ### 번역
 * [브라질 포르투갈어](README-PTBR.md)
 * [중국어](README-CN.md)
+* [영어](README.md)
 * [러시아어](README-RU.md)
 
 ## 목적
