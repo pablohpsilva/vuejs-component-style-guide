@@ -260,7 +260,7 @@ export default {
 ### 为什么？
 
 * 导出一个清晰、组织有序的组件，使得代码易于阅读和理解。同时也便于标准化。
-* 按首字母排序属性，data, computed, watches 和 methods 使得属性便于查找。
+* 按首字母排序properties, data, computed, watches 和 methods使得这些对象内的属性便于查找。
 * 合理组织，使得组件易于阅读。(name; extends; props, data and computed; components; watch and methods; lifecycle methods, 等.);
 * 使用 `name` 属性。借助于[vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en)可以让你更方便的测试
 * 合理的 CSS 结构，如 [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) 或 [rscss](https://github.com/rstacruz/rscss) - [详情?](#使用组件名作为样式作用域空间);
@@ -597,3 +597,5 @@ Fork 和 提 PR 以帮助我们改进或者可以给我们提 [Issue](https://gi
 ## 译者
 
 * [杨小福](https://github.com/xiaofuzi)
+
+
