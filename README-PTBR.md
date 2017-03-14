@@ -6,6 +6,7 @@
 
 ### Traduções
 * [Chinês](README-CN.md)
+* [Coreano](README-KR.md)
 * [Inglês](README.md)
 * [Russo](README-RU.md)
 

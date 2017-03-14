@@ -7,6 +7,7 @@
 ### Translations
 * [Brazilian Portuguese](README-PTBR.md)
 * [Chinese](README-CN.md)
+* [Korean](README-KR.md)
 * [Russian](README-RU.md)
 
 ## Purpose

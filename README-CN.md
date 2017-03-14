@@ -7,6 +7,7 @@
 ### 其它语言
 * [英文](README.md)
 * [葡萄牙语](README-PTBR.md)
+* [韩语](README-KR.md)
 * [俄语](README-RU.md)
 
 ## 目标
@@ -598,4 +599,3 @@ Fork 和 提 PR 以帮助我们改进或者可以给我们提 [Issue](https://gi
 
 * [杨小福](https://github.com/xiaofuzi)
 * [机智的马里奥](https://github.com/wysxhlyy)
-
