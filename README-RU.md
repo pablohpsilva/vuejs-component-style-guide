@@ -327,7 +327,7 @@ export default {
 
 * В названиях событий стоит использовать кебаб нотацию `kebab-cased`.
 * Название компонента должно быть уникальным и отражать что в нем происходит, например: `upload-success`, `upload-error` или `dropzone-upload-success`, `dropzone-upload-error`
-* В именованах компонентов лучше использовать только существительные и глаголы, например: `client-api-load`, `drive-upload-success` ([источник](https://github.com/GoogleWebComponents/style-guide#events))
+* В именах компонентов лучше использовать только существительные и глаголы, например: `client-api-load`, `drive-upload-success` ([источник](https://github.com/GoogleWebComponents/style-guide#events))
 
 [↑ наверх](#Содержание)
 
