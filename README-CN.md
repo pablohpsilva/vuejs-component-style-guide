@@ -5,10 +5,10 @@
 </p>
 
 ### 其它语言
-* [英文](README.md)
-* [葡萄牙语](README-PTBR.md)
-* [韩语](README-KR.md)
-* [俄语](README-RU.md)
+* [英文](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [葡萄牙语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [韩语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [俄语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## 目标
 
