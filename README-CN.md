@@ -104,9 +104,9 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 ```html
 <!-- 推荐 -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
@@ -128,9 +128,9 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 <!-- 避免 -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -273,23 +273,23 @@ export default {
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// 不要忘记了 name 属性
+    // 不要忘记了 name 属性
     name: 'RangeSlider',
     // 组合其它组件
     extends: {},
     // 组件属性、变量
     props: {
-			bar: {}, // 按字母顺序
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // 按字母顺序
+      foo: {},
+      fooBar: {},
+    },
     // 变量
     data() {},
     computed: {},
@@ -401,10 +401,10 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -427,7 +427,7 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -452,13 +452,13 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
 
 ```html
 <style scoped>
-	/* 推荐 */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* 推荐 */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* 避免 */
-	.My-Example { } /* not scoped to component or module name, not BEM compliant */
+  /* 避免 */
+  .My-Example { } /* not scoped to component or module name, not BEM compliant */
 </style>
 ```
 
