@@ -103,9 +103,9 @@
 ```html
 <!-- правильно -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
@@ -127,9 +127,9 @@
 
 <!-- неправильно -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -275,23 +275,23 @@ export default {
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// обязательно не забываем имя к.
+    // обязательно не забываем имя к.
     name: 'RangeSlider',
     // можем использовать композицию уже существующих к.
     extends: {},
     // перечисление свойств и переменных
     props: {
-	bar: {}, // еще лучше если по-алфавиту
-	foo: {},
-	fooBar: {},
-	},
+  bar: {}, // еще лучше если по-алфавиту
+  foo: {},
+  fooBar: {},
+  },
     data() {},
     computed: {},
     // когда внутри используются другие к.
@@ -405,10 +405,10 @@ Vue как и React поддерживает обращение к другим 
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -431,7 +431,7 @@ Vue как и React поддерживает обращение к другим 
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -459,13 +459,13 @@ Vue как и React поддерживает обращение к другим 
 
 ```html
 <style scoped>
-	/* правильно */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* правильно */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* неправильно */
-	.My-Example { } /* не ограничен именем компонента или модуля, не соответствует спецификации BEM */
+  /* неправильно */
+  .My-Example { } /* не ограничен именем компонента или модуля, не соответствует спецификации BEM */
 </style>
 ```
 [↑ наверх](#Содержание)

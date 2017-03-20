@@ -109,9 +109,9 @@ Vue.js의 인라인 표현식은 100% 자바스크립트입니다. 이 기능은
 ```html
 <!-- 권장합니다 -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
@@ -133,9 +133,9 @@ Vue.js의 인라인 표현식은 100% 자바스크립트입니다. 이 기능은
 
 <!-- 피하세요! -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -283,23 +283,23 @@ export default {
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// 이름 적는 것을 잊지마세요
+    // 이름 적는 것을 잊지마세요
     name: 'RangeSlider',
     // compose new components
     extends: {},
     // 컴포넌트 어트리뷰트 그룹
     props: {
-			bar: {}, // 알파벳순으로 정렬합니다
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // 알파벳순으로 정렬합니다
+      foo: {},
+      fooBar: {},
+    },
     // 컴포넌트 변수 그룹
     data() {},
     computed: {},
@@ -408,10 +408,10 @@ Vue.js는 컴포넌트가 `ref` 어트리뷰트를 통해 다른 컴포넌트와
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -433,7 +433,7 @@ Vue.js는 컴포넌트가 `ref` 어트리뷰트를 통해 다른 컴포넌트와
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -461,13 +461,13 @@ BEM 및 OOCSS에 기반한 네임스페이스 접두어로 컴포넌트 이름�
 
 ```html
 <style scoped>
-	/* 권장합니다 */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* 권장합니다 */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* 피하세요! */
-	.My-Example { } /* 컴포넌트나 모듈 이름으로 scoped가 지정되지 않고 BEM 문법과 일치하지 않습니다. */
+  /* 피하세요! */
+  .My-Example { } /* 컴포넌트나 모듈 이름으로 scoped가 지정되지 않고 BEM 문법과 일치하지 않습니다. */
 </style>
 ```
 
@@ -625,7 +625,7 @@ Or html:
 ```html
 <a href="https://github.com/voorhoede/Vue.js-style-guide">
     <img alt="Vue.js Style Guide badge"
-    	 src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
+       src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
 </a>
 ```
 
