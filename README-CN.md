@@ -128,9 +128,9 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 <!-- 避免 -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -138,7 +138,7 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 ### 组件 props 原子化
 
-虽然 Vue.js 支持传递复杂的 JavaScript 对象通过 props 属性，但是你应该尽可能的使用原始类型的数据。尽量只使用[JavaScript 原始类型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)(字符串、数字、布尔值) 和 函数。尽量避免复杂的对象。
+虽然 Vue.js 支持传递复杂的 JavaScript 对象通过 props 属性，但是你应该尽可能的使用原始类型的数据。尽量只使用 [JavaScript 原始类型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)（字符串、数字、布尔值）和函数。尽量避免复杂的对象。
 
 ### 为什么？
 
@@ -210,7 +210,7 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 [↑ 回到目录](#目录)
 
-## 将 `this` 赋值给 `component` 变量(
+## 将 `this` 赋值给 `component` 变量
 
 在 Vue.js 组件上下文中，`this`指向了组件实例。因此当你切换到了不同的上下文时，要确保 `this` 指向一个可用的 `component` 变量。
 
@@ -274,22 +274,22 @@ export default {
 ```html
 <template lang="html">
   <div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// 不要忘记了 name 属性
+    // 不要忘记了 name 属性
     name: 'RangeSlider',
     // 组合其它组件
     extends: {},
     // 组件属性、变量
     props: {
-			bar: {}, // 按字母顺序
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // 按字母顺序
+      foo: {},
+      fooBar: {},
+    },
     // 变量
     data() {},
     computed: {},
@@ -324,7 +324,7 @@ Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组�
 
 * 事件名也使用连字符命名。
 * 一个事件的名字对应组件外的一组意义操作，如：upload-success、upload-error 以及 dropzone-upload-success、dropzone-upload-error （如果需要前缀的话）。
-* 事件命名应该以动词（如 client-api-load） 或是 形容词（如 drive-upload-success）结尾。（[出处](https://github.com/GoogleWebComponents/style-guide#events)）。
+* 事件命名应该以动词（如 client-api-load） 或是 形容词（如 drive-upload-success）结尾。（[出处](https://github.com/GoogleWebComponents/style-guide#events)）
 
 
 [↑ 回到目录](#目录)
@@ -394,9 +394,9 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
   export default {
     // ...
     data() {
-        return {
-            active: false,
-        };
+      return {
+        active: false,
+      };
     },
     methods: {
       open() {
@@ -451,13 +451,13 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
 
 ```html
 <style scoped>
-	/* 推荐 */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* 推荐 */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* 避免 */
-	.My-Example { } /* not scoped to component or module name, not BEM compliant */
+  /* 避免 */
+  .My-Example { } /* not scoped to component or module name, not BEM compliant */
 </style>
 ```
 
