@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<title>Vue.js Component Style Guide</title>
-	<link rel="stylesheet" href="https://unpkg.com/docute@2/dist/docute.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>docs</title>
+  <link rel="stylesheet" href="https://unpkg.com/docute@3/dist/docute.css">
 </head>
 <body>
-	<!-- don't remove this part start -->
-	<div id="app"></div>
-	<script src="./config.js"></script>
-	<script src="https://unpkg.com/docute@2/dist/docute.js"></script>
-	<!-- don't remove this part end -->
+  <div id="app"></div>
+  <script src="https://unpkg.com/docute@3/dist/docute.js"></script>
+  <script>
+    docute.init({
+    	home: 'https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/README.md',
+    	repo: 'pablohpsilva/vuejs-component-style-guide',
+      // tocVisibleDepth: 2,
+      nav: [
+        {title: 'Home', path: '/'},
+        {title: 'Languages', type: 'dropdown', items: [
+          {title: 'English', path: '/'},
+          {title: 'Português do Brasil', path: '/portuguese', source: 'https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/README-PTBR.md'},
+          {title: '中文', path: '/chinese', source: 'https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/README-CN.md'},
+          {title: '한국어', path: '/korean', source: 'https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/README-KR.md'},
+          {title: 'русский язык', path: '/russian', source: 'https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/README-RU.md'}
+        ]}
+      ]
+    });
+  </script>
 </body>
 </html>

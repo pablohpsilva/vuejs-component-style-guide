@@ -1,7 +1,7 @@
 # Vue.js 컴포넌트 스타일 가이드
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### 번역
