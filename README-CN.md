@@ -104,9 +104,9 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 ```html
 <!-- 推荐 -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
