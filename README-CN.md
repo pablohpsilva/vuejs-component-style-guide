@@ -48,7 +48,7 @@ Vue.js 的设计初衷就是帮助开发者更好的开发界面模块。一个�
 
 ### 怎么做？
 
-每一个 Vue 组件(等同于模块)[首先]((https://addyosmani.com/first/))必须专注于解决一个[单一的问题](http://en.wikipedia.org/wiki/Single_responsibility_principle)，*独立的*, *可复用的*, *微小的* and *可测试的*。
+每一个 Vue 组件（等同于模块）[首先]((https://addyosmani.com/first/))必须专注于解决一个[单一的问题](http://en.wikipedia.org/wiki/Single_responsibility_principle)，*独立的*、*可复用的*、*微小的* 和 *可测试的*。
 
 如果你的组件做了太多的事或是变得臃肿，请将其拆分成更小的组件并保持单一的原则。一般来说，尽量保证每一个文件的代码行数不要超过 100 行。也请保证组件可独立的运行。比较好的做法是增加一个单独的 demo 示例。
 
@@ -142,9 +142,9 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 ### 为什么？
 
-* 使得组件 API 清晰直观
+* 使得组件 API 清晰直观。
 * 只使用原始类型和函数作为 props 使得组件的 API 更接近于 HTML(5) 原生元素。
-* 其它开发者更好的理解每一个 prop 的含义，作用
+* 其它开发者更好的理解每一个 prop 的含义、作用。
 * 传递过于复杂的对象使得我们不能够清楚的知道哪些属性或方法被自定义组件使用，这使得代码难以重构和维护。
 
 ### 怎么做？
@@ -176,13 +176,13 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 ### 为什么？
 
-验证组件 props 可以保证你的组件永远是可用的(防御性编程)。即使其他开发者并未按照你预想的方法使用时也不会出错。
+验证组件 props 可以保证你的组件永远是可用的（防御性编程）。即使其他开发者并未按照你预想的方法使用时也不会出错。
 
 ### 怎么做？
 
-* 提供默认值
-* 使用 `type` 属性[校验类型](http://vuejs.org/v2/guide/components.html#Prop-Validation)
-* 使用 props 之前先检查该 prop 是否存在
+* 提供默认值。
+* 使用 `type` 属性[校验类型](http://vuejs.org/v2/guide/components.html#Prop-Validation)。
+* 使用 props 之前先检查该 prop 是否存在。
 
 ```html
 <template>
@@ -261,11 +261,11 @@ export default {
 ### 为什么？
 
 * 导出一个清晰、组织有序的组件，使得代码易于阅读和理解。同时也便于标准化。
-* 按首字母排序properties, data, computed, watches 和 methods使得这些对象内的属性便于查找。
-* 合理组织，使得组件易于阅读。(name; extends; props, data and computed; components; watch and methods; lifecycle methods, 等.);
-* 使用 `name` 属性。借助于[vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en)可以让你更方便的测试
-* 合理的 CSS 结构，如 [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) 或 [rscss](https://github.com/rstacruz/rscss) - [详情?](#使用组件名作为样式作用域空间);
-* 使用单文件 .vue 文件格式来组件代码
+* 按首字母排序 properties、data、computed、watches 和 methods 使得这些对象内的属性便于查找。
+* 合理组织，使得组件易于阅读。（name; extends; props, data 和 computed; components; watch 和 methods; lifecycle methods 等）。
+* 使用 `name` 属性。借助于 [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) 可以让你更方便的测试。
+* 合理的 CSS 结构，如 [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) 或 [rscss](https://github.com/rstacruz/rscss) - [详情？](#使用组件名作为样式作用域空间)。
+* 使用单文件 .vue 文件格式来组件代码。
 
 ### 怎么做？
 
@@ -273,7 +273,7 @@ export default {
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
+  <div class="Ranger__Wrapper">
 		<!-- ... -->
 	</div>
 </template>
@@ -301,7 +301,7 @@ export default {
     // 生命周期函数
     beforeCreate() {},
     mounted() {},
-};
+  };
 </script>
 
 <style scoped>
@@ -313,18 +313,18 @@ export default {
 
 ## 组件事件命名
 
-Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组件的每一个事件都应该按照一个好的命名规范来，这样可以避免不少的开发问题，具体可见如下 ** 为什么**。
+Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组件的每一个事件都应该按照一个好的命名规范来，这样可以避免不少的开发问题，具体可见如下 **为什么**。
 
 ### 为什么？
 
 * 开发者可以随意给事件命名，即使是原生事件的名字，这样会带来迷惑性。
-* 过于宽松的事件命名可能与[DOM模板不兼容](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats)。
+* 过于宽松的事件命名可能与 [DOM 模板不兼容](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats)。
 
 ### 怎么做？
 
-* 事件命名也连字符命名
-* 一个事件的名字对应组件外的一组意义操作，如：upload-success, upload-error 以及 dropzone-upload-success, dropzone-upload-error (如果需要前缀的话)。
-* 事件命名应该以动词(如 client-api-load) 或是 形容词(如 drive-upload-success)结尾。([出处](https://github.com/GoogleWebComponents/style-guide#events))
+* 事件名也使用连字符命名。
+* 一个事件的名字对应组件外的一组意义操作，如：upload-success、upload-error 以及 dropzone-upload-success、dropzone-upload-error （如果需要前缀的话）。
+* 事件命名应该以动词（如 client-api-load） 或是 形容词（如 drive-upload-success）结尾。（[出处](https://github.com/GoogleWebComponents/style-guide#events)）。
 
 
 [↑ 回到目录](#目录)
@@ -340,9 +340,9 @@ Vue.js 支持组件嵌套，并且子组件可访问父组件的上下文。访�
 
 ### 怎么做？
 
-* 通过 props 将值传递给子组件
-* 通过 props 传递回调函数给子组件来达到调用父组件方法的目的
-* 通过在子组件触发事件来通知父组件
+* 通过 props 将值传递给子组件。
+* 通过 props 传递回调函数给子组件来达到调用父组件方法的目的。
+* 通过在子组件触发事件来通知父组件。
 
 [↑ 回到目录](#目录)
 
@@ -353,19 +353,18 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
 ### 为什么？
 
 * 组件必须是保持独立的，如果一个组件的 API 不能够提供所需的功能，那么这个组件在设计、实现上是有问题的。
-* 组件的属性和事件必须足够的给大多数的组件使用
+* 组件的属性和事件必须足够的给大多数的组件使用。
 
 ### 怎么做？
 
-* 提供良好的组件 API
-* 总是关注于组件本身的目的
-* 拒绝定制代码。如果你在一个通用的组件内部编写特定需求的代码，那么代表这个组件的 API 不够通用，或者你可能需要一个新的组件来应对该需求
-* 检查所有的 props 是否有缺失的，如果有提一个 issue 或是完善这个组件
+* 提供良好的组件 API。
+* 总是关注于组件本身的目的。
+* 拒绝定制代码。如果你在一个通用的组件内部编写特定需求的代码，那么代表这个组件的 API 不够通用，或者你可能需要一个新的组件来应对该需求。
+* 检查所有的 props 是否有缺失的，如果有提一个 issue 或是完善这个组件。
 * 检查所有的事件。子组件向父组件通信一般是通过事件来实现的，但是大多数的开发者更多的关注于 props 从忽视了这点。
 * **Props向下传递，事件向上传递！**。以此为目标升级你的组件，提供良好的 API 和 独立性。
 * 当遇到 props 和 events 难以实现的功能时，通过 `this.$refs`来实现。
-* 当需要操作 DOM 无法通过指令来做的时候可使用 `this..$ref` 而不是 `JQuery`, `document.getElement*
-`, `document.queryElement`。
+* 当需要操作 DOM 无法通过指令来做的时候可使用 `this.$ref` 而不是 `JQuery`、`document.getElement*`、`document.queryElement`。
 
 
 ```html
@@ -439,16 +438,16 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
 
 ## 使用组件名作为样式作用域空间
 
-Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作用域空间。可以将组件名作为 css 类的命名空间。
+Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作用域空间。可以将组件名作为 CSS 类的命名空间。
 
 ### 为什么？
 
-* 给样式加上作用域空间可以避免组件样式影响外部的样式
+* 给样式加上作用域空间可以避免组件样式影响外部的样式。
 * 保持模块名、目录名、样式根作用域名一样，可以很好的将其关联起来，便于开发者理解。
 
 ### 怎么做？
 
-使用组件名作为样式命名的前缀，可基于 BEM 或 OOCSS 范式。同时给style标签加上 scoped 属性。加上 scoped 属性编译后会给组件的 class 自动加上唯一的前缀从而避免样式的冲突。
+使用组件名作为样式命名的前缀，可基于 BEM 或 OOCSS 范式。同时给 style 标签加上 scoped 属性。加上 scoped 属性编译后会给组件的 class 自动加上唯一的前缀从而避免样式的冲突。
 
 ```html
 <style scoped>
@@ -470,10 +469,10 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
 
 ## 为什么？
 
-* 良好的文档可以让开发者比较容易的对组件有一个整体的认识，而不用去阅读组件的源码，也更方便开发者使用
+* 良好的文档可以让开发者比较容易的对组件有一个整体的认识，而不用去阅读组件的源码，也更方便开发者使用。
 * 组件配置属性即组件的 API，对于组件的用户来说他们更感兴趣的是 API 而不是实现原理。
-* 正式的文档会告诉开发者组件 API 变更以及向后的兼容性情况
-* `README.md` 是标准的我们应该首先阅读的文档文件。代码托管网站 (github/bitbucket/gitlab 等) 会默认在仓库中展示 该文件作为仓库的介绍。
+* 正式的文档会告诉开发者组件 API 变更以及向后的兼容性情况。
+* `README.md` 是标准的我们应该首先阅读的文档文件。代码托管网站（GitHub、Bitbucket、Gitlab 等）会默认在仓库中展示该文件作为仓库的介绍。
 
 ### 怎么做？
 
@@ -522,9 +521,9 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 ### 为什么？
 
-* demo 可以说明组件是独立可使用的
-* demo 可以让开发者预览组件的功能效果
-* demo 可以展示组件各种配置参数下的功能
+* demo 可以说明组件是独立可使用的。
+* demo 可以让开发者预览组件的功能效果。
+* demo 可以展示组件各种配置参数下的功能。
 
 [↑ 回到目录](#目录)
 
@@ -535,7 +534,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 ### 为什么？
 
 * 保证所有的开发者使用同样的编码规范。
-* 更早的感知到语法错误
+* 更早的感知到语法错误。
 
 ### 怎么做？
 
@@ -545,7 +544,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 [ESLint](http://eslint.org/) 需要通过 [ESLint HTML 插件](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html)来抽取组件中的代码。
 
-通过 `.eslintrc` 文件来配置 ESlint，这样 IED 可以更好的理解校验配置项。 ESlint，这样.
+通过 `.eslintrc` 文件来配置 ESlint，这样 IED 可以更好的理解校验配置项：
 
 ```json
 {
@@ -569,7 +568,7 @@ eslint src/**/*.vue
 
 #### JSHint
 
-[JSHint](http://jshint.com/) 可以解析 HTML (使用 `--extra-ext`命令参数) 和 抽取代码（使用 `--extract=auto`命令参数).
+[JSHint](http://jshint.com/) 可以解析 HTML（使用 `--extra-ext`命令参数）和抽取代码（使用 `--extract=auto`命令参数）。
 
 通过 `.jshintrc` 文件来配置 ESlint，这样 IED 可以更好的理解校验配置项。
 
@@ -593,7 +592,7 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 
 ### 如何提供帮助？
 
-Fork 和 提 PR 以帮助我们改进或者可以给我们提 [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
+Fork 和提 PR 以帮助我们改进或者可以给我们提 [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new)。
 
 ## 译者
 
