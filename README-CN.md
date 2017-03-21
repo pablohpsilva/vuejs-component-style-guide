@@ -598,3 +598,4 @@ Fork 和提 PR 以帮助我们改进或者可以给我们提 [Issue](https://git
 
 * [杨小福](https://github.com/xiaofuzi)
 * [机智的马里奥](https://github.com/wysxhlyy)
+* [根号三](https://github.com/sqrthree)
