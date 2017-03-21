@@ -1,14 +1,14 @@
 # Vue.js Component Style Guide
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### Translations
-* [Brazilian Portuguese](README-PTBR.md)
-* [Chinese](README-CN.md)
-* [Korean](README-KR.md)
-* [Russian](README-RU.md)
+* [Brazilian Portuguese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [Chinese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Korean](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## Purpose
 
@@ -112,9 +112,9 @@ If it gets too complex or hard to read **move it to methods or computed properti
 ```html
 <!-- recommended -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
@@ -136,9 +136,9 @@ If it gets too complex or hard to read **move it to methods or computed properti
 
 <!-- avoid -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -286,23 +286,23 @@ Component structure:
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// Do not forget this little guy
+    // Do not forget this little guy
     name: 'RangeSlider',
     // compose new components
     extends: {},
     // component properties/variables
     props: {
-			bar: {}, // Alphabetized
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // Alphabetized
+      foo: {},
+      fooBar: {},
+    },
     // variables
     data() {},
     computed: {},
@@ -411,10 +411,10 @@ Vue.js supports components to have access to other components and basic HTML ele
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -437,7 +437,7 @@ Vue.js supports components to have access to other components and basic HTML ele
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -466,13 +466,13 @@ CSS on all tags that compose your component, leading to a no leaking css styling
 
 ```html
 <style scoped>
-	/* recommended */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* recommended */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* avoid */
-	.My-Example { } /* not scoped to component or module name, not BEM compliant */
+  /* avoid */
+  .My-Example { } /* not scoped to component or module name, not BEM compliant */
 </style>
 ```
 
@@ -631,7 +631,7 @@ Or html:
 ```html
 <a href="https://github.com/voorhoede/Vue.js-style-guide">
     <img alt="Vue.js Style Guide badge"
-    	 src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
+       src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
 </a>
 ```
 
@@ -652,4 +652,4 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
 ## Translation authors
 
 * [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-* [Russian](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)

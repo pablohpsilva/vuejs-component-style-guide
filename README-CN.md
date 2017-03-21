@@ -1,14 +1,14 @@
 # Vue.js 组件编码规范
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### 其它语言
-* [英文](README.md)
-* [葡萄牙语](README-PTBR.md)
-* [韩语](README-KR.md)
-* [俄语](README-RU.md)
+* [英文](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [葡萄牙语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [韩语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [俄语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## 目标
 
@@ -400,10 +400,10 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -426,7 +426,7 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...

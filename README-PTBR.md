@@ -1,14 +1,14 @@
 # Style Guide para Componentes Vue.js
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### Traduções
-* [Chinês](README-CN.md)
-* [Coreano](README-KR.md)
-* [Inglês](README.md)
-* [Russo](README-RU.md)
+* [Chinês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Coreano](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [Inglês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [Russo](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## Propósito
 
@@ -113,9 +113,9 @@ Se elas tornam-se muito complexas ou difíceis de ler, **mova-as para um método
 ```html
 <!-- recomendado -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script>
   export default {
@@ -137,9 +137,9 @@ Se elas tornam-se muito complexas ou difíceis de ler, **mova-as para um método
 
 <!-- evite -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
@@ -287,23 +287,23 @@ Estrutura do componente:
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script>
   export default {
-		// Não se esqueça desse atributo
+    // Não se esqueça desse atributo
     name: 'RangeSlider',
     // componha novos componentes
     extends: {},
     // propriedades/variáveis do componente
     props: {
-			bar: {}, // Ordenado Alfabeticamente
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // Ordenado Alfabeticamente
+      foo: {},
+      fooBar: {},
+    },
     // variáveis
     data() {},
     computed: {},
@@ -412,10 +412,10 @@ Componente em Vue.js permite o acesso do contexto de outros componentes e elemen
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -438,7 +438,7 @@ Componente em Vue.js permite o acesso do contexto de outros componentes e elemen
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -467,13 +467,13 @@ que compõem o seu componente, levanto a um CSS que não sai do contexto do seu 
 
 ```html
 <style scoped>
-	/* recomendado */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* recomendado */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* evite */
-	.My-Example { } /* não tem escopo a um componente nem a um nome de um módulo; não segue nenhuma metodologia */
+  /* evite */
+  .My-Example { } /* não tem escopo a um componente nem a um nome de um módulo; não segue nenhuma metodologia */
 </style>
 ```
 
@@ -641,7 +641,7 @@ Or html:
 ```html
 <a href="https://github.com/voorhoede/Vue.js-style-guide">
     <img alt="Vue.js Style Guide badge"
-    	 src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
+       src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
 </a>
 ```
 
