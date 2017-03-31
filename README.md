@@ -390,7 +390,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 <!-- good example of when to use this.$refs -->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
-  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+  <button class="primary" @click="$refs.basicModal.hide()">Close</button>
 </modal>
 <button @click="$refs.basicModal.open()">Open modal</button>
 
