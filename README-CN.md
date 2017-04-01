@@ -457,7 +457,7 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
   .MyExample__item { }
 
   /* 避免 */
-  .My-Example { } /* not scoped to component or module name, not BEM compliant */
+  .My-Example { } /* 没有用组件名或模块名限制作用域, 不符合 BEM 规范 */
 </style>
 ```
 
@@ -493,7 +493,7 @@ range-slider/
 
 range slider 组件可通过拖动的方式来设置一个给定范围内的数值。
 
-该模块使用 [noUiSlider](http://refreshless.com/nouislider/) 来实现夸浏览器和 touch 功能的支持。
+该模块使用 [noUiSlider](http://refreshless.com/nouislider/) 来实现跨浏览器和 touch 功能的支持。
 
 ## 如何使用
 
@@ -544,7 +544,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 [ESLint](http://eslint.org/) 需要通过 [ESLint HTML 插件](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html)来抽取组件中的代码。
 
-通过 `.eslintrc` 文件来配置 ESlint，这样 IED 可以更好的理解校验配置项：
+通过 `.eslintrc` 文件来配置 ESlint，这样 IDE 可以更好的理解校验配置项：
 
 ```json
 {
@@ -570,7 +570,7 @@ eslint src/**/*.vue
 
 [JSHint](http://jshint.com/) 可以解析 HTML（使用 `--extra-ext`命令参数）和抽取代码（使用 `--extract=auto`命令参数）。
 
-通过 `.jshintrc` 文件来配置 ESlint，这样 IED 可以更好的理解校验配置项。
+通过 `.jshintrc` 文件来配置 ESlint，这样 IDE 可以更好的理解校验配置项。
 
 ```json
 {
