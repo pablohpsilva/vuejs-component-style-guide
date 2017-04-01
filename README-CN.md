@@ -457,7 +457,7 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
   .MyExample__item { }
 
   /* 避免 */
-  .My-Example { } /* not scoped to component or module name, not BEM compliant */
+  .My-Example { } /* 没有用组件名或模块名限制作用域, 不符合 BEM 规范 */
 </style>
 ```
 
