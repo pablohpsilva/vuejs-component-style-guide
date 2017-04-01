@@ -1,14 +1,14 @@
 # Style Guide para Componentes Vue.js
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### Traduções
-* [Chinês](README-CN.md)
-* [Coreano](README-KR.md)
-* [Inglês](README.md)
-* [Russo](README-RU.md)
+* [Chinês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Coreano](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [Inglês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [Russo](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## Propósito
 

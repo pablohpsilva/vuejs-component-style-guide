@@ -1,14 +1,14 @@
 # Vue.js Component Style Guide
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### Translations
-* [Brazilian Portuguese](README-PTBR.md)
-* [Chinese](README-CN.md)
-* [Korean](README-KR.md)
-* [Russian](README-RU.md)
+* [Brazilian Portuguese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [Chinese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Korean](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## Purpose
 
@@ -390,7 +390,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 <!-- good example of when to use this.$refs -->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
-  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+  <button class="primary" @click="$refs.basicModal.hide()">Close</button>
 </modal>
 <button @click="$refs.basicModal.open()">Open modal</button>
 
@@ -652,4 +652,4 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
 ## Translation authors
 
 * [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-* [Russian](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)

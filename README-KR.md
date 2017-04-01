@@ -1,14 +1,14 @@
 # Vue.js 컴포넌트 스타일 가이드
 
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### 번역
-* [브라질 포르투갈어](README-PTBR.md)
-* [중국어](README-CN.md)
-* [영어](README.md)
-* [러시아어](README-RU.md)
+* [브라질 포르투갈어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [중국어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [영어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [러시아어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## 목적
 
@@ -644,6 +644,6 @@ Or html:
 
 ## 번역자들
 
-* [한국어](README-KR.md): Lee Sun-Hyoup [github:kciter](https://github.com/kciter), [facebook: sunhyoup.lee](https://www.facebook.com/sunhyoup.lee)
+* [한국어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean): Lee Sun-Hyoup [github:kciter](https://github.com/kciter), [facebook: sunhyoup.lee](https://www.facebook.com/sunhyoup.lee)
 * [브라질 포르투갈어](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-* [러시아어](README-RU.md): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+* [러시아어](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)

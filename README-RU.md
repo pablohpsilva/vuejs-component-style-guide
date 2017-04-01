@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="img/logo.png"/>
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
 
 ### Переводы
- * [бразильский португальский](README-PTBR.md)
- * [английский](README.md)
- * [корейский язык](README-KR.md)
- * [китайский язык](README-CN.md)
+ * [бразильский португальский](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+ * [английский](https://pablohpsilva.github.io/vuejs-component-style-guide/#)
+ * [корейский язык](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+ * [китайский язык](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
 
 Этот документ предлагает для вас ряд правил по разработке компонентов Vue которые:
 
