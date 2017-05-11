@@ -38,6 +38,7 @@ This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/
 * [Document your component API](#document-your-component-api)
 * [Add a component demo](#add-a-component-demo)
 * [Lint your component files](#lint-your-component-files)
+* [Create components when needed](#create-components-when-needed)
 <!-- * [Add badge to your project](#add-badge-to-your-project) -->
 
 
@@ -598,6 +599,29 @@ Run JSHint
 jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 ```
 Note: JSHint does not accept `vue` as extension, but only `html`.
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Create components when needed
+
+### Why?
+
+Vue.js is a component framework based. Not knowing when to create components can lead to issues like:
+
+* If the component is too big, it probably will be hard to (re)use and maintain;
+* If the component is too small, your project gets flooded, harder to make components communicate;
+
+### How?
+
+* Always remember to build your components for your project needs, but you should also try to think of them being able to work out of it. If they can work out of your project, such as a library, it makes them a lot more robust and consistent;
+* It's always better to build your components as early as possible since it allows you to build your communications (props & events) on existing and stable components.
+
+### Rules
+
+* First, try to build obvious components as early as possible such as: modal, popover, toolbar, menu, header, etc. Overall, components you know for sure you will need later on. On your current page or globally;
+* Secondly, on each new development, for a whole page or a portion of it, try to think before rushing in. If you know some parts of it should be a component, build it;
+* Lastly, if you're not sure, then don't! Avoid polluting your project with "possibly useful later" components, they might just stand there forever, empty of smartness. Note it's better to break it down as soon as you realize it should have been, to avoid the complexity of compatibility with the rest of the project;
 
 [↑ back to Table of Contents](#table-of-contents)
 
