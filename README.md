@@ -26,7 +26,7 @@ This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/
 * [Module based development](#module-based-development)
 * [vue component names](#vue-component-names)
 <!-- * [Use `*.vue` extension](#use-vue-extension) -->
-* [Keep component expressions simple](#keep-expressions-simple)
+* [Keep component expressions simple](#keep-component-expressions-simple)
 * [Keep component props primitive](#keep-component-props-primitive)
 * [Harness your component props](#harness-your-component-props)
 * [Assign `this` to `component`](#assign-this-to-component)
