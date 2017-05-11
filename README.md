@@ -1,5 +1,15 @@
 # Vue.js Component Style Guide
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
+</p>
+
+### Translations
+* [Brazilian Portuguese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
+* [Chinese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Korean](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
+
 ## Purpose
 
 This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) code. Making it:
@@ -11,18 +21,14 @@ This guide provides a uniform way to structure your [Vue.js](http://vuejs.org/) 
 
 This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) by [De Voorhoede](https://github.com/voorhoede).
 
-<!-- ## Demos
-
-Our [Vue.js demos](https://github.com/voorhoede/Vue.js-demos#Vue.js-demos-) are a companion to this guide, illustrating the guidelines with practical examples. -->
-
 ## Table of Contents
 
 * [Module based development](#module-based-development)
 * [vue component names](#vue-component-names)
 <!-- * [Use `*.vue` extension](#use-vue-extension) -->
-* [Keep component expressions simple](#keep-expressions-simple)
-* [Keep component options primitive](#keep-component-options-primitive)
-* [Harness your component options](#harness-your-component-options)
+* [Keep component expressions simple](#keep-component-expressions-simple)
+* [Keep component props primitive](#keep-component-props-primitive)
+* [Harness your component props](#harness-your-component-props)
 * [Assign `this` to `component`](#assign-this-to-component)
 * [Component structure](#component-structure)
 * [Component event names](#component-event-names)
@@ -89,7 +95,7 @@ Vue component names must also be:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Keep expressions simple
+## Keep component expressions simple
 
 Vue.js's inline expressions are 100% Javascript. This makes them extremely powerful, but potentially also very complex. Therefore you should **keep expressions simple**.
 
@@ -106,15 +112,15 @@ If it gets too complex or hard to read **move it to methods or computed properti
 ```html
 <!-- recommended -->
 <template>
-	<h1>
-		{{ `${year}-${month}` }}
-	</h1>
+  <h1>
+    {{ `${year}-${month}` }}
+  </h1>
 </template>
 <script type="text/javascript">
   export default {
     computed: {
       month() {
-        return twoDigits((new Date()).getUTCMonth() + 1);
+        return this.twoDigits((new Date()).getUTCMonth() + 1);
       },
       year() {
         return (new Date()).getUTCFullYear();
@@ -130,29 +136,29 @@ If it gets too complex or hard to read **move it to methods or computed properti
 
 <!-- avoid -->
 <template>
-	<h1>
-		{{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
-	</h1>
+  <h1>
+    {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new Date()).getUTCMonth()+1)).slice(-2)}` }}
+  </h1>
 </template>
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Keep component options primitive
+## Keep component props primitive
 
-While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component options as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
+While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component props as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
 
 ### Why?
 
-* By using an attribute for each option separately the component has a clear and expressive API.
-* By using only primitives and functions as option values our component APIs are similar to the APIs of native HTML(5) elements. Which makes our custom elements directly familiar.
-* By using an attribute for each option, other developers can easily understand what is passed to the component instance.
+* By using an attribute for each prop separately the component has a clear and expressive API;
+* By using only primitives and functions as props values our component APIs are similar to the APIs of native HTML(5) elements;
+* By using an attribute for each prop, other developers can easily understand what is passed to the component instance;
 * When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
 
 ### How?
 
-Use a component attribute per option, with a primitive or function as value:
+Use a component attribute per props, with a primitive or function as value:
 
 ```html
 <!-- recommended -->
@@ -172,21 +178,21 @@ Use a component attribute per option, with a primitive or function as value:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Harness your component options
+## Harness your component props
 
-In Vue.js your component options are your API. A robust and predictable API makes your components easy to use by other developers.
+In Vue.js your component props are your API. A robust and predictable API makes your components easy to use by other developers.
 
-Component options are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component options** to allow for these different cases.
+Component props are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component props** to allow for these different cases.
 
-## Why?
+### Why?
 
-Harnessing your component options ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
+Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
 
-## How?
+### How?
 
-* Use defaults for option values.
+* Use defaults for props values.
 * Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
-* Check if option exists before using it.
+* Check if props exists before using it.
 
 ```html
 <template>
@@ -269,10 +275,10 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 
 * Having the component export a clear and grouped object, makes the code easy to read and easier for developers to have a code standard.
 * Alphabetizing the properties, data, computed, watches, and methods makes them easy to find.
-* Again, grouping makes the component easier to read (props, data and computed; watch and methods; lifecycle methods, etc.);
+* Again, grouping makes the component easier to read (name; extends; props, data and computed; components; watch and methods; lifecycle methods, etc.);
 * Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
-* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw) - [details?](#use-component-name-as-style-scope);
-* Use the template-script-style .vue file organization. The odds are you'll spend more time developing/fixing/testing on HTML than JavaScript in most cases.
+* Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
+* Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
 
 ### How?
 
@@ -280,23 +286,23 @@ Component structure:
 
 ```html
 <template lang="html">
-	<div class="Ranger__Wrapper">
-		<!-- ... -->
-	</div>
+  <div class="Ranger__Wrapper">
+    <!-- ... -->
+  </div>
 </template>
 
 <script type="text/javascript">
   export default {
-		// Do not forget this little guy
-    name: 'Ranger',
+    // Do not forget this little guy
+    name: 'RangeSlider',
     // compose new components
     extends: {},
     // component properties/variables
     props: {
-			bar: {}, // Alphabetized
-			foo: {},
-			fooBar: {},
-		},
+      bar: {}, // Alphabetized
+      foo: {},
+      fooBar: {},
+    },
     // variables
     data() {},
     computed: {},
@@ -320,19 +326,17 @@ Component structure:
 
 ## Component event names
 
-Vue.js provides events scoped to the component it emits and they are named as the developers desires. `~Make this paragraph better`
+Vue.js provides all Vue handler functions and expressions are strictly bound to the ViewModel. Each component events should follow a good naming style that will avoid issues during the development. See the **Why** below.
 
 ### Why?
 
 * Developers are free to use native likes event names and it can cause confusion down the line;
-* The freedom of naming events can lead to a DOM templates incompatibility;
-* `~Make this paragraph better`
+* The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
 
 ### How?
 
 * Event names should be kebab-cased;
-* Event names should have a prefix strongly related to the name of the component in use (prefer `drive-upload-success` over `upload-succeeded` event name). This allows you to drop in multiple component in the page without event namespacing clashing ([source](https://github.com/GoogleWebComponents/style-guide#events));
-* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like dropzone-upload-success, dropzone-upload-error, todo-item-remove, todo-item-select, etc. ([source](https://github.com/GoogleWebComponents/style-guide#events));
+* A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error or even dropzone-upload-success, dropzone-upload-error (if you see the need for having a scoped prefix);
 * Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ back to Table of Contents](#table-of-contents)
@@ -386,7 +390,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 <!-- good example of when to use this.$refs -->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
-  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+  <button class="primary" @click="$refs.basicModal.hide()">Close</button>
 </modal>
 <button @click="$refs.basicModal.open()">Open modal</button>
 
@@ -407,10 +411,10 @@ Vue.js supports components to have access to other components and basic HTML ele
     },
     methods: {
       open() {
-      	this.active = true;
+        this.active = true;
       },
       hide() {
-      	this.active = false;
+        this.active = false;
       },
     },
     // ...
@@ -433,7 +437,7 @@ Vue.js supports components to have access to other components and basic HTML ele
     // ...
     methods: {
       getRangeCurrentValue() {
-      	return this.$refs.range.currentValue;
+        return this.$refs.range.currentValue;
       },
     },
     // ...
@@ -462,13 +466,13 @@ CSS on all tags that compose your component, leading to a no leaking css styling
 
 ```html
 <style scoped>
-	/* recommended */
-	.MyExample { }
-	.MyExample li { }
-	.MyExample__item { }
+  /* recommended */
+  .MyExample { }
+  .MyExample li { }
+  .MyExample__item { }
 
-	/* avoid */
-	.My-Example { } /* not scoped to component or module name, not BEM compliant */
+  /* avoid */
+  .My-Example { } /* not scoped to component or module name, not BEM compliant */
 </style>
 ```
 
@@ -533,7 +537,7 @@ Add a `index.html` file with demos of the component with different configuration
 
 ### Why?
 
-* A component demo proves the module works in isolation.
+* A component demo proves the component works in isolation.
 * A component demo gives developers a preview before having to dig into the documentation or code.
 * Demos can illustrate all the possible configurations and variations a component can be used in.
 
@@ -551,13 +555,13 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 
 ### How?
 
-To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `opts`.
+To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
 
 #### ESLint
 
 [ESLint](http://eslint.org/) requires an extra [ESLint HTML plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html#eslint-plugin-html) to extract the script from the component files.
 
-Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
+Configure ESLint in a `.eslintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "extends": "eslint:recommended",
@@ -574,14 +578,14 @@ Configure ESLint in `modules/.eslintrc` (so IDEs can interpret it as well):
 
 Run ESLint
 ```bash
-eslint modules/**/*.vue
+eslint src/**/*.vue
 ```
 
 #### JSHint
 
 [JSHint](http://jshint.com/) can parse HTML (using `--extra-ext`) and extract script (using `--extract=auto`).
 
-Configure JSHint in `modules/.jshintrc` (so IDEs can interpret it as well):
+Configure JSHint in `.jshintrc` file (so IDEs can interpret it as well):
 ```json
 {
   "browser": true,
@@ -599,12 +603,9 @@ Note: JSHint does not accept `vue` as extension, but only `html`.
 
 ---
 
-# Wanna help?
+## Wanna help?
 
-Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues).
-
-# Thank you for your help!
-@miljan-aleksic on issue [#1](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/1)
+Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
 
 
 <!-- ## Add badge to your project
@@ -630,7 +631,7 @@ Or html:
 ```html
 <a href="https://github.com/voorhoede/Vue.js-style-guide">
     <img alt="Vue.js Style Guide badge"
-    	 src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
+       src="https://cdn.rawgit.com/voorhoede/Vue.js-style-guide/master/Vue.js-style-guide.svg">
 </a>
 ```
 
@@ -646,3 +647,9 @@ Or html:
 
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
  -->
+
+
+## Translation authors
+
+* [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+* [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
