@@ -1,5 +1,7 @@
 # Vue.js 组件编码规范
 
+> 这个 [链接](https://github.com/pablohpsilva/vuejs-component-style-guide/compare/6c5831912f9926a447f4d4531e745d53609aeb33...pablohpsilva:master) 用来查看本翻译与英文版是否有差别（如果你没有看到 README.md 发生变化，那就意味着这份翻译文档是最新的）。
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
