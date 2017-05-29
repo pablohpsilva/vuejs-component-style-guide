@@ -380,7 +380,7 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
 <!-- 使用 this.$refs 的适用情况-->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
-  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+  <button class="primary" @click="$refs.basicModal.hide()">Close</button>
 </modal>
 <button @click="$refs.basicModal.open()">Open modal</button>
 
