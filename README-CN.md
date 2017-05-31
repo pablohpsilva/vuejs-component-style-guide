@@ -1,5 +1,7 @@
 # Vue.js 组件编码规范
 
+> 这个 [链接](https://github.com/pablohpsilva/vuejs-component-style-guide/compare/6c5831912f9926a447f4d4531e745d53609aeb33...pablohpsilva:master) 用来查看本翻译与英文版是否有差别（如果你没有看到 README.md 发生变化，那就意味着这份翻译文档是最新的）。
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
 </p>
@@ -38,6 +40,7 @@
 * [提供组件 API 文档](#提供组件-api-文档)
 * [提供组件 demo](#提供组件-demo)
 * [对组件文件进行代码校验](#对组件文件进行代码校验)
+* [只在需要时创建组件](#只在需要时创建组件)
 <!-- * [为你的项目添加徽章标识](#为你的项目添加徽章标识) -->
 
 ## 基于模块开发
@@ -379,7 +382,7 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
 <!-- 使用 this.$refs 的适用情况-->
 <modal ref="basicModal">
   <h4>Basic Modal</h4>
-  <button class="primary" @click="$refs.basicModal.close()">Close</button>
+  <button class="primary" @click="$refs.basicModal.hide()">Close</button>
 </modal>
 <button @click="$refs.basicModal.open()">Open modal</button>
 
@@ -585,6 +588,26 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 ```
 
 注：JSHint 不接受 `vue` 扩展名的文件，只支持 `html`。
+
+## 只在需要时创建组件
+
+### 为什么？
+
+Vue.js 是一个基于组件的框架。如果你不知道何时创建组件可能会导致以下问题：
+
+* 如果组件太大, 可能很难重用和维护;
+* 如果组件太小，你的项目就会（因为深层次的嵌套而）被淹没，也更难使组件间通信;
+
+### 怎么做?
+
+* 始终记住为你的项目需求构建你的组件，但是你也应该尝试想到它们能够从中脱颖而出（独立于项目之外）。如果它们能够在你项目之外工作，就像一个库那样，就会使得它们更加健壮和一致。
+* 尽可能早地构建你的组件总是更好的，因为这样使得你可以在一个已经存在和稳定的组件上构建你的组件间通信（props & events）。
+
+### 规则
+
+* 首先，尽可能早地尝试构建出诸如模态框、提示框、工具条、菜单、头部等这些明显的（通用型）组件。总之，你知道的这些组件以后一定会在当前页面或者是全局范围内需要。
+* 第二，在每一个新的开发项目中，对于一整个页面或者其中的一部分，在进行开发前先尝试思考一下。如果你认为它有一部分应该是一个组件，那么就创建它吧。
+* 最后，如果你不确定，那就不要。避免那些“以后可能会有用”的组件污染你的项目。它们可能会永远的只是（静静地）待在那里，这一点也不聪明。注意，一旦你意识到应该这么做，最好是就把它打破，以避免与项目的其他部分构成兼容性和复杂性。
 
 [↑ 回到目录](#目录)
 
