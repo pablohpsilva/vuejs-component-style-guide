@@ -227,11 +227,13 @@ Harnessing your component props ensures your component will always function (def
 Within the context of a Vue.js component element, `this` is bound to the component instance.
 Therefore when you need to reference it in a different context, ensure `this` is available as `component`.
 
-In other words: Do **NOT** code things like `const self = this;` anymore. You're safe using Vue components.
+In other words: Do **NOT** code things like `var self = this;` anymore if you're using **ES6**. You're safe using Vue components.
 
 ### Why?
 
-* By assigning `this` to a variable named `component` the variable tells developers it's bound to the component instance wherever it's used.
+* Using ES6, there's no need to save `this` to a variable;
+* In general, when using arrow functions the lexical scope is kept
+* If you're **NOT** using ES6 and, therefore, not using `Arrow Functions`, you'd have to add `this` to a variable. That's the only exception.
 
 ### How?
 
