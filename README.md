@@ -26,7 +26,6 @@ This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/
 
 * [Module based development](#module-based-development)
 * [vue component names](#vue-component-names)
-<!-- * [Use `*.vue` extension](#use-vue-extension) -->
 * [Keep component expressions simple](#keep-component-expressions-simple)
 * [Keep component props primitive](#keep-component-props-primitive)
 * [Harness your component props](#harness-your-component-props)
@@ -40,6 +39,7 @@ This guide is inspired by the [RiotJS Style Guide](https://github.com/voorhoede/
 * [Add a component demo](#add-a-component-demo)
 * [Lint your component files](#lint-your-component-files)
 * [Create components when needed](#create-components-when-needed)
+<!-- * [Use `*.vue` extension](#use-vue-extension) -->
 <!-- * [Add badge to your project](#add-badge-to-your-project) -->
 
 
