@@ -8,6 +8,7 @@
 * [Chinês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
 * [Coreano](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
 * [Inglês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
+* [Japonês](https://pablohpsilva.github.io/vuejs-component-style-guide/#/japanese)
 * [Russo](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 
 ## Propósito

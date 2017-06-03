@@ -7,6 +7,7 @@
 ### Translations
 * [Brazilian Portuguese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
 * [Chinese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
+* [Japanese](https://pablohpsilva.github.io/vuejs-component-style-guide/#/japanese)
 * [Korean](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
 * [Russian](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
 

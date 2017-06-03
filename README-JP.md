@@ -5,6 +5,7 @@
 </p>
 
 ### 翻訳
+* [英語](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
 * [ブラジルポルトガル語](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
 * [中国語](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
 * [韓国語](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)

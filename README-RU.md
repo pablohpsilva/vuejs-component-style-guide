@@ -5,6 +5,7 @@
 ### Переводы
  * [бразильский португальский](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
  * [английский](https://pablohpsilva.github.io/vuejs-component-style-guide/#)
+ * [Японский](https://pablohpsilva.github.io/vuejs-component-style-guide/#/japanese)
  * [корейский язык](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
  * [китайский язык](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
 
