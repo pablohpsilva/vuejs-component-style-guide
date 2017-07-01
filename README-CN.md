@@ -1,6 +1,6 @@
 # Vue.js 组件编码规范
 
-> 这个 [链接](https://github.com/pablohpsilva/vuejs-component-style-guide/compare/6c5831912f9926a447f4d4531e745d53609aeb33...pablohpsilva:master) 用来查看本翻译与英文版是否有差别（如果你没有看到 README.md 发生变化，那就意味着这份翻译文档是最新的）。
+> 这个 [链接](https://github.com/sqrthree/vuejs-component-style-guide/compare/master...pablohpsilva:master) 用来查看本翻译与英文版是否有差别（如果你没有看到 README.md 发生变化，那就意味着这份翻译文档是最新的）。
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
@@ -28,7 +28,6 @@
 
 * [基于模块开发](#基于模块开发)
 * [vue 组件命名](#vue-组件命名)
-<!-- * [使用 `*.vue` 扩展名](#使用-vue-后缀作为扩展名) -->
 * [组件表达式简单化](#组件表达式简单化)
 * [组件 props 原子化](#组件-props-原子化)
 * [验证组件的 props](#验证组件的-props)
@@ -42,6 +41,7 @@
 * [提供组件 demo](#提供组件-demo)
 * [对组件文件进行代码校验](#对组件文件进行代码校验)
 * [只在需要时创建组件](#只在需要时创建组件)
+<!-- * [使用 `*.vue` 扩展名](#使用-vue-后缀作为扩展名) -->
 <!-- * [为你的项目添加徽章标识](#为你的项目添加徽章标识) -->
 
 ## 基于模块开发
@@ -218,11 +218,13 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 在 Vue.js 组件上下文中，`this`指向了组件实例。因此当你切换到了不同的上下文时，要确保 `this` 指向一个可用的 `component` 变量。
 
-换句话说，不要在编写这样的代码 `const self = this;` ，而是应该直接使用变量 `component`。
+换句话说，如果你正在使用 **ES6** 的话，就不要再编写 `var self = this;` 这样的代码了，您可以安全地使用 Vue 组件。
 
 ### 为什么？
 
-* 将组件 `this` 赋值给变量 `component`可用让开发者清楚的知道任何一个被使用的地方，它代表的是组件实例。
+* 使用 **ES6**，就不再需要将 `this` 保存到一个变量中了。
+* 一般来说，当你使用箭头函数时，会保留 `this` 的作用域。（译者注：箭头函数没有它自己的 this 值，箭头函数内的 this 值继承自外围作用域。）
+* 如果你没有使用 **ES6**，当然也就不会使用 `箭头函数` 啦，那你必须将 “this” 保存到到某个变量中。这是唯一的例外。
 
 ### 怎么做？
 
