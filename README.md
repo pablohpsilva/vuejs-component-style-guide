@@ -722,7 +722,7 @@ To use the mixin, simply import it into both components (I only show the mobile 
   import MenuMixin from './MenuMixin'
 
   export default {
-    mixin: [MenuMixin]
+    mixins: [MenuMixin]
   }
 </script>
 ```
