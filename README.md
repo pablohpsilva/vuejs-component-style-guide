@@ -709,7 +709,7 @@ const MenuMixin = {
 export default MenuMixin
 ```
 
-To use the mixin, simply import into both components (I only show the mobile component).
+To use the mixin, simply import it into both components (I only show the mobile component).
 
 ```html
 <template>
@@ -725,6 +725,7 @@ To use the mixin, simply import into both components (I only show the mobile com
     mixin: [MenuMixin]
   }
 </script>
+```
 
 [↑ back to Table of Contents](#table-of-contents)
 
