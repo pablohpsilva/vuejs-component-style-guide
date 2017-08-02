@@ -564,7 +564,7 @@ Lintersはコードの一貫性を高め、構文エラーの追跡に役立ち�
 
 ### 方法
 
-lintersがあなたの`*.vue`ファイルからスクリプトを抽出するためには, [スクリプトを<script>コンポーネントの中に置き](#use-script-inside-component)、 [コンポーネントの記述をシンプルに保つ](#keep-component-expressions-simple)ようにしてください (lintersはそれらを理解できないので)。 グローバル変数`vue`とコンポーネントの`props`を許可するようにリンターを設定します。
+lintersがあなたの`*.vue`ファイルからスクリプトを抽出するためには, [スクリプトを`<script>`コンポーネントの中に置き](#use-script-inside-component)、 [コンポーネントの記述をシンプルに保つ](#keep-component-expressions-simple)ようにしてください (lintersはそれらを理解できないので)。 グローバル変数`vue`とコンポーネントの`props`を許可するようにリンターを設定します。
 
 #### ESLint
 
