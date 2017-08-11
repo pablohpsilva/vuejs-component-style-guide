@@ -628,6 +628,56 @@ Vue.js is a component framework based. Not knowing when to create components can
 
 [↑ back to Table of Contents](#table-of-contents)
 
+## Use mixins wherever possible
+
+### Why?
+
+Mixins encapsulate reusable code and avoid duplication. If two components share the same functionality, a mixin can be used. With mixins, you can focus on the individual component task and abstract common code. This helps to better maintain your application.
+
+### How?
+
+Let's say you have a mobile and desktop menu component whose share some functionality. We can abstract the core 
+functionalities of both into a mixin like this.
+
+```js
+const MenuMixin = {
+  data () {
+    return {
+      language: 'EN'
+    }
+  },
+
+  methods: {
+    changeLanguage () {
+      if (this.language === 'DE') this.$set(this, 'language', 'EN')
+      if (this.language === 'EN') this.$set(this, 'language', 'DE')
+    }
+  }
+}
+
+export default MenuMixin
+```
+
+To use the mixin, simply import it into both components (I only show the mobile component).
+
+```html
+<template>
+  <ul class="mobile">
+    <li @click="changeLanguage">Change language</li>
+  </ul>  
+</template>
+
+<script>
+  import MenuMixin from './MenuMixin'
+
+  export default {
+    mixins: [MenuMixin]
+  }
+</script>
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
 ---
 
 ## Wanna help?
