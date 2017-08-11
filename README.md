@@ -636,59 +636,8 @@ Mixins encapsulate reusable code and avoid duplication. If two components share 
 
 ### How?
 
-Let's say you have a mobile and desktop menu component whose share some functionality. First, let's see how the mobile component looks like.
-
-```html
-<template>
-  <ul class="mobile">
-    <li @click="changeLanguage">Change language</li>
-  </ul>  
-</template>
-
-<script>
-  export default {
-    data () {
-      return {
-        language: 'EN'
-      }
-    },
-
-    methods: {
-      changeLanguage () {
-        if (this.language === 'DE') this.$set(this, 'language', 'EN')
-        if (this.language === 'EN') this.$set(this, 'language', 'DE')
-      }
-    }
-  }
-</script>
-```
-
-Now let's investigate the desktop menu component.
-
-```html
-<template>
-  <button @click="changeLanguage">Change language</button>
-</template>
-
-<script>
-  export default {
-    data () {
-      return {
-        language: 'EN'
-      }
-    },
-
-    methods: {
-      changeLanguage () {
-        if (this.language === 'DE') this.$set(this, 'language', 'EN')
-        if (this.language === 'EN') this.$set(this, 'language', 'DE')
-      }
-    }
-  }
-</script>
-```
-
-We can abstract the core functionalities of both into a mixin like this.
+Let's say you have a mobile and desktop menu component whose share some functionality. We can abstract the core 
+functionalities of both into a mixin like this.
 
 ```js
 const MenuMixin = {
