@@ -56,8 +56,7 @@ Módulos pequenos são fáceis de aprender, compreender, manter, reusar e debuga
 
 Cada componente Vue (como qualquer outro módulo) deve ser [FIRST](https://addyosmani.com/first/): *Focused* ([single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle)), *Independent*, *Reusable*, *Small* e *Testable*.
 
-Se o seu componente faz muitas coisas ou está grande demais, quebre-o em componentes menores, cada um fazendo uma única coisa. Como uma regra
-If your component does too much or gets too big, split it up into smaller components which each do just one thing. Como um princípio básico, tente manter o componente com menos de 100 linhas de código.
+Se o seu componente faz muitas coisas ou está grande demais, quebre-o em componentes menores, cada um fazendo uma única coisa. Como um princípio básico, tente manter o componente com menos de 100 linhas de código.
 Assegure que o componente Vue funcione isoladamente, como por exemplo, se somente ele é necessário para uma demonstração dele mesmo.
 
 [↑ voltar para o Índice](#indice)
@@ -456,7 +455,6 @@ Elementos dos componentes Vue.js são elementos customizados que podem ser usado
 
 ### Porque?
 
-* Scoping styles to a component element improves predictability as its prevents styles leaking outside the component element;
 * Usar `<style scope>` num componente, melhora a previsibilidade e previne os estilos de vazar fora do componente;
 * Usando o mesmo nome para o diretório do módulo, o componente Vue.js e o estilo ficam mais fáceis de serem vistos e entendidos de onde eles surgiram.
 
