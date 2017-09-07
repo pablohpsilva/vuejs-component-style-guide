@@ -354,7 +354,7 @@ Vue.js suporta componentes aninhados, assim como acesso ao contexto do pai deste
 ### Como?
 
 * Passe os valores do pai para o componente via props;
-* Passe os métodos definidos no componente pao para o componente filho usando callbacks em expressões;
+* Passe os métodos definidos no componente pai para o componente filho usando callbacks em expressões;
 * Emita eventos do componente filho e escute-os no componente pai.
 
 [↑ voltar para o Índice](#indice)
@@ -375,7 +375,7 @@ Componente em Vue.js permite o acesso do contexto de outros componentes e elemen
 * Nunca escreva código muito específico. Se voce precisa escrever um código específico dentro de um componente genérico, significa que a API ainda não está genérica o suficiente ou talvez você precise de um outro componente;
 * Cheque todas as props para ver se falta alguma coisa. Se esse for o caso, melhore-o ou crie uma issue com a proposta de melhoria;
 * Cheque todos os eventos. Na maioria dos casos, desenvolvedores esquecem a comunicação entre Pai-Filho (eventos);
-* **Props down, events up!** Melhore o seu compoennte quando for necessário com uma boa API e tenha isolamento como um objetivo;
+* **Props down, events up!** Melhore o seu componente quando for necessário com uma boa API e tenha isolamento como um objetivo;
 * Usando `this.$refs` em componentes, deveria ser usado somente quando props e eventos não podem mais ser usados ou quando faz mais sentido (veja o exemplo abaixo);
 * Usando `this.$refs` para acessar elementos DOM (ao invés de usar `jQuery`, `document.getElement*`, `document.queryElement`) é tranquilo, quando o elemento não pode ser manipulado com data binding ou com uma diretiva.
 
