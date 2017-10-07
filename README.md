@@ -299,6 +299,8 @@ Component structure:
   export default {
     // Do not forget this little guy
     name: 'RangeSlider',
+    // share common functionality with component mixins
+    mixins: [],
     // compose new components
     extends: {},
     // component properties/variables
