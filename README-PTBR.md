@@ -337,7 +337,7 @@ Vue.js liga todas as funções e expressões estritamente ligadas ao ViewModel d
 ### Como?
 
 * Eventos devem ser nomeados usando kebab-cased;
-* Um único evento deve ser emitido para cada ação no seu componente que pode ser interessante como uma API, por eemplo: upload-success, upload-error ou até mesmo dropzone-upload-success, dropzone-upload-error (se você acha que ter um escopo como prefixo seja necessário);
+* Um único evento deve ser emitido para cada ação no seu componente que pode ser interessante como uma API, por exemplo: upload-success, upload-error ou até mesmo dropzone-upload-success, dropzone-upload-error (se você acha que ter um escopo como prefixo seja necessário);
 * Eventos devem terminar em verbos e usar a nomes no infinitivo (exemplo, client-api-load) ou usar substantivos (exemplo, drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
 [↑ voltar para o Índice](#indice)
@@ -455,7 +455,7 @@ Elementos dos componentes Vue.js são elementos customizados que podem ser usado
 
 ### Porque?
 
-* Usar `<style scope>` num componente, melhora a previsibilidade e previne os estilos de vazar fora do componente;
+* Usar `<style scope>` num componente, melhora a previsibilidade e previne os estilos de vazar para fora do componente;
 * Usando o mesmo nome para o diretório do módulo, o componente Vue.js e o estilo ficam mais fáceis de serem vistos e entendidos de onde eles surgiram.
 
 ### Como?
@@ -537,7 +537,7 @@ Adicione um `index.html` que tenha demonstrações do componente com configuraç
 
 ### Porque?
 
-* Uma demontração do componente prova que o component funciona isoladamente;
+* Uma demontração do componente prova que o componente funciona isoladamente;
 * Uma demontração do componente dá aos desenvolvedores uma prévia antes de entrar na documentação ou no código;
 * Demonstrações ilustram todas as possíveis configurações e variações que um componente pode ser usado.
 
@@ -555,7 +555,7 @@ Linters melhoram a consistência de código e ajudam a rastrear erros de sintaxe
 
 ### Como?
 
-Para fazer com que linters estraiam o script dos seus arquivos `*.vue`, configure o seu linter para acessar variáveis globais `vue` e props de componentes.
+Para fazer com que linters extraiam o script dos seus arquivos `*.vue`, configure o seu linter para acessar variáveis globais `vue` e props de componentes.
 
 #### ESLint
 
