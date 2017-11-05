@@ -537,8 +537,8 @@ Adicione um `index.html` que tenha demonstrações do componente com configuraç
 
 ### Porque?
 
-* Uma demontração do componente prova que o componente funciona isoladamente;
-* Uma demontração do componente dá aos desenvolvedores uma prévia antes de entrar na documentação ou no código;
+* Uma demonstração do componente prova que o componente funciona isoladamente;
+* Uma demonstração do componente dá aos desenvolvedores uma prévia antes de entrar na documentação ou no código;
 * Demonstrações ilustram todas as possíveis configurações e variações que um componente pode ser usado.
 
 [↑ voltar para o Índice](#indice)
