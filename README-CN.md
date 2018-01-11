@@ -330,7 +330,7 @@ Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组�
 
 * 事件名也使用连字符命名。
 * 一个事件的名字对应组件外的一组意义操作，如：upload-success、upload-error 以及 dropzone-upload-success、dropzone-upload-error （如果需要前缀的话）。
-* 事件命名应该以动词（如 client-api-load） 或是 形容词（如 drive-upload-success）结尾。（[出处](https://github.com/GoogleWebComponents/style-guide#events)）
+* 事件命名应该以动词（如 client-api-load） 或是 名词（如 drive-upload-success）结尾。（[出处](https://github.com/GoogleWebComponents/style-guide#events)）
 
 
 [↑ 回到目录](#目录)
