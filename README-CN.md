@@ -7,6 +7,7 @@
 </p>
 
 ### 其它语言
+
 * [英文](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
 * [葡萄牙语](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
 * [日本](https://pablohpsilva.github.io/vuejs-component-style-guide/#/japanese)
@@ -288,7 +289,9 @@ export default {
   export default {
     // 不要忘记了 name 属性
     name: 'RangeSlider',
-    // 组合其它组件
+    // 使用组件 mixins 共享通用功能
+    mixins: [],
+    // 组成新的组件
     extends: {},
     // 组件属性、变量
     props: {
@@ -611,6 +614,56 @@ Vue.js 是一个基于组件的框架。如果你不知道何时创建组件可�
 * 首先，尽可能早地尝试构建出诸如模态框、提示框、工具条、菜单、头部等这些明显的（通用型）组件。总之，你知道的这些组件以后一定会在当前页面或者是全局范围内需要。
 * 第二，在每一个新的开发项目中，对于一整个页面或者其中的一部分，在进行开发前先尝试思考一下。如果你认为它有一部分应该是一个组件，那么就创建它吧。
 * 最后，如果你不确定，那就不要。避免那些“以后可能会有用”的组件污染你的项目。它们可能会永远的只是（静静地）待在那里，这一点也不聪明。注意，一旦你意识到应该这么做，最好是就把它打破，以避免与项目的其他部分构成兼容性和复杂性。
+
+[↑ 回到目录](#目录)
+
+---
+
+## 尽可能使用 mixins
+
+### 为什么?
+
+Mixins 封装可重用的代码，避免了重复。如果两个组件共享有相同的功能，则可以使用 mixin。通过 mixin，你可以专注于单个组件的任务和抽象的通用代码。这有助于更好地维护你的应用程序。
+
+### 怎么做?
+
+假设你有一个移动端和桌面端的菜单组件，它们共享一些功能。我们可以抽象出这两个组件的核心功能到一个 mixin 中，例如：
+
+```js
+const MenuMixin = {
+  data () {
+    return {
+      language: 'EN'
+    }
+  },
+
+  methods: {
+    changeLanguage () {
+      if (this.language === 'DE') this.$set(this, 'language', 'EN')
+      if (this.language === 'EN') this.$set(this, 'language', 'DE')
+    }
+  }
+}
+
+export default MenuMixin
+```
+要使用 mixin，只需将其导入到两个组件中（我只展示移动组件）。
+
+```html
+<template>
+  <ul class="mobile">
+    <li @click="changeLanguage">Change language</li>
+  </ul>
+</template>
+
+<script>
+  import MenuMixin from './MenuMixin'
+
+  export default {
+    mixins: [MenuMixin]
+  }
+</script>
+```
 
 [↑ 回到目录](#目录)
 
