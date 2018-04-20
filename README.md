@@ -69,7 +69,7 @@ Each component name must be:
 
 * **Meaningful**: not over specific, not overly abstract.
 * **Short**: 2 or 3 words.
-* **Pronounceable**: we want to be able talk about them.
+* **Pronounceable**: we want to be able to talk about them.
 
 Vue component names must also be:
 
