@@ -561,7 +561,7 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 
 ### How?
 
-To allow linters to extract the scripts from your `*.vue` files, [put script inside a `<script>` component](#use-script-inside-component) and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
+To allow linters to extract the scripts from your `*.vue` files, put script inside a `<script>` component and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
 
 #### ESLint
 
