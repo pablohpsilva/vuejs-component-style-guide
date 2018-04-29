@@ -24,22 +24,22 @@
 
 ## 目次
 
-* [モジュールベースの開発](#module-based-development)
-* [Vueコンポーネントの名前](#vue-component-names)
+* [モジュールベースの開発](#モジュールベースの開発)
+* [Vueコンポーネントの名前](#vueコンポーネントの名前)
 <!-- * [Use `*.vue` extension](#use-vue-extension) -->
-* [コンポーネントの記述をシンプルに保つ](#keep-component-expressions-simple)
-* [コンポーネントのpropをプリミティブに保つ](#keep-component-props-primitive)
-* [コンポーネントのpropの利用](#harness-your-component-props)
-* [`this`を`component`に割り当てる](#assign-this-to-component)
-* [コンポーネント構成](#component-structure)
-* [コンポーネントイベント名](#component-event-names)
-* [`this.$parent`を避ける](#avoid-thisparent)
-* [`this.$refs`は注意して使用する](#use-thisrefs-with-caution)
-* [スタイルスコープとしてコンポーネント名を使用する](#use-component-name-as-style-scope)
-* [コンポーネントAPIをドキュメント化する](#document-your-component-api)
-* [コンポーネントデモの追加](#add-a-component-demo)
-* [コンポーネントファイルをLintする](#lint-your-component-files)
-* [必要に応じてコンポーネントを作成する](#create-components-when-needed)
+* [コンポーネントの記述をシンプルに保つ](#コンポーネントの記述をシンプルに保つ)
+* [コンポーネントのpropsをプリミティブに保つ](#コンポーネントのpropsをプリミティブに保つ)
+* [コンポーネントのpropsの利用](#コンポーネントのpropsの利用)
+* [`this`を`component`に割り当てる](#thisをcomponentに割り当てる)
+* [コンポーネント構成](#コンポーネント構成)
+* [コンポーネントイベント名](#コンポーネントイベント名)
+* [`this.$parent`を避ける](#thisparentを避ける)
+* [`this.$refs`は注意して使用する](#thisrefsは注意して使用する)
+* [スタイルスコープとしてコンポーネント名を使用する](#スタイルスコープとしてコンポーネント名を使用する)
+* [コンポーネントAPIをドキュメント化する](#コンポーネントapiをドキュメント化する)
+* [コンポーネントデモの追加](#コンポーネントデモの追加)
+* [コンポーネントファイルをLintする](#コンポーネントファイルをlintする)
+* [必要に応じてコンポーネントを作成する](#必要に応じてコンポーネントを作成する)
 <!-- * [Add badge to your project](#add-badge-to-your-project) -->
 
 
@@ -62,7 +62,7 @@
 経験則から言うと、各コンポーネントは１００行以下のコードになるようにするのがいいでしょう。また、例えばスタンドアローンのデモを追加することによって、
 Vueコンポーネントが独立して動作することを確認しましょう。
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## Vueコンポーネントの名前
@@ -100,7 +100,7 @@ Vueコンポーネントが独立して動作することを確認しましょ�
 <slider></slider> <!-- カスタム要素仕様に準拠していません -->
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントの記述をシンプルに保つ
@@ -151,7 +151,7 @@ Vue.jsのインラインの記述は100％JavaScriptです。これは非常に�
 </template>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントのpropsをプリミティブに保つ
@@ -162,7 +162,7 @@ Vue.jsは複雑なJavaScriptオブジェクトを渡せるようになってい�
 
 * 各propの属性を別々に使用することにより、コンポーネントは明確で表現力豊かなAPIを持つことになります。
 * propsの値としてプリミティブとファンクションのみを使用することで、コンポーネントのAPIをネイティブHTML（5）のAPIに似たものにできます。
-* 各propの属性を使用することで、他の開発者がコンポネーントインスタンスに何が渡されるかを理解しやすくなります。
+* 各propの属性を使用することで、他の開発者がコンポーネントインスタンスに何が渡されるかを理解しやすくなります。
 * 複雑なオブジェクトが渡されると、そのオブジェクトのどのプロパティとメソッドが実際にカスタムコンポーネントで使われるかがわかりにくくなります。これによりコードのリファクタリングが難しくなり、腐敗を招くことになります。
 
 ### 方法
@@ -184,7 +184,7 @@ Vue.jsは複雑なJavaScriptオブジェクトを渡せるようになってい�
 <range-slider :config="complexConfigObject"></range-slider>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントのpropsの利用
@@ -227,7 +227,7 @@ Vue.jsでは、あなたのコンポーネントのpropsはあなたのAPIです
 </script>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## `this`を`component`に割り当てる
@@ -275,7 +275,7 @@ export default {
 </script>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネント構成
@@ -288,7 +288,7 @@ export default {
 * props、data、computed、watches、そしてmethodsをアルファベット順に並べることで、見つけやすくなります。
 * 繰り返しになりますが, コンポーネントをグループ化することで読みやすくなります (name、extends、props、dataそしてcomputed、components、 watch、methods、lifecycle methods、など);
 * `name`属性を使いましょう. [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en)とname属性を使うと、開発/テストが容易になります。
-* [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw)、または [rscss](https://github.com/rstacruz/rscss)のようなCSSの命名方法論を使いましょう。 - [詳細?](#use-component-name-as-style-scope);
+* [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw)、または [rscss](https://github.com/rstacruz/rscss)のようなCSSの命名方法論を使いましょう。 - [詳細?](#スタイルスコープとしてコンポーネント名を使用する);
 * Vue.jsの製作者Evan Youが推奨するように、テンプレートスクリプト形式の.vueファイル構成を使用しましょう。
 
 ### 方法
@@ -333,7 +333,7 @@ export default {
 </style>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 ## コンポーネントイベント名
 
@@ -350,7 +350,7 @@ Vue.jsはすべてのVueハンドラ関数を提供し、式はViewModelに厳�
 * あなたのコンポーネントで外部で関心を持つ独自のアクションのため、upload-success、upload-error、さらにはdropzone-upload-success、 dropzone-upload-errorのような固有の名前をつける必要があります。(スコープ付きプレフィックスを使用する必要がある場合は)
 * イベント名は末尾が不定形の動詞(例 client-api-load)、または名詞(例 drive-upload-success)で終わるべきです。([出典](https://github.com/GoogleWebComponents/style-guide#events));
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 ## `this.$parent`を避ける
 
@@ -367,7 +367,7 @@ Vue.jsは、親コンテキストにアクセスできるネストされたコ�
 * 属性の式のコールバックを使用して、親コンポーネントで定義されたメソッドを子コンポーネントに渡します。
 * 子コンポーネントからイベントを発行し、それを親コンポーネントでキャッチします。
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 ## `this.$refs`は注意して使用する
 
@@ -456,7 +456,7 @@ Vue.jsは`ref`属性を介して他のコンポーネントや、基本的なHTM
 </script>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## スタイルスコープとしてコンポーネント名を使用する
@@ -487,7 +487,7 @@ BEMとOOCSSに基づくネームスペースプレフィックスとしてコン
 </style>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントAPIをドキュメント化する
@@ -539,7 +539,7 @@ range sliderは、スライダーレールのハンドルを開始値と終了�
 スライダの外観をカスタマイズするには[noUiSliderドキュメントのStylingセクション](http://refreshless.com/nouislider/more/#section-styling)を参照してください。
 
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントデモの追加
@@ -552,7 +552,7 @@ range sliderは、スライダーレールのハンドルを開始値と終了�
 * コンポーネントのデモは、ドキュメンテーションやコードを掘り起こす前に、開発者にプレビューを提供します。
 * デモでは、コンポーネントを使用できるすべての可能な構成とバリエーションを示すことができます。
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## コンポーネントファイルをLintする
@@ -566,7 +566,7 @@ Lintersはコードの一貫性を高め、構文エラーの追跡に役立ち�
 
 ### 方法
 
-lintersがあなたの`*.vue`ファイルからスクリプトを抽出するためには, [スクリプトを`<script>`コンポーネントの中に置き](#use-script-inside-component)、 [コンポーネントの記述をシンプルに保つ](#keep-component-expressions-simple)ようにしてください (lintersはそれらを理解できないので)。 グローバル変数`vue`とコンポーネントの`props`を許可するようにリンターを設定します。
+lintersがあなたの`*.vue`ファイルからスクリプトを抽出するためには, [スクリプトを`<script>`コンポーネントの中に置き](#use-script-inside-component)、 [コンポーネントの記述をシンプルに保つ](#コンポーネントの記述をシンプルに保つ)ようにしてください (lintersはそれらを理解できないので)。 グローバル変数`vue`とコンポーネントの`props`を許可するようにリンターを設定します。
 
 #### ESLint
 
@@ -610,7 +610,7 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 ```
 注意: JSHintは`vue`を拡張子として受け入れず, htmlだけを受け入れます。
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 
 ## 必要に応じてコンポーネントを作成する
@@ -633,7 +633,7 @@ Vue.jsはコンポーネントフレームワークに基づいています。�
 * 第２に、新しい開発ごとに、ページ全体またはその一部分について、急いで開発する前に考えてみてください。その一部がコンポーネントであることが分かっている場合は、作成してください。
 * 最後に、もし確信がなければ、コンポーネントを作らないでください！"後で役立つかもしれない"コンポーネントであなたのプロジェクトを汚染するのを避けましょう。それらは空っぽで、永遠にそこにあるだけかもしれません。プロジェクトの残りの部分との互換性の複雑さを避けるために、その状態になっていたことに気づいたらすぐにそれを分解するよう注意してください。
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 ---
 
@@ -669,7 +669,7 @@ Or html:
 </a>
 ```
 
-[↑ 目次に戻る](#table-of-contents)
+[↑ 目次に戻る](#目次)
 
 ---
 
