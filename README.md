@@ -166,11 +166,11 @@ Use a component attribute per props, with a primitive or function as value:
 <!-- recommended -->
 <range-slider
   :values="[10, 20]"
-  min="0"
-  max="100"
-  step="5"
-  :on-slide="updateInputs"
-  :on-end="updateResults">
+  :min="0"
+  :max="100"
+  :step="5"
+  @on-slide="updateInputs"
+  @on-end="updateResults">
 </range-slider>
 
 <!-- avoid -->
