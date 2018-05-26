@@ -160,11 +160,11 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 <!-- 推荐 -->
 <range-slider
   :values="[10, 20]"
-  min="0"
-  max="100"
-  step="5"
-  :on-slide="updateInputs"
-  :on-end="updateResults">
+  :min="0"
+  :max="100"
+  :step="5"
+  @on-slide="updateInputs"
+  @on-end="updateResults">
 </range-slider>
 
 <!-- 避免 -->
@@ -547,7 +547,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 ### 怎么做？
 
-为了校验工具能够校验 `*.vue`文件，你需要将代码编写在 `<script>`标签中，并使[组件表达式简单化](#保持组件表达式简单化)，因为校验工具无法理解行内表达式，配置校验工具可以访问全局变量 `vue` 和组件的 `props`。
+为了校验工具能够校验 `*.vue`文件，你需要将代码编写在 `<script>` 标签中，并使[组件表达式简单化](#保持组件表达式简单化)，因为校验工具无法理解行内表达式，配置校验工具可以访问全局变量 `vue` 和组件的 `props`。
 
 #### ESLint
 
