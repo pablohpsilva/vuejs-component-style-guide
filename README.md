@@ -290,7 +290,7 @@ Component structure:
 
 ```html
 <template lang="html">
-  <div class="Ranger__Wrapper">
+  <div class="RangeSlider__Wrapper">
     <!-- ... -->
   </div>
 </template>
@@ -324,7 +324,7 @@ Component structure:
 </script>
 
 <style scoped>
-  .Ranger__Wrapper { /* ... */ }
+  .RangeSlider__Wrapper { /* ... */ }
 </style>
 ```
 
