@@ -73,7 +73,7 @@ Each component name must be:
 
 Vue component names must also be:
 
-* **Custom element spec compliant**: [include a hyphen](https://www.w3.org/TR/custom-elements/#concepts), don't use reserved names.
+* **Custom element spec compliant**: [include a hyphen](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), don't use reserved names.
 * **`app-` namespaced**: if very generic and otherwise 1 word, so that it can easily be reused in other projects.
 
 ### Why?
