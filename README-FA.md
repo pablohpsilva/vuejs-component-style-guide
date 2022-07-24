@@ -52,33 +52,33 @@
 
 ### چرا?
 
-ماژول های کوچک برای یادگیری و فهمیدن و نگهداری و استفاده مجدد و رفع مشکل راحت تر هستند. هم برای خود شما و هم برای توسعه دهندگان دیگر.
+ماژول های کوچک برای یادگیری، فهمیدن، نگهداری، استفاده مجدد و رفع مشکلات چه برای خود شما و چه برای توسعه دهندگان دیگر راحت تر هستند.
 
 ### با چه روشی?
 
-Each Vue component (like any module) must be [در ابتدا](https://addyosmani.com/first/): _داشتن یک هدف مشخص_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle)), _Independent_, _Reusable_, _Small_ and _Testable_.
+هر کامپوننت Vue (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle)), _مستقل_, _قابل استفاده مجدد_, _کوچک_ و _تست پذیر_ باشد.
 
-If your component does too much or gets too big, split it up into smaller components which each do just one thing. As a rule of thumb, try to keep each component file less than 100 lines of code.
-Also ensure your Vue component works in isolation. For instance by adding a stand-alone demo.
+اگر کامپوننت شما کار های زیادی انجام می دهد و یا خیلی بزرگ شده است آن را به کامپوننا های کوچکتر تقسیم کتید به طوری که هر کدام فقط یه کار را انجام دهند و بر حسب تجربه تلاش کنید که فایل هر کامپوننت کمتر از 100 خط کد باشد.
+همچنین مطمئن شوید کامپوننت شما به صورت مجزا کار می کند برای مثال یک دمو مستقل برای آن قرار دهید.
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## Vue Component Names
+## [نام های کامپوننت Vue
 
-Each component name must be:
+نام هر کامپوننت باید موارد زیر را شامل شود:
 
-- **Meaningful**: not over specific, not overly abstract.
-- **Short**: 2 or 3 words.
-- **Pronounceable**: we want to be able to talk about them.
+- **معنی دار**: نه بیش از حد دقیق و نه بیش از حد خلاصه شده و انتزاعی باشد.
+- **کوتاه**: 2 یا 3 کلمه.
+- **قابل تلفظ**: ما می خواهیم درباره آن ها حرف بزنیم.
 
-Vue component names must also be:
+همچنین نام هر کامپوننت ویو باید مطابق موارد زیر باشد:
 
-- **Custom element spec compliant**: [include a hyphen](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), don't use reserved names.
-- **`app-` namespaced**: if very generic and otherwise 1 word, so that it can easily be reused in other projects.
+- **مطابق با تعریف عنصر سفارشی**: [شامل خط فاصله](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), از نام های رزرو شده استفاده نکنید.
+- **`app-` namespaced**: یا خیلی عمومی یا یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
 
 ### چرا؟
 
-- The name is used to communicate about the component. So it must be short, meaningful and pronounceable.
+- از نام برای ارتباط برقرار کردن با کامپوننت استفاده می شود. پس باید کوتاه، با معنی و قابل تلفظ باشد.
 
 ### با چه روشی?
 
@@ -100,7 +100,7 @@ Vue component names must also be:
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## Keep component expressions simple
+## تکه کد های کامپوننت را ساده نگه دارید
 
 Vue.js's inline expressions are 100% Javascript. This makes them extremely powerful, but potentially also very complex. Therefore you should **keep expressions simple**.
 
@@ -258,7 +258,7 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
   }
 </script>
 
-<!-- avoid -->
+<!-- پرهیز کنید -->
 <script type="text/javascript">
   export default {
     methods: {
@@ -266,7 +266,7 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
         return 'hello'
       },
       printHello() {
-        const self = this // unnecessary
+        const self = this // غیر ضروری
         console.log(self.hello())
       },
     },
@@ -276,7 +276,7 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## Component structure
+## ساختار کامپوننت
 
 Make it easy to reason and follow a sequence of thoughts. See the How.
 
@@ -569,7 +569,7 @@ Configure ESLint in a `.eslintrc` file (so IDEs can interpret it as well):
 
 ```json
 {
-  "extends": "eslint:پیشنهادی",
+  "extends": "eslint:recommended",
   "plugins": ["html"],
   "env": {
     "browser": true
@@ -624,7 +624,7 @@ Vue.js is a component framework based. Not knowing when to create components can
 - Always remember to build your components for your project needs, but you should also try to think of them being able to work out of it. If they can work out of your project, such as a library, it makes them a lot more robust and consistent;
 - It's always better to build your components as early as possible since it allows you to build your communications (props & events) on existing and stable components.
 
-### Rules
+### قوانین
 
 - First, try to build obvious components as early as possible such as: modal, popover, toolbar, menu, header, etc. Overall, components you know for sure you will need later on. On your current page or globally;
 - Secondly, on each new development, for a whole page or a portion of it, try to think before rushing in. If you know some parts of it should be a component, build it;
@@ -632,7 +632,7 @@ Vue.js is a component framework based. Not knowing when to create components can
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## Use mixins wherever possible
+## از mixins هر زمانی که ممکن بود استفاده کنید
 
 ### چرا؟
 
@@ -684,9 +684,9 @@ To use the mixin, simply import it into both components (I only show the mobile 
 
 ---
 
-## Wanna help?
+## میخواهید کمک کنید?
 
-Fork it and Pull Request what you think it should be good to have or just create an [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new).
+فورک کنید و برای چیزی که فکر می کنید بهتر است ذکر شود پول ریکوئست دهید یا یک [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new) بسازید.
 
 <!-- ## Add badge to your project
 
@@ -730,6 +730,6 @@ You can copy, modify, distribute and perform the work, even for commercial purpo
 
 ## نویسندگان ترجمه
 
-- [Brazilian Portuguese](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [توییتر: @PabloHPSilva](https://twitter.com/PabloHPSilva)
-- [روسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [توییتر: @legkoletat](https://twitter.com/legkoletat)
-- [فارسی](README-FA.md): علیرضا عربشاهی [github:AlirezaArabshahi](https://github.com/AlirezaArabshahi), [توییتر: @iialireza7](https://twitter.com/iialireza7)
+- [پرتغالی برزیلی](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
+- [روسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
+- [فارسی](README-FA.md): Alireza Arabshahi [github:AlirezaArabshahi](https://github.com/AlirezaArabshahi), [twitter: @iialireza7](https://twitter.com/iialireza7)
