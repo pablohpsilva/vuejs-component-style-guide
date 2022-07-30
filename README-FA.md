@@ -15,18 +15,18 @@
 
 ## هدف
 
-این راهنما یک راه متحد الشکل برای ساختار دادن به کد [Vue.js](http://vuejs.org/) شما فراهم می کند. موارد زیر را ممکن می سازد:
+این راهنما یک راه هم شکل برای ساختار دادن به کد [Vue.js](http://vuejs.org/) شما فراهم می کند و موارد زیر را ممکن می سازد:
 
 - برای توسعه دهندگان و اعضای تیم فهمیدن و پیدا کردن کد ها آسان تر است.
 - برای محیط های یکپارچه توسعه (IDEs) تفسیر کد و فراهم کردن پشتیبانی آسان تر است.
-- استفاده و یا استفاده مجدد از ابزار های build که قبلا استفاده می کردید آسان تر است.
+- استفاده (و یا استفاده) مجدد از ابزار های build که قبلا استفاده می کردید آسان تر است.
 - نهان سازی (cache) و ارائه بسته های کد به طور جداگانه آسان تر است.
 
 این راهنما از مخزن [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) که توسط [De Voorhoede](https://github.com/voorhoede) نوشته شده است الهام گرفته شده است.
 
 ## فهرست مطالب
 
-- [توسعه مبتی بر ماژول](#module-based-development)
+- [توسعه مبتنی بر ماژول](#module-based-development)
 - [نام های کامپوننت Vue](#vue-component-names)
 - [تکه کد های کامپوننت را ساده نگه دارید](#keep-component-expressions-simple)
 - [پراپ های کامپوننت را ساده نگه دارید](#keep-component-props-primitive)
@@ -36,7 +36,7 @@
 - [نام های ایونت کامپوننت](#component-event-names)
 - [از استفاده کردن از `this.$parent` پرهیز کنید](#avoid-thisparent)
 - [از `this.$refs` با احتیاط استفاده کنید](#use-thisrefs-with-caution)
-- [از نام کامپوننت به عنوان محدوده استایل استفاده کنید](#use-component-name-as-style-scope)
+- [از نام کامپوننت به عنوان محدوده style استفاده کنید](#use-component-name-as-style-scope)
 - [برای API کامپوننت خود مستند بنویسید](#document-your-component-api)
 - [دمو کامپوننت را اضافه کنید](#add-a-component-demo)
 - [فایل های کامپوننت خود را Lint کنید](#lint-your-component-files)
@@ -44,43 +44,43 @@
   <!-- * [Use `*.vue` extension](#use-vue-extension) -->
   <!-- * [Add badge to your project](#add-badge-to-your-project) -->
 
-## توسعه مبتی بر ماژول
+## توسعه مبتنی بر ماژول
 
 همیشه برنامه خود را با استفاده از ماژول های کوچکی که فقط یک کار و آن کار را هم خوب انجام می دهند, بسازید.
 
-یک ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه Vue.jsبه طور مشخص برای کمک کردن برای ساخت _view-logic modules_ طراحی شده است .
+یک ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه Vue.jsبه طور مشخص برای کمک کردن برای ساخت _view-logic ماژول های_ طراحی شده است .
 
-### چرا?
+### چرا؟
 
-ماژول های کوچک برای یادگیری، فهمیدن، نگهداری، استفاده مجدد و رفع مشکلات چه برای خود شما و چه برای توسعه دهندگان دیگر راحت تر هستند.
+یادگیری، فهمیدن، نگهداری، استفاده مجدد و رفع مشکلات ماژول های کوچک چه برای خود شما و چه برای توسعه دهندگان دیگر راحت تر هستند.
 
-### با چه روشی?
+###
 
-هر کامپوننت Vue (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle)), _مستقل_, _قابل استفاده مجدد_, _کوچک_ و _تست پذیر_ باشد.
+هر کامپوننت Vue (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص داشته باشد_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle))و _مستقل_, _قابل استفاده مجدد_, _کوچک_ و _تست پذیر_ باشد.
 
-اگر کامپوننت شما کار های زیادی انجام می دهد و یا خیلی بزرگ شده است آن را به کامپوننا های کوچکتر تقسیم کتید به طوری که هر کدام فقط یه کار را انجام دهند و بر حسب تجربه تلاش کنید که فایل هر کامپوننت کمتر از 100 خط کد باشد.
-همچنین مطمئن شوید کامپوننت شما به صورت مجزا کار می کند برای مثال یک دمو مستقل برای آن قرار دهید.
+اگر کامپوننت شما کار های زیادی انجام می دهد و یا خیلی بزرگ شده است آن را به کامپوننت های کوچکتر تقسیم کنید به طوری که هر کدام فقط یه کار را انجام دهند و بر حسب تجربه تلاش کنید که فایل هر کامپوننت کمتر از 100 خط کد باشد.
+همچنین مطمئن شوید کامپوننت شما به صورت مستقل هم کار می کند برای مثال یک دمو مستقل برای آن قرار دهید.
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## [نام های کامپوننت Vue
+## نام های کامپوننت Vue
 
 نام هر کامپوننت باید موارد زیر را شامل شود:
 
 - **معنی دار**: نه بیش از حد دقیق و نه بیش از حد خلاصه شده و انتزاعی باشد.
 - **کوتاه**: 2 یا 3 کلمه.
-- **قابل تلفظ**: ما می خواهیم درباره آن ها حرف بزنیم.
+- **قابل تلفظ**: زیرا ما می خواهیم درباره آن ها حرف بزنیم و آن ها را به زبان بیاوریم.
 
-همچنین نام هر کامپوننت ویو باید مطابق موارد زیر باشد:
+همچنین نام هر کامپوننت Vue باید مطابق موارد زیر باشد:
 
-- **مطابق با تعریف عنصر سفارشی**: [شامل خط فاصله](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), از نام های رزرو شده استفاده نکنید.
+- **مطابق با تعریف عنصر سفارشی**: [شامل خط فاصله باشد](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), از نام های رزرو شده استفاده نکنید.
 - **`app-` namespaced**: یا خیلی عمومی یا یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
 
 ### چرا؟
 
 - از نام برای ارتباط برقرار کردن با کامپوننت استفاده می شود. پس باید کوتاه، با معنی و قابل تلفظ باشد.
 
-### با چه روشی?
+### با چه روشی؟
 
 ```html
 <!-- پیشنهادی -->
@@ -91,7 +91,8 @@
 <!-- پرهیز کنید -->
 <btn-group></btn-group>
 
-<!-- کوتاه است, اما قابل تلفظ کردن نیست. از `button-group` به جایش استفاده کنید -->
+<!-- کوتاه است, اما قابل تلفظ کردن نیست. از مثال زیر به عنوان جایگزین استفاده کنید -->
+<!-- `button-group` -->
 <ui-slider></ui-slider>
 <!-- همه کامپوننت های عضوی از المان های رابط کاربری هستند, پس این نام گذاری بی معنی است -->
 <slider></slider>
@@ -102,17 +103,17 @@
 
 ## تکه کد های کامپوننت را ساده نگه دارید
 
-Vue.js's inline expressions are 100% Javascript. This makes them extremely powerful, but potentially also very complex. Therefore you should **keep expressions simple**.
+تکه کد های خطی (inline expressions) Vue.js 100% جاوا اسکریپت هستند. و این قضیه آن ها را به شدت قدرتمند می سازد، اما ذاتا پیچیده هستند. بنابرین شما باید **تکه کد های خطی را ساده نگه دارید**.
 
 ### چرا؟
 
-- Complex inline expressions are hard to read.
-- Inline expressions can't be reused elsewhere. This can lead to code duplication and code rot.
-- IDEs typically don't have support for expression syntax, so your IDE can't autocomplete or validate.
+- خواندن تکه کد های خطی پیچیده سخت است
+- تکه کد های خطی پیچیده نمی توانند در جای دیگر مورد استفاده مجدد قرار بگیرند که این می تواند منجر به تکرار کد ها (code duplication) و پوسیدگی کد ها (code rot) شود
+- محیط های یکپارچه توسعه (IDEs) معمولا پشتیبانی برای سینتکس های تکه کد های خطی ندارد، بنابراین نمیتوانند به طور خودکار تکمیل یا اعتبار سنجی شوند.
 
-### با چه روشی?
+### با چه روشی؟
 
-If it gets too complex or hard to read **move it to methods or computed properties**!
+اگر کد خیلی پیچیده شد یا خواندن آن سخت شد **آن ها را به methods یا computed انتقال دهید**!
 
 ```html
 <!-- پیشنهادی -->
@@ -137,7 +138,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
   }
 </script>
 
-<!-- avoid -->
+<!-- پرهیز کنید -->
 <template>
   <h1>
     {{ `${(new Date()).getUTCFullYear()}-${('0' + ((new
@@ -148,7 +149,7 @@ If it gets too complex or hard to read **move it to methods or computed properti
 
 [↑ برگشت به فهرست مطالب](#table-of-contents)
 
-## Keep component props primitive
+## پراپ های کامپوننت را ساده نگه دارید
 
 While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component props as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
 
@@ -159,7 +160,7 @@ While Vue.js supports passing complex JavaScript objects via these attributes, y
 - By using an attribute for each prop, other developers can easily understand what is passed to the component instance;
 - When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
 
-### با چه روشی?
+### با چه روشی؟
 
 Use a component attribute per props, with a primitive or function as value:
 
@@ -191,7 +192,7 @@ Component props are passed via custom HTML attributes. The values of these attri
 
 Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
 
-### با چه روشی?
+### با چه روشی؟
 
 - Use defaults for props values.
 - Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
@@ -242,7 +243,7 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
 - In general, when using arrow functions the lexical scope is kept
 - If you're **NOT** using ES6 and, therefore, not using `Arrow Functions`, you'd have to add `this` to a variable. That's the only exception.
 
-### با چه روشی?
+### با چه روشی؟
 
 ```html
 <script type="text/javascript">
@@ -289,7 +290,7 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 - Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
 - Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
 
-### با چه روشی?
+### با چه روشی؟
 
 Component structure:
 
@@ -302,11 +303,11 @@ Component structure:
 
 <script type="text/javascript">
   export default {
-    // Do not forget this little guy
+    // این رفیق کوچولو مون را (نام کامپوننت) کامپوننت را فراموش نکنید
     name: 'RangeSlider',
-    // share common functionality with component mixins
+    // قابلیت های مشترک را در mixin کامپوننت بنویسید
     mixins: [],
-    // compose new components
+    // کامپوننت های جدید بسازید
     extends: {},
     // component properties/variables
     props: {
@@ -314,10 +315,10 @@ Component structure:
       foo: {},
       fooBar: {},
     },
-    // variables
+    // متغیر ها
     data() {},
     computed: {},
-    // when component uses other components
+    // وقتی کامپوننت از کامپوننت های دیگر استفاده می کند
     components: {},
     // methods
     watch: {},
@@ -344,11 +345,11 @@ Vue.js provides all Vue handler functions and expressions are strictly bound to 
 ### چرا؟
 
 - Developers are free to use native likes event names and it can cause confusion down the line;
-- The freedom of naming events can lead to a [DOM templates incompatibility](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
+- آزادی برای نام گذاری ایونت ها میتواند به مورد روبهرو منجر شود [DOM ناسازگاری الگو های](https://vuejs.org/v2/guide/components.html#DOM-Template-Parsing-Caveats);
 
-### با چه روشی?
+### با چه روشی؟
 
-- Event names should be kebab-cased;
+- نام ایونت ها باید kebab-cased باشند;
 - A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error or even dropzone-upload-success, dropzone-upload-error (if you see the need for having a scoped prefix);
 - Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
@@ -363,7 +364,7 @@ Vue.js supports nested components which have access to their parent context. Acc
 - A vue component, like any component, must work in isolation. If a component needs to access its parent, this rule is broken.
 - If a component needs access to its parent, it can no longer be reused in a different context.
 
-### با چه روشی?
+### با چه روشی؟
 
 - Pass values from the parent to the child component using attribute/properties.
 - Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
@@ -380,7 +381,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 - A vue component, like any component, **must work in isolation**. If a component does not support all the access needed, it was badly designed/implemented.
 - Properties and events should be sufficient to most of your components.
 
-### با چه روشی?
+### با چه روشی؟
 
 - Create a good component API.
 - Always focus on the component purpose out of the box.
@@ -463,7 +464,7 @@ Alternatively the component name can be used as CSS class namespace.
 - Scoping styles to a component element improves predictability as its prevents styles leaking outside the component element.
 - Using the same name for the module directory, the Vue.js component and the style root makes it easy for developers to understand they belong together.
 
-### با چه روشی?
+### با چه روشی؟
 
 Use the component name as a namespace prefix based on BEM and OOCSS **and** use the `scoped` attribute on your style class.
 The use of `scoped` will tell your Vue compiler to add a signature on every class that your `<style>` have. That signature will force your browser (if it supports) to apply your components
@@ -498,7 +499,7 @@ A Vue.js component instance is created by using the component element inside you
 - Documentation formalises the API and tells developers which functionality to keep backwards compatible when modifying the component's code.
 - `README.md` is the de facto standard filename for documentation to be read first. Code repository hosting services (Github, Bitbucket, Gitlab etc) display the contents of the the README's, directly when browsing through source directories. This applies to our module directories as well.
 
-### با چه روشی?
+### با چه روشی؟
 
 Add a `README.md` file to the component's module directory:
 
@@ -557,7 +558,7 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 - Linting component files ensures all developers use the same code style.
 - Linting component files helps you trace syntax errors before it's too late.
 
-### با چه روشی?
+### با چه روشی؟
 
 To allow linters to extract the scripts from your `*.vue` files, put script inside a `<script>` component and [keep component expressions simple](#keep-component-expressions-simple) (as linters don't understand those). Configure your linter to allow global variables `vue` and component `props`.
 
@@ -619,7 +620,7 @@ Vue.js is a component framework based. Not knowing when to create components can
 - If the component is too big, it probably will be hard to (re)use and maintain;
 - If the component is too small, your project gets flooded, harder to make components communicate;
 
-### با چه روشی?
+### با چه روشی؟
 
 - Always remember to build your components for your project needs, but you should also try to think of them being able to work out of it. If they can work out of your project, such as a library, it makes them a lot more robust and consistent;
 - It's always better to build your components as early as possible since it allows you to build your communications (props & events) on existing and stable components.
@@ -638,7 +639,7 @@ Vue.js is a component framework based. Not knowing when to create components can
 
 Mixins encapsulate reusable code and avoid duplication. If two components share the same functionality, a mixin can be used. With mixins, you can focus on the individual component task and abstract common code. This helps to better maintain your application.
 
-### با چه روشی?
+### با چه روشی؟
 
 Let's say you have a mobile and desktop menu component whose share some functionality. We can abstract the core
 functionalities of both into a mixin like this.
@@ -686,7 +687,7 @@ To use the mixin, simply import it into both components (I only show the mobile 
 
 ## میخواهید کمک کنید?
 
-فورک کنید و برای چیزی که فکر می کنید بهتر است ذکر شود پول ریکوئست دهید یا یک [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new) بسازید.
+فورک کنید و برای چیزی که فکر می کنید بهتر است بیان شود پول ریکوئست دهید یا یک [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new) بسازید.
 
 <!-- ## Add badge to your project
 
@@ -698,7 +699,7 @@ You can use the *Vue.js Style Guide badge* to link to this guide:
 
 Inform other developers your project is following the Vue.js Style Guide. And let them know where they can find this guide.
 
-### با چه روشی?
+### با چه روشی؟
 
 Include the badge in your project. In markdown:
 
@@ -728,7 +729,7 @@ Or html:
 You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
  -->
 
-## نویسندگان ترجمه
+## مترجم ها
 
 - [پرتغالی برزیلی](README-PTBR.md): Pablo Henrique Silva [github:pablohpsilva](https://github.com/pablohpsilva), [twitter: @PabloHPSilva](https://twitter.com/PabloHPSilva)
 - [روسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian): Mikhail Kuznetcov [github:shershen08](https://github.com/shershen08), [twitter: @legkoletat](https://twitter.com/legkoletat)
