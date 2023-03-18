@@ -1,4 +1,4 @@
-# Vue.js راهنمای سبک نگارش کامپوننت در
+# راهنمای سبک نگارش کامپوننت ویو جی اس
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pablohpsilva/vuejs-component-style-guide/master/img/logo.png"/>
@@ -6,49 +6,49 @@
 
 ### ترجمه ها
 
-- [فارسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/)
 - [پرتغالی برزیلی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/portuguese)
 - [چینی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/chinese)
 - [ژاپنی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/japanese)
 - [کره ای](https://pablohpsilva.github.io/vuejs-component-style-guide/#/korean)
 - [روسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/russian)
+- [فارسی](https://pablohpsilva.github.io/vuejs-component-style-guide/#/farsi)
 
 ## هدف
 
-این راهنما یک راه هم شکل برای ساختار دادن به کد [Vue.js](http://vuejs.org/) شما فراهم می کند و موارد زیر را ممکن می سازد:
+این راهنما یک راه هم شکل برای ساختار دادن به کد [ویو جی اس](http://vuejs.org/) شما فراهم می کند و موارد زیر را ممکن می سازد:
 
 - برای توسعه دهندگان و اعضای تیم فهمیدن و پیدا کردن کد ها آسان تر است.
-- برای محیط های یکپارچه توسعه (IDEs) تفسیر کد و فراهم کردن پشتیبانی آسان تر است.
-- استفاده (و یا استفاده) مجدد از ابزار های build که قبلا استفاده می کردید آسان تر است.
-- نهان سازی (cache) و ارائه بسته های کد به طور جداگانه آسان تر است.
+- برای محیط های یکپارچه توسعه، تفسیر کد و فراهم کردن پشتیبانی آسان تر است.
+- استفاده از ابزار های بیلد آسان تر است.
+- نهان سازی و ارائه بسته های کد به طور جداگانه آسان تر است.
 
 این راهنما از مخزن [RiotJS Style Guide](https://github.com/voorhoede/riotjs-style-guide) که توسط [De Voorhoede](https://github.com/voorhoede) نوشته شده است الهام گرفته شده است.
 
 ## فهرست مطالب
 
-- [توسعه مبتنی بر ماژول](#module-based-development)
-- [نام های کامپوننت Vue](#vue-component-names)
-- [تکه کد های کامپوننت را ساده نگه دارید](#keep-component-expressions-simple)
-- [پراپ های کامپوننت را ساده نگه دارید](#keep-component-props-primitive)
-- [از پراپ های کامپوننت استفاده بهینه کنید](#harness-your-component-props)
-- [کلمه کلیدی `this` را به کامپوننت نسبت دهید](#assign-this-to-component)
-- [ساختار کامپوننت](#component-structure)
-- [نام های ایونت کامپوننت](#component-event-names)
+- [توسعه مبتنی بر ماژول](#توسعه-مبتنی-بر-ماژول)
+- [نام های کامپوننت ویو](#نام-های-کامپوننت-ویو)
+- [کد های کامپوننت را ساده نگه دارید](#کد-های-کامپوننت-را-ساده-نگه-دارید)
+- [پراپ های کامپوننت را ساده نگه دارید](#پراپ-های-کامپوننت-را-ساده-نگه-دارید)
+- [از پراپ های کامپوننت استفاده بهینه کنید](#از-پراپ-های-کامپوننت-استفاده-بهینه-کنید)
+- [`this` را به `کامپوننت` نسبت دهید](#this-را-به-کامپوننت-نسبت-دهید)
+- [ساختار کامپوننت](#ساختار-کامپوننت)
+- [نام های ایونت کامپوننت](#نام-های-ایونت-کامپوننت)
 - [از استفاده کردن از `this.$parent` پرهیز کنید](#avoid-thisparent)
 - [از `this.$refs` با احتیاط استفاده کنید](#use-thisrefs-with-caution)
 - [از نام کامپوننت به عنوان محدوده style استفاده کنید](#use-component-name-as-style-scope)
-- [برای API کامپوننت خود مستند بنویسید](#document-your-component-api)
-- [دمو کامپوننت را اضافه کنید](#add-a-component-demo)
-- [فایل های کامپوننت خود را Lint کنید](#lint-your-component-files)
-- [کامپوننت ها را وقتی بسازید که به آن ها نیاز دارید](#create-components-when-needed)
-  <!-- * [Use `*.vue` extension](#use-vue-extension) -->
-  <!-- * [Add badge to your project](#add-badge-to-your-project) -->
+- [برای ای پی آی کامپوننت خود مستند بنویسید](#document-your-component-api)
+- [دمو کامپوننت را اضافه کنید](#دمو-کامپوننت-را-اضافه-کنید)
+- [فایل های کامپوننت خود را لینت کنید](#lint-your-component-files)
+- [کامپوننت ها را زمانی بسازید که به آن ها نیاز دارید](#کامپوننت-ها-را-زمانی-بسازید-که-به-آن-ها-نیاز-دارید)
+  <!-- * [از پسوند `*.vue` استفاده کنید](#از-پسوند-vue-استفاده-کنید) -->
+  <!-- * [به پروژه خود نشان اضافه کنید](#به-پروژه-خود-نشان-اضافه-کنید) -->
 
 ## توسعه مبتنی بر ماژول
 
-همیشه برنامه خود را با استفاده از ماژول های کوچکی که فقط یک کار و آن کار را هم خوب انجام می دهند, بسازید.
+همیشه برنامه خود را با استفاده از ماژول های کوچکی که فقط یک کار و آن کار را هم درست انجام می دهند، بسازید.
 
-یک ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه Vue.jsبه طور مشخص برای کمک کردن برای ساخت _view-logic ماژول های_ طراحی شده است .
+یک ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه ویو جی اس به طور مشخص برای کمک کردن برای ساخت _view-logic ماژول های_ طراحی شده است .
 
 ### چرا؟
 
@@ -56,29 +56,29 @@
 
 ###
 
-هر کامپوننت Vue (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص داشته باشد_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle))و _مستقل_, _قابل استفاده مجدد_, _کوچک_ و _تست پذیر_ باشد.
+هر کامپوننت ویو (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص داشته باشد_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle))و _مستقل_، _قابل استفاده مجدد_، _کوچک_ و _تست پذیر_ باشد.
 
 اگر کامپوننت شما کار های زیادی انجام می دهد و یا خیلی بزرگ شده است آن را به کامپوننت های کوچکتر تقسیم کنید به طوری که هر کدام فقط یه کار را انجام دهند و بر حسب تجربه تلاش کنید که فایل هر کامپوننت کمتر از 100 خط کد باشد.
 همچنین مطمئن شوید کامپوننت شما به صورت مستقل هم کار می کند برای مثال یک دمو مستقل برای آن قرار دهید.
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست مطالب)
 
-## نام های کامپوننت Vue
+## نام های کامپوننت ویو
 
 نام هر کامپوننت باید موارد زیر را شامل شود:
 
-- **معنی دار**: نه بیش از حد دقیق و نه بیش از حد خلاصه شده و انتزاعی باشد.
+- **پر معنا**: نه بیش از حد دقیق و نه بیش از حد خلاصه شده و انتزاعی باشد.
 - **کوتاه**: 2 یا 3 کلمه.
 - **قابل تلفظ**: زیرا ما می خواهیم درباره آن ها حرف بزنیم و آن ها را به زبان بیاوریم.
 
-همچنین نام هر کامپوننت Vue باید مطابق موارد زیر باشد:
+همچنین نام هر کامپوننت ویو باید مطابق موارد زیر باشد:
 
 - **مطابق با تعریف عنصر سفارشی**: [شامل خط فاصله باشد](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), از نام های رزرو شده استفاده نکنید.
-- **`app-` namespaced**: یا خیلی عمومی یا یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
+- **`app-` namespaced**: نام باید عامه پسند و از طرف دیگر شامل یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
 
 ### چرا؟
 
-- از نام برای ارتباط برقرار کردن با کامپوننت استفاده می شود. پس باید کوتاه، با معنی و قابل تلفظ باشد.
+- از نام برای ارتباط برقرار کردن با کامپوننت استفاده می شود. پس باید کوتاه، پر معنا و قابل تلفظ باشد.
 
 ### با چه روشی؟
 
@@ -91,25 +91,25 @@
 <!-- پرهیز کنید -->
 <btn-group></btn-group>
 
-<!-- کوتاه است, اما قابل تلفظ کردن نیست. از مثال زیر به عنوان جایگزین استفاده کنید -->
+<!-- کوتاه است، اما قابل تلفظ کردن نیست. از مثال زیر به عنوان جایگزین استفاده کنید -->
 <!-- `button-group` -->
 <ui-slider></ui-slider>
-<!-- همه کامپوننت های عضوی از المان های رابط کاربری هستند, پس این نام گذاری بی معنی است -->
+<!-- همه کامپوننت های عضوی از عصنر های رابط کاربری هستند، پس این نام گذاری بی معنی است -->
 <slider></slider>
 <!-- مطابق با تعریف عنصر سفارشی نیست -->
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## تکه کد های کامپوننت را ساده نگه دارید
+## کد های کامپوننت را ساده نگه دارید
 
-تکه کد های خطی (inline expressions) Vue.js 100% جاوا اسکریپت هستند. و این قضیه آن ها را به شدت قدرتمند می سازد، اما ذاتا پیچیده هستند. بنابرین شما باید **تکه کد های خطی را ساده نگه دارید**.
+کد های خطی ویو جی اس تماما جاوا اسکریپت هستند. و این قضیه آن ها را به شدت قدرتمند می سازد، اما ذاتا پیچیده هستند. بنابرین شما باید **کد های خطی را ساده نگه دارید**.
 
 ### چرا؟
 
-- خواندن تکه کد های خطی پیچیده سخت است
-- تکه کد های خطی پیچیده نمی توانند در جای دیگر مورد استفاده مجدد قرار بگیرند که این می تواند منجر به تکرار کد ها (code duplication) و پوسیدگی کد ها (code rot) شود
-- محیط های یکپارچه توسعه (IDEs) معمولا پشتیبانی برای سینتکس های تکه کد های خطی ندارد، بنابراین نمیتوانند به طور خودکار تکمیل یا اعتبار سنجی شوند.
+- خواندن کد های خطی پیچیده، سخت است
+- کد های خطی پیچیده نمی توانند در جای دیگر مورد استفاده مجدد قرار بگیرند که این می تواند منجر به تکرار و پوسیدگی کدها شود
+- محیط های یکپارچه توسعه معمولا پشتیبانی برای سینتکس های کد های خطی ندارد، بنابراین نمی توانند به طور خودکار تکمیل یا اعتبار سنجی شوند.
 
 ### با چه روشی؟
 
@@ -147,22 +147,22 @@
 </template>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## پراپ های کامپوننت را ساده نگه دارید
 
-While Vue.js supports passing complex JavaScript objects via these attributes, you should try to **keep the component props as primitive as possible**. Try to only use [JavaScript primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (strings, numbers, booleans) and functions. Avoid complex objects.
+در حالی که ویو جی اس به خاطر ویژگی هایش از ارسال آبجکت های پیچیده جاوا اسکریپتی پشتیبانی میکند شما باید تلاش کنید تا **پراپ های کامپوننت را تا جای ممکن ساده نگه دارید**. تلاش کنید تا فقط از [داده های اولیه جاوا اسکریپت](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) که شامل (رشته ها، اعداد، بولین) و توابع می شوند. از آبجکت های پیچیده پرهیز کنید.
 
 ### چرا؟
 
-- By using an attribute for each prop separately the component has a clear and expressive API;
-- By using only primitives and functions as props values our component APIs are similar to the APIs of native HTML(5) elements;
-- By using an attribute for each prop, other developers can easily understand what is passed to the component instance;
-- When passing complex objects it's not apparent which properties and methods of the objects are actually being used by the custom components. This makes it hard to refactor code and can lead to code rot.
+- زمانی از یک اتریبیوت به طور جداگانه برای هر پراپ استفاده می کنیم، کامپوننت ای پی آی واضح و صریحی دارد;
+- با استفاده کردن از داده های اولیه و توابع به عنوان مقادیر پراپ ها ای پی آی های کامپوننت ما شبیه به ای پی آی های عنصر های بومی اچ تی ام ال 5 می شود;
+- با استفاده از اتریبیوت ها برای هر پراپ، بقیه توسعه دهندگان به راحتی می توانند بفهمند که چه چیز هایی به نمونه کامپوننت ارسال شده است
+- زمانی آبجکت های پیچیده را ارسال می کنید، واضح نیست که چه ویژگی ها و متود های از آبجکت واقعا مورد استفاده کامپوننت های سفارشی قرار گرفته است. این باعث می شود ریفکتور کردن کد سخت شود و کد ها به سمت پوسیده شدن بروند.
 
 ### با چه روشی؟
 
-Use a component attribute per props, with a primitive or function as value:
+به ازای هر اتریبیوت کامپوننت از پراپ ها استفاده کنید، که مقدارشان داده اولیه یا تابع باشد:
 
 ```html
 <!-- پیشنهادی -->
@@ -176,11 +176,11 @@ Use a component attribute per props, with a primitive or function as value:
 >
 </range-slider>
 
-<!-- avoid -->
+<!-- پرهیز کنید -->
 <range-slider :config="complexConfigObject"></range-slider>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## از پراپ های کامپوننت استفاده بهینه کنید
 
@@ -194,8 +194,8 @@ Harnessing your component props ensures your component will always function (def
 
 ### با چه روشی؟
 
-- Use defaults for props values.
-- Use `type` option to [validate](http://vuejs.org/v2/guide/components.html#Prop-Validation) values to an expected type.**[1\*]**
+- از پیش فرض ها برای مقادیر پراپ ها استفاده کنید
+- از گزینه `type` برای [اعتبارسنجی](http://vuejs.org/v2/guide/components.html#Prop-Validation) مقادیر به منظور دریافت نوع مورد انتظار.**[1\*]**
 - Check if props exists before using it.
 
 ```html
@@ -206,7 +206,7 @@ Harnessing your component props ensures your component will always function (def
   export default {
     props: {
       max: {
-        type: Number, // [1*] This will validate the 'max' prop to be a Number.
+        type: Number, // [1*] این خط باعث می شود که نوع این پراپ حتما عدد باشد.
         default() {
           return 10
         },
@@ -228,20 +228,22 @@ Harnessing your component props ensures your component will always function (def
 </script>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Assign `this` to `component`
 
-Within the context of a Vue.js component element, `this` is bound to the component instance.
-Therefore when you need to reference it in a different context, ensure `this` is available as `component`.
+## `this` را به `کامپوننت` نسبت دهید
+
+Within the context of a Vue.js component element، `this` is bound to the component instance.
+Therefore when you need to reference it in a different context، ensure `this` is available as `component`.
 
 In other words: Do **NOT** code things like `var self = this;` anymore if you're using **ES6**. You're safe using Vue components.
 
 ### چرا؟
 
-- Using ES6, there's no need to save `this` to a variable;
-- In general, when using arrow functions the lexical scope is kept
-- If you're **NOT** using ES6 and, therefore, not using `Arrow Functions`, you'd have to add `this` to a variable. That's the only exception.
+- Using ES6، there's no need to save `this` to a variable;
+- In general، when using arrow functions the lexical scope is kept
+- If you're **NOT** using ES6 and، therefore، not using `Arrow Functions`،، you'd have to add `this` to a variable. That's the only exception.
 
 ### با چه روشی؟
 
@@ -275,7 +277,7 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
 </script>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## ساختار کامپوننت
 
@@ -283,16 +285,16 @@ Make it easy to reason and follow a sequence of thoughts. See the How.
 
 ### چرا؟
 
-- Having the component export a clear and grouped object, makes the code easy to read and easier for developers to have a code standard.
-- Alphabetizing the properties, data, computed, watches, and methods makes them easy to find.
-- Again, grouping makes the component easier to read (name; extends; props, data and computed; components; watch and methods; lifecycle methods, etc.);
+- Having the component export a clear and grouped object، makes the code easy to read and easier for developers to have a code standard.
+- Alphabetizing the properties، data، computed، watches، and methods makes them easy to find.
+- Again، grouping makes the component easier to read (name; extends; props، data and computed; components; watch and methods; lifecycle methods، etc.);
 - Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
 - Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
 - Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
 
 ### با چه روشی؟
 
-Component structure:
+ساختار کامپوننت:
 
 ```html
 <template lang="html">
@@ -303,27 +305,27 @@ Component structure:
 
 <script type="text/javascript">
   export default {
-    // این رفیق کوچولو مون را (نام کامپوننت) کامپوننت را فراموش نکنید
+    // این دوست کوچک مان (نام کامپوننت) را فراموش نکنید
     name: 'RangeSlider',
-    // قابلیت های مشترک را در mixin کامپوننت بنویسید
+    // قابلیت های مشترک را در این ویژگی کامپوننت بنویسید
     mixins: [],
-    // کامپوننت های جدید بسازید
+    // کامپوننت جدیدی را با این کامپوننت ترکیب کنید
     extends: {},
-    // component properties/variables
+    // متغیر ها و ویژگی ها
     props: {
-      bar: {}, // Alphabetized
+      bar: {}, // به ترتیب حروف الفبای انگلیسی، پراپ ها را بنویسید
       foo: {},
       fooBar: {},
     },
     // متغیر ها
     data() {},
     computed: {},
-    // وقتی کامپوننت از کامپوننت های دیگر استفاده می کند
+    // زمانی کامپوننت از کامپوننت های دیگر استفاده می کند
     components: {},
-    // methods
+    // متود ها
     watch: {},
     methods: {},
-    // component Lifecycle hooks
+    // قلاب های چرخه حیات کامپوننت
     beforeCreate() {},
     mounted() {},
   }
@@ -336,7 +338,7 @@ Component structure:
 </style>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Component event names
 
@@ -349,11 +351,11 @@ Vue.js provides all Vue handler functions and expressions are strictly bound to 
 
 ### با چه روشی؟
 
-- نام ایونت ها باید kebab-cased باشند;
+- نام ایونت ها باید kebab-cased باشد;
 - A unique event name should be fired for unique actions in your component that will be of interest to the outside world, like: upload-success, upload-error or even dropzone-upload-success, dropzone-upload-error (if you see the need for having a scoped prefix);
 - Events should either end in verbs in the infinitive form (e.g. client-api-load) or nouns (e.g drive-upload-success) ([source](https://github.com/GoogleWebComponents/style-guide#events));
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Avoid `this.$parent`
 
@@ -370,7 +372,7 @@ Vue.js supports nested components which have access to their parent context. Acc
 - Pass methods defined on the parent component to the child component using callbacks in attribute expressions.
 - Emit events from child components and catch it on parent component.
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Use `this.$refs` with caution
 
@@ -434,7 +436,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 ```
 
 ```html
-<!-- avoid accessing something that could be emitted -->
+<!-- از دسترسی به چیزی که می تواند امیت شود پرهیز کنید -->
 <template>
   <range :max="max" :min="min" ref="range" :step="1"></range>
 </template>
@@ -452,7 +454,7 @@ Vue.js supports components to have access to other components and basic HTML ele
 </script>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Use component name as style scope
 
@@ -486,7 +488,7 @@ CSS on all tags that compose your component, leading to a no leaking css styling
 </style>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Document your component API
 
@@ -524,18 +526,18 @@ This module uses the [noUiSlider](http://refreshless.com/nouislider/) for cross 
 
 `<range-slider>` supports the following custom component attributes:
 
-| attribute  | type                | description                                                                                                                                                                                                                                  |
-| ---------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `min`      | Number              | number where range starts (lower limit).                                                                                                                                                                                                     |
-| `max`      | Number              | Number where range ends (upper limit).                                                                                                                                                                                                       |
-| `values`   | Number[] _optional_ | Array containing start and end value. E.g. `values="[10, 20]"`. Defaults to `[opts.min, opts.max]`.                                                                                                                                          |
-| `step`     | Number _optional_   | Number to increment / decrement values by. Defaults to 1.                                                                                                                                                                                    |
-| `on-slide` | Function _optional_ | Function called with `(values, HANDLE)` while a user drags the start (`HANDLE == 0`) or end (`HANDLE == 1`) handle. E.g. `on-slide={ updateInputs }`, with `component.updateInputs = (values, HANDLE) => { const value = values[HANDLE]; }`. |
-| `on-end`   | Function _optional_ | Function called with `(values, HANDLE)` when user stops dragging a handle.                                                                                                                                                                   |
+| attribute  | type               | description                                                                                                                                                                                                                                  |
+| ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `min`      | Number             | number where range starts (lower limit).                                                                                                                                                                                                     |
+| `max`      | Number             | Number where range ends (upper limit).                                                                                                                                                                                                       |
+| `values`   | Number[] _اختیاری_ | Array containing start and end value. E.g. `values="[10, 20]"`. Defaults to `[opts.min, opts.max]`.                                                                                                                                          |
+| `step`     | Number _اختیاری_   | Number to increment / decrement values by. Defaults to 1.                                                                                                                                                                                    |
+| `on-slide` | Function _اختیاری_ | Function called with `(values, HANDLE)` while a user drags the start (`HANDLE == 0`) or end (`HANDLE == 1`) handle. E.g. `on-slide={ updateInputs }`, with `component.updateInputs = (values, HANDLE) => { const value = values[HANDLE]; }`. |
+| `on-end`   | Function _اختیاری_ | Function called with `(values, HANDLE)` when user stops dragging a handle.                                                                                                                                                                   |
 
 For customising the slider appearance see the [Styling section in the noUiSlider docs](http://refreshless.com/nouislider/more/#section-styling).
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Add a component demo
 
@@ -547,7 +549,7 @@ Add a `index.html` file with demos of the component with different configuration
 - A component demo gives developers a preview before having to dig into the documentation or code.
 - Demos can illustrate all the possible configurations and variations a component can be used in.
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## Lint your component files
 
@@ -555,8 +557,8 @@ Linters improve code consistency and help trace syntax errors. .vue files can be
 
 ### چرا؟
 
-- Linting component files ensures all developers use the same code style.
-- Linting component files helps you trace syntax errors before it's too late.
+- لینت کردن فایل های کامپوننت این اطمینان را می دهد همه توسعه دهندگان از یک استایل کدی مشابه استفاده کنند
+- لینت کردن فایل ها کمک می کند که ارور های سینتکسی را قبل از اینکه به مشکل بخورید پیدا کنید
 
 ### با چه روشی؟
 
@@ -609,9 +611,9 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 
 Note: JSHint does not accept `vue` as extension, but only `html`.
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## Create components when needed
+## کامپوننت ها را زمانی بسازید که به آن ها نیاز دارید
 
 ### چرا؟
 
@@ -631,7 +633,7 @@ Vue.js is a component framework based. Not knowing when to create components can
 - Secondly, on each new development, for a whole page or a portion of it, try to think before rushing in. If you know some parts of it should be a component, build it;
 - Lastly, if you're not sure, then don't! Avoid polluting your project with "possibly useful later" components, they might just stand there forever, empty of smartness. Note it's better to break it down as soon as you realize it should have been, to avoid the complexity of compatibility with the rest of the project;
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## از mixins هر زمانی که ممکن بود استفاده کنید
 
@@ -663,7 +665,7 @@ const MenuMixin = {
 export default MenuMixin
 ```
 
-To use the mixin, simply import it into both components (I only show the mobile component).
+برای استفاده از میکسین، به سادگی آن را در داخل دو کامپوننت خود ایمپورت کنید (من فقط کامپوننت موبایل را نشان می دهم)
 
 ```html
 <template>
@@ -681,7 +683,7 @@ To use the mixin, simply import it into both components (I only show the mobile 
 </script>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ---
 
@@ -716,7 +718,7 @@ Or html:
 </a>
 ```
 
-[↑ برگشت به فهرست مطالب](#table-of-contents)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ---
 
