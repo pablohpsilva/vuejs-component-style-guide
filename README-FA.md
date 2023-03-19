@@ -15,7 +15,7 @@
 
 ## هدف
 
-این راهنما یک راه هم شکل برای ساختار دادن به کد [ویو جی اس](http://vuejs.org/) شما فراهم می کند و موارد زیر را ممکن می سازد:
+این راهنما یک راه هم شکل برای ساختار دادن به کد [ویو جی اس](http://vuejs.org/) شما است و موارد زیر را ممکن می سازد:
 
 - برای توسعه دهندگان و اعضای تیم فهمیدن و پیدا کردن کد ها آسان تر است.
 - برای محیط های یکپارچه توسعه، تفسیر کد و فراهم کردن پشتیبانی آسان تر است.
@@ -37,9 +37,9 @@
 - [از استفاده کردن از `this.$parent` پرهیز کنید](#avoid-thisparent)
 - [از `this.$refs` با احتیاط استفاده کنید](#use-thisrefs-with-caution)
 - [از نام کامپوننت به عنوان محدوده style استفاده کنید](#use-component-name-as-style-scope)
-- [برای ای پی آی کامپوننت خود مستند بنویسید](#document-your-component-api)
+- [برای ای پی آی کامپوننت خود مستند بنویسید](#برای-ای-پی-آی-کامپوننت-خود-مستند-بنویسید)
 - [دمو کامپوننت را اضافه کنید](#دمو-کامپوننت-را-اضافه-کنید)
-- [فایل های کامپوننت خود را لینت کنید](#lint-your-component-files)
+- [فایل های کامپوننت خود را لینت کنید](#فایل-های-کامپوننت-خود-را-لینت-کنید)
 - [کامپوننت ها را زمانی بسازید که به آن ها نیاز دارید](#کامپوننت-ها-را-زمانی-بسازید-که-به-آن-ها-نیاز-دارید)
   <!-- * [از پسوند `*.vue` استفاده کنید](#از-پسوند-vue-استفاده-کنید) -->
   <!-- * [به پروژه خود نشان اضافه کنید](#به-پروژه-خود-نشان-اضافه-کنید) -->
@@ -48,20 +48,20 @@
 
 همیشه برنامه خود را با استفاده از ماژول های کوچکی که فقط یک کار و آن کار را هم درست انجام می دهند، بسازید.
 
-یک ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه ویو جی اس به طور مشخص برای کمک کردن برای ساخت _view-logic ماژول های_ طراحی شده است .
+ماژول یک بخش کوچک و مستقل از یک برنامه است. کتابخانه ویو جی اس به طور مشخص برای کمک کردن برای ساخت _view-logic ماژول های_ طراحی شده است .
 
 ### چرا؟
 
-یادگیری، فهمیدن، نگهداری، استفاده مجدد و رفع مشکلات ماژول های کوچک چه برای خود شما و چه برای توسعه دهندگان دیگر راحت تر هستند.
+یادگیری، درک کردن، نگهداری، استفاده مجدد و رفع مشکلات ماژول های کوچک، چه برای خود شما و چه برای توسعه دهندگان دیگر راحت تر است.
 
 ###
 
-هر کامپوننت ویو (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _یک هدف مشخص داشته باشد_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle))و _مستقل_، _قابل استفاده مجدد_، _کوچک_ و _تست پذیر_ باشد.
+هر کامپوننت ویو (مثل یک ماژول) باید [در ابتدا](https://addyosmani.com/first/): _دارای یک هدف مشخص_ ([تک وظیفه‌ای](http://en.wikipedia.org/wiki/Single_responsibility_principle))، _مستقل_، _قابل استفاده مجدد_، _کوچک_ و _با قابلیت تست_ باشد.
 
 اگر کامپوننت شما کار های زیادی انجام می دهد و یا خیلی بزرگ شده است آن را به کامپوننت های کوچکتر تقسیم کنید به طوری که هر کدام فقط یه کار را انجام دهند و بر حسب تجربه تلاش کنید که فایل هر کامپوننت کمتر از 100 خط کد باشد.
-همچنین مطمئن شوید کامپوننت شما به صورت مستقل هم کار می کند برای مثال یک دمو مستقل برای آن قرار دهید.
+همچنین مطمئن شوید کامپوننت های شما به صورت مستقل از هم کار می کنند، برای مثال یک دمو مستقل برای آن قرار دهید.
 
-[↑ برگشت به فهرست مطالب](#فهرست مطالب)
+[↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
 ## نام های کامپوننت ویو
 
@@ -69,12 +69,12 @@
 
 - **پر معنا**: نه بیش از حد دقیق و نه بیش از حد خلاصه شده و انتزاعی باشد.
 - **کوتاه**: 2 یا 3 کلمه.
-- **قابل تلفظ**: زیرا ما می خواهیم درباره آن ها حرف بزنیم و آن ها را به زبان بیاوریم.
+- **قابل تلفظ**: زیرا ما می خواهیم درباره آن حرف بزنیم و اسم آن را به زبان بیاوریم.
 
 همچنین نام هر کامپوننت ویو باید مطابق موارد زیر باشد:
 
 - **مطابق با تعریف عنصر سفارشی**: [شامل خط فاصله باشد](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name), از نام های رزرو شده استفاده نکنید.
-- **`app-` namespaced**: نام باید عامه پسند و از طرف دیگر شامل یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
+- **`app-` namespaced**: نام باید عمومی و از طرف دیگر شامل یک کلمه باشد که بتوان به راحتی از آن در پروژه های دیگر استفاده مجدد کرد.
 
 ### چرا؟
 
@@ -107,13 +107,13 @@
 
 ### چرا؟
 
-- خواندن کد های خطی پیچیده، سخت است
-- کد های خطی پیچیده نمی توانند در جای دیگر مورد استفاده مجدد قرار بگیرند که این می تواند منجر به تکرار و پوسیدگی کدها شود
-- محیط های یکپارچه توسعه معمولا پشتیبانی برای سینتکس های کد های خطی ندارد، بنابراین نمی توانند به طور خودکار تکمیل یا اعتبار سنجی شوند.
+- خواندن کد های خطی پیچیده، سخت است.
+- کد های خطی پیچیده نمی توانند در جای دیگر مورد استفاده مجدد قرار بگیرند که این می تواند منجر به تکرار و پوسیدگی کدها شود.
+- محیط های یکپارچه توسعه، معمولا پشتیبانی برای سینتکس های کد های خطی ندارد، بنابراین نمی توانند به طور خودکار تکمیل یا اعتبار سنجی شوند.
 
 ### با چه روشی؟
 
-اگر کد خیلی پیچیده شد یا خواندن آن سخت شد **آن ها را به methods یا computed انتقال دهید**!
+اگر کد خیلی پیچیده شد و یا خواندن آن سخت شد، **شما می بایست کد را به methods یا computed انتقال دهید**!
 
 ```html
 <!-- پیشنهادی -->
@@ -151,18 +151,18 @@
 
 ## پراپ های کامپوننت را ساده نگه دارید
 
-در حالی که ویو جی اس به خاطر ویژگی هایش از ارسال آبجکت های پیچیده جاوا اسکریپتی پشتیبانی میکند شما باید تلاش کنید تا **پراپ های کامپوننت را تا جای ممکن ساده نگه دارید**. تلاش کنید تا فقط از [داده های اولیه جاوا اسکریپت](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) که شامل (رشته ها، اعداد، بولین) و توابع می شوند. از آبجکت های پیچیده پرهیز کنید.
+در حالی که ویو جی اس به خاطر ویژگی هایش از ارسال آبجکت های پیچیده جاوا اسکریپتی پشتیبانی می کند شما باید تلاش کنید تا **پراپ های کامپوننت را تا جای ممکن ساده نگه دارید**. تلاش کنید تا فقط از [داده های اولیه جاوا اسکریپت](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) که شامل (رشته ها، اعداد، بولین) و توابع می شوند، استفاده کنید. و از آبجکت های پیچیده پرهیز کنید.
 
 ### چرا؟
 
 - زمانی از یک اتریبیوت به طور جداگانه برای هر پراپ استفاده می کنیم، کامپوننت ای پی آی واضح و صریحی دارد;
-- با استفاده کردن از داده های اولیه و توابع به عنوان مقادیر پراپ ها ای پی آی های کامپوننت ما شبیه به ای پی آی های عنصر های بومی اچ تی ام ال 5 می شود;
-- با استفاده از اتریبیوت ها برای هر پراپ، بقیه توسعه دهندگان به راحتی می توانند بفهمند که چه چیز هایی به نمونه کامپوننت ارسال شده است
-- زمانی آبجکت های پیچیده را ارسال می کنید، واضح نیست که چه ویژگی ها و متود های از آبجکت واقعا مورد استفاده کامپوننت های سفارشی قرار گرفته است. این باعث می شود ریفکتور کردن کد سخت شود و کد ها به سمت پوسیده شدن بروند.
+- با استفاده کردن از داده های اولیه و توابع به عنوان مقادیر پراپ ها، ای پی آی های کامپوننت ما شبیه به ای پی آی های عنصر های بومی اچ تی ام ال 5 می شود;
+- با استفاده کردن از اتریبیوت ها به ازای هر پراپ، بقیه توسعه دهندگان به راحتی می توانند بفهمند که چه چیز هایی به نمونه کامپوننت ارسال شده است.
+- زمانی که آبجکت های پیچیده را ارسال می کنید، واضح نیست که چه ویژگی ها و متود هایی از آبجکت واقعا مورد استفاده کامپوننت های سفارشی قرار گرفته است. این باعث می شود ریفکتور کردن کد سخت شود و کد ها به سمت پوسیده شدن بروند.
 
 ### با چه روشی؟
 
-به ازای هر اتریبیوت کامپوننت از پراپ ها استفاده کنید، که مقدارشان داده اولیه یا تابع باشد:
+به ازای هر اتریبیوت کامپوننت، از پراپ ها استفاده کنید، که مقدارشان داده اولیه یا تابع باشد:
 
 ```html
 <!-- پیشنهادی -->
@@ -184,19 +184,19 @@
 
 ## از پراپ های کامپوننت استفاده بهینه کنید
 
-In Vue.js your component props are your API. A robust and predictable API makes your components easy to use by other developers.
+در ویو جی اس پراپ های کامپوننت ای پی آی شما هستند. یک ای پی آی منسجم و قابل پیش بینی، استفاده از کامپوننت شما را برای بقیه توسعه دهندگان راحت می کند
 
-Component props are passed via custom HTML attributes. The values of these attributes can be Vue.js plain strings (`:attr="value"` or `v-bind:attr="value"`) or missing entirely. You should **harness your component props** to allow for these different cases.
+پراپ های کامپوننت از طریق اتریبیوت های اچ تی ام ال ارسال می شوند. مقادیر این اتریبیوت ها می تواند رشته های ساده ویو جی است (`:attr="value"` or `v-bind:attr="value"`) باشد یا به طور کامل صرف نظر شود. شما باید **پراپ های کامپوننت کنترل کنید** تا بتوانید سناریو های مختلف را اجازه دهید.
 
 ### چرا؟
 
-Harnessing your component props ensures your component will always function (defensive programming). Even when other developers later use your components in ways you haven't thought of yet.
+کنترل کردن پراپ های کامپوننت به شما اطمینان می دهند کامپوننت شما همیشه به درستی کار کند (برنامه نویسی تدافعی). حتی اگر وقتی بقیه توسعه دهندگان، زمانی دیگر از کاموپوننت های شما به طریقی استفاده کنند که شما فکرش را نکرده بودید.
 
 ### با چه روشی؟
 
 - از پیش فرض ها برای مقادیر پراپ ها استفاده کنید
 - از گزینه `type` برای [اعتبارسنجی](http://vuejs.org/v2/guide/components.html#Prop-Validation) مقادیر به منظور دریافت نوع مورد انتظار.**[1\*]**
-- Check if props exists before using it.
+- قبل از استفاده کردن از پراپ ها، چک کنید تا ببینید پراپ ها وجود داشته باشند.
 
 ```html
 <template>
@@ -230,20 +230,18 @@ Harnessing your component props ensures your component will always function (def
 
 [↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## Assign `this` to `component`
-
 ## `this` را به `کامپوننت` نسبت دهید
 
-Within the context of a Vue.js component element، `this` is bound to the component instance.
-Therefore when you need to reference it in a different context، ensure `this` is available as `component`.
+در داخل فضای عنصر کامپوننت ویو جی اس، `this` به نمونه کامپوننت اشاره می کند.
+بنابراین زمانی که شما نیاز دارید در فضای دیگری ارجاع دهید، اطمینان پیدا کنید که `this` به عنوان `کامپوننت` در دسترس باشد.
 
-In other words: Do **NOT** code things like `var self = this;` anymore if you're using **ES6**. You're safe using Vue components.
+به عبارت دیگر: اگر میخواهید از استاندارد **ES6** استفاده کنید، چیز هایی شبیه `var self = this;` را دیگر **ننویسید**. شما با این کار، از کامپوننت های ویو به صورت ایمن استفاده می کنید.
 
 ### چرا؟
 
-- Using ES6، there's no need to save `this` to a variable;
-- In general، when using arrow functions the lexical scope is kept
-- If you're **NOT** using ES6 and، therefore، not using `Arrow Functions`،، you'd have to add `this` to a variable. That's the only exception.
+- با استفاده از در استاندارد ES6، نیازی نیست `this` را در یک متغیر ذخیره کنیدک
+  -در کل، زمانی که از توابع arrow استفاده می کنیم اسکوپ لکسیکال حفظ می شود.
+- اگر شما از استاندارد ES6 استفاده **نمی کنید**، بنابراین از توابع Arrow هم استفاده نمی کنید شما می بایست `this` را به یک متغیر نسبت دهید. این تنها حالت استثنا می باشد.
 
 ### با چه روشی؟
 
@@ -281,16 +279,16 @@ In other words: Do **NOT** code things like `var self = this;` anymore if you're
 
 ## ساختار کامپوننت
 
-Make it easy to reason and follow a sequence of thoughts. See the How.
+این دستورالعمل ها را دنبال کنید تا چگونگی آن را دریابید.
 
 ### چرا؟
 
-- Having the component export a clear and grouped object، makes the code easy to read and easier for developers to have a code standard.
-- Alphabetizing the properties، data، computed، watches، and methods makes them easy to find.
-- Again، grouping makes the component easier to read (name; extends; props، data and computed; components; watch and methods; lifecycle methods، etc.);
+- داشتن خروجی کامپوننت منجر به یک آبجکت گروه بندی شده و تمیز می شود، که باعث می شود خواندن کد آسان شود و توسعه دهندگان کد استانداردی را داشته باشند.
+- چینش properties، data، computed، watches، و methods بر اساس حروف الفبا باعث می شود پیدا کردن آن ها آسان تر شود.
+- دوباره می گوییم، گروه بندی کردن باعث می شود خوانایی کامپوننت بیشتر شود. (name; extends; props، data و computed; components; watch و methods; lifecycle methods، و غیره.);
 - Use the `name` attribute. Using [vue devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) and that attribute will make your development/testing easier;
-- Use a CSS naming Methodology, like [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), or [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
-- Use the template-script-style .vue file organization, as recomended by Evan You, Vue.js creator.
+- از متودولوژی های نامگذاری سی اس اس استفاده کنید ، مانند [BEM](https://medium.com/tldr-tech/bem-blocks-elements-and-modifiers-6b3b0af9e3ea#.bhnomd7gw), یا [rscss](https://github.com/rstacruz/rscss) - [details?](#use-component-name-as-style-scope);
+- از ساختار فایل .vue و template-script-style استفاده کنید, همان طور که توسط Evan You خالق ویو پیشنهاد شده است.
 
 ### با چه روشی؟
 
@@ -482,7 +480,7 @@ CSS on all tags that compose your component, leading to a no leaking css styling
   .MyExample__item {
   }
 
-  /* avoid */
+  /* پرهیز کنید */
   .My-Example {
   } /* not scoped to component or module name, not BEM compliant */
 </style>
@@ -490,7 +488,7 @@ CSS on all tags that compose your component, leading to a no leaking css styling
 
 [↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## Document your component API
+## برای ای پی آی کامپوننت خود مستند بنویسید
 
 A Vue.js component instance is created by using the component element inside your application. The instance is configured through its custom attributes. For the component to be used by other developers, these custom attributes - the component's API - should be documented in a `README.md` file.
 
@@ -516,13 +514,13 @@ Within the README file, describe the functionality and the usage of the module. 
 
 # Range slider
 
-## Functionality
+## قابلیت
 
 The range slider lets the user to set a numeric range by dragging a handle on a slider rail for both the start and end value.
 
 This module uses the [noUiSlider](http://refreshless.com/nouislider/) for cross browser and touch support.
 
-## Usage
+## نحوه استفاده
 
 `<range-slider>` supports the following custom component attributes:
 
@@ -539,7 +537,7 @@ For customising the slider appearance see the [Styling section in the noUiSlider
 
 [↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## Add a component demo
+## دمو کامپوننت را اضافه کنید
 
 Add a `index.html` file with demos of the component with different configurations, showing how the component can be used.
 
@@ -551,7 +549,7 @@ Add a `index.html` file with demos of the component with different configuration
 
 [↑ برگشت به فهرست مطالب](#فهرست-مطالب)
 
-## Lint your component files
+## فایل های کامپوننت خود را لینت کنید
 
 Linters improve code consistency and help trace syntax errors. .vue files can be linted adding the `eslint-plugin-html` in your project. If you choose, you can start a project with ESLint enabled by default using `vue-cli`;
 
@@ -687,7 +685,7 @@ export default MenuMixin
 
 ---
 
-## میخواهید کمک کنید?
+## می خواهید کمک کنید?
 
 فورک کنید و برای چیزی که فکر می کنید بهتر است بیان شود پول ریکوئست دهید یا یک [Issue](https://github.com/pablohpsilva/vuejs-component-style-guide/issues/new) بسازید.
 
